@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Cinzel";
+  src: url(/fonts/Cinzel/Cinzel-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Athena";
+  src: url(/fonts/Athena-Regular.ttf);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-Cinzel: "Cinzel", serif;
+  --font-Athena: "Athena"; 
+}
+
+
+p{
+  font-family: var(--font-Poppins);
+}
+h1, h2, h3, h4, h5, h6, li{
+  font-family: var(--font-Cinzel);
+}
+@keyframes scaleInfinite {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-scale-infinite {
+  animation: scaleInfinite 15s ease-in-out infinite;
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.animate-slideDown {
+  animation: slideDown 0.5s ease-out;
+}
