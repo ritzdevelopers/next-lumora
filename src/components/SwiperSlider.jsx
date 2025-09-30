@@ -21,7 +21,7 @@ export default function App() {
   ];
 
   return (
-    <div className="w-full relative lg:h-[109vh]">
+    <div className="w-full relative lg:h-[120vh] xl:h-[109vh]">
        <Swiper
         spaceBetween={30}          // gap between slides (px)
         freeMode={true}
@@ -36,7 +36,7 @@ export default function App() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            {/* make slide content take full width so Swiper can size it */}
+             {/* make slide content take full width so Swiper can size it */}
             <div className="sliderCard group relative w-full h-[300px] sm:h-[420px] md:h-[500px] lg:h-[692px] cursor-pointer overflow-hidden ">
               <img
                 src={slide.img}

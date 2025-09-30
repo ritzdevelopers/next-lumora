@@ -77,7 +77,7 @@ export default function NewProjectPage() {
   return (
     <main className="bg-[#FFFFFF] overflow-x-hidden">
       <section
-        className="s1 md:min-h-[115vh] overflow-x-hidden min-h-screen w-screen flex items-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
+        className="s1 md:min-h-[115vh] overflow-x-hidden min-h-screen w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
         style={{
           backgroundImage: "url(../new/lum-Desktop.png)",
           backgroundPosition: "center",
@@ -658,7 +658,7 @@ export default function NewProjectPage() {
       </section>
 
       {/* <!-- Section 4 Is Starting From Here  --> */}
-      <section className="s4 w-screen min-h-screen flex flex-col py-4 gap-20 items-end relative overflow-hidden">
+      <section className="s4 w-screen min-h-[85vh] flex flex-col py-4 gap-20 items-end relative overflow-hidden">
         {/* <!-- Top Header Div  --> */}
         <div
           className="w-full h-[164px] bg-[#0E291A] flex flex-col md:flex-row justify-center items-center md:items-center md:justify-end relative sm:pr-10 lg:pr-20"
@@ -707,7 +707,7 @@ export default function NewProjectPage() {
 
         {/* <!-- Absolute Position Div --> */}
         <div
-          className={`imgCrcle absolute hidden 2xl:block bottom-0 left-[-250px] ${styles.circularDesign}`}
+          className={`imgCrcle absolute hidden xl:block bottom-0 left-[-250px] ${styles.circularDesign}`}
         >
           <img
             src="../images/circl2.png"
@@ -1056,7 +1056,7 @@ export default function NewProjectPage() {
 
         {/* Modal 1 */}
         {isModal1Open && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999]">
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
             <div className="relative w-[98vw] h-[98vh]">
               <button
                 ref={closeBtnRef1}
@@ -1083,7 +1083,7 @@ export default function NewProjectPage() {
 
         {/* Modal 2 */}
         {isModal2Open && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999]">
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
             <div className="relative w-[98vw] h-[98vh]">
               <button
                 ref={closeBtnRef2}
