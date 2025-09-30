@@ -21,7 +21,7 @@ export default function App() {
   ];
 
   return (
-    <div className="w-full relative lg:h-[120vh] xl:h-[109vh]">
+    <div className="w-full relative  h-[60vh] md:h-[120vh] xl:h-[109vh]">
        <Swiper
         spaceBetween={30}          // gap between slides (px)
         freeMode={true}
@@ -66,7 +66,7 @@ export default function App() {
 
 
       {/* Buttons */}
-      <div className="absolute -bottom-20 lg:bottom-0  z-[999] left-4 flex gap-4">
+      <div className="absolute bottom-10 md:bottom-20 lg:bottom-0  z-[999] left-4 flex gap-4">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="lft md:h-[80px] w-[50px] h-[50px] md:w-[80px]"
