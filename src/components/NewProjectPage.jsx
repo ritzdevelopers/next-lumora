@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import gsap from "gsap";
 import SwiperSlider from "./SwiperSlider";
 export default function NewProjectPage() {
-    const [isModal1Open, setModal1Open] = useState(false);
+  const [isModal1Open, setModal1Open] = useState(false);
   const [isModal2Open, setModal2Open] = useState(false);
 
   const imgRef1 = useRef(null);
@@ -74,9 +74,63 @@ export default function NewProjectPage() {
     });
   };
 
+  const sectionRef = useRef(null);
+  const contentRef = useRef(null);
+  const headingRef = useRef(null);
+  const paraRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+
+      // Background subtle zoom-in
+      tl.fromTo(
+        sectionRef.current,
+        { scale: 1.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.8, ease: "power3.out" }
+      );
+
+      // Content fade-in with slide
+      tl.from(
+        contentRef.current,
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "-=1"
+      ); // start earlier with overlap
+
+      // Heading pop effect
+      tl.from(headingRef.current, {
+        y: 30,
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      });
+
+      // Paragraph fade-in
+      tl.from(
+        paraRef.current,
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
+    });
+
+    return () => ctx.revert(); // cleanup on unmount
+  }, []);
+
   return (
     <main className="bg-[#FFFFFF] overflow-x-hidden">
       <section
+        ref={sectionRef}
         className="s1 md:min-h-[115vh] overflow-x-hidden min-h-screen w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
         style={{
           backgroundImage: "url(../new/lum-Desktop.png)",
@@ -85,11 +139,20 @@ export default function NewProjectPage() {
           backgroundSize: "cover",
         }}
       >
-        <div className="s1Content bg-[#0E291AA6] p-6 md:p-10 flex flex-col justify-center w-[90%] sm:w-[500px] md:w-[600px] h-auto md:h-[408px]">
-          <h1 className="uppercase cnzl text-[#FFFFFF] text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] leading-tight">
+        <div
+          ref={contentRef}
+          className="s1Content bg-[#0E291AA6] p-6 md:p-10 flex flex-col justify-center w-[90%] sm:w-[500px] md:w-[600px] h-auto md:h-[408px]"
+        >
+          <h1
+            ref={headingRef}
+            className="uppercase cnzl text-[#FFFFFF] text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] leading-tight"
+          >
             Introducing AVACASA
           </h1>
-          <p className="mt-4 text-[#FFFFFF] font-[300] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]">
+          <p
+            ref={paraRef}
+            className="mt-4 text-[#FFFFFF] font-[300] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]"
+          >
             A private hill villa community where low-density planning, forest
             views, and modern comforts come together. Close to Delhi, designed
             for unhurried days, AVACASA restores calm with light, space, and
@@ -699,10 +762,7 @@ export default function NewProjectPage() {
           </div>
 
           {/* <!-- Slider --> */}
-        <SwiperSlider></SwiperSlider>
-        
-
-         
+          <SwiperSlider></SwiperSlider>
         </div>
 
         {/* <!-- Absolute Position Div --> */}
@@ -985,7 +1045,9 @@ export default function NewProjectPage() {
         </div>
 
         {/* <!-- Decorative Circle (absolute for large, reposition on small) --> */}
-        <div className={`absolute right-[10rem] top-1 hidden 2xl:block ${styles.circularDesign}`}>
+        <div
+          className={`absolute right-[10rem] top-1 hidden 2xl:block ${styles.circularDesign}`}
+        >
           <img
             src="../images/s2/lumS2Circle.png"
             alt="lumora"
@@ -995,120 +1057,140 @@ export default function NewProjectPage() {
       </section>
 
       {/* <!-- Section 8 Is Starting From Here  --> */}
-     <section className="s8 bg-[#0E291A] w-screen min-h-[30vh] flex justify-center py-12 px-4">
-      <div className="flex flex-col gap-8 w-full max-w-[1300px]">
-        {/* Top Container */}
-        <div className="s8Top flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-12">
-          {/* Left Title */}
-          <div className="text-center lg:text-left">
-            <h1 className="text-[#C89A6B] cnzl text-[32px] md:text-[40px] lg:text-[46px]">
-              Floor Plan
-            </h1>
-          </div>
+      <section className="s8 bg-[#0E291A] w-screen min-h-[30vh] flex justify-center py-12 px-4">
+        <div className="flex flex-col gap-8 w-full max-w-[1300px]">
+          {/* Top Container */}
+          <div className="s8Top flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-12">
+            {/* Left Title */}
+            <div className="text-center lg:text-left">
+              <h1 className="text-[#C89A6B] cnzl text-[32px] md:text-[40px] lg:text-[46px]">
+                Floor Plan
+              </h1>
+            </div>
 
-          {/* Right Info Box */}
-          <div className="w-full sm:w-[345px] bg-[#6E7F76] p-4 sm:p-6 text-center lg:text-left">
-            <p style={{ fontFamily: "PlaBold" }} className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]">
-              Plot Area:
-              <span style={{ fontFamily: "PlaRegular" }} className="font-[400]">
-                9000 sq ft
-              </span>
-            </p>
-            <p style={{ fontFamily: "PlaBold" }} className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]">
-              Built Up Area:
-              <span style={{ fontFamily: "PlaRegular" }} className="font-[400]">
-                2135 sq ft
-              </span>
-            </p>
-          </div>
-        </div>
-
-        {/* Main Div (Images) */}
-        <div className="s8Main w-full flex flex-col md:flex-row justify-center items-center gap-6">
-          {/* Modal 1 Trigger */}
-          <div
-            onClick={() => setModal1Open(true)}
-            className="img w-full md:w-1/2 h-[502px] border-[5px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
-          >
-            <img src="../images/groundPhone.jpg" className="w-full max-w-[641px] object-cover" alt="Ground Floor" />
-            <button
-              className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute left-4 top-4"
-              style={{ fontFamily: "PlaRegular" }}
-            >
-              Ground Floor
-            </button>
-          </div>
-
-          {/* Modal 2 Trigger */}
-          <div
-            onClick={() => setModal2Open(true)}
-            className="img w-full md:w-1/2 h-[502px] flex justify-center relative border-[5px] border-[#FFFFFF] cursor-pointer"
-          >
-            <img src="../images/firstDekstop.jpg" className="w-full max-w-[641px] object-cover" alt="First Floor" />
-            <button
-              className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
-              style={{ fontFamily: "PlaRegular" }}
-            >
-              First Floor
-            </button>
-          </div>
-        </div>
-
-        {/* Modal 1 */}
-        {isModal1Open && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
-            <div className="relative w-[98vw] h-[98vh]">
-              <button
-                ref={closeBtnRef1}
-                onClick={handleCloseModal1}
-                className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
+            {/* Right Info Box */}
+            <div className="w-full sm:w-[345px] bg-[#6E7F76] p-4 sm:p-6 text-center lg:text-left">
+              <p
+                style={{ fontFamily: "PlaBold" }}
+                className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
               >
-                &times;
-              </button>
+                Plot Area:
+                <span
+                  style={{ fontFamily: "PlaRegular" }}
+                  className="font-[400]"
+                >
+                  9000 sq ft
+                </span>
+              </p>
+              <p
+                style={{ fontFamily: "PlaBold" }}
+                className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
+              >
+                Built Up Area:
+                <span
+                  style={{ fontFamily: "PlaRegular" }}
+                  className="font-[400]"
+                >
+                  2135 sq ft
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* Main Div (Images) */}
+          <div className="s8Main w-full flex flex-col md:flex-row justify-center items-center gap-6">
+            {/* Modal 1 Trigger */}
+            <div
+              onClick={() => setModal1Open(true)}
+              className="img w-full md:w-1/2 h-[502px] border-[5px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
+            >
               <img
-                ref={imgRef1}
-                src="../images/groundDekstop.jpg"
-                alt="Ground Floor"
-                className="w-full md:block hidden h-full object-cover rounded-xl shadow-2xl"
-              />
-              <img
-                ref={imgRef1}
                 src="../images/groundPhone.jpg"
+                className="w-full max-w-[641px] object-cover"
                 alt="Ground Floor"
-                className="w-full block md:hidden h-full object-cover rounded-xl shadow-2xl"
               />
-            </div>
-          </div>
-        )}
-
-        {/* Modal 2 */}
-        {isModal2Open && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
-            <div className="relative w-[98vw] h-[98vh]">
               <button
-                ref={closeBtnRef2}
-                onClick={handleCloseModal2}
-                className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
+                className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute left-4 top-4"
+                style={{ fontFamily: "PlaRegular" }}
               >
-                &times;
+                Ground Floor
               </button>
+            </div>
+
+            {/* Modal 2 Trigger */}
+            <div
+              onClick={() => setModal2Open(true)}
+              className="img w-full md:w-1/2 h-[502px] flex justify-center relative border-[5px] border-[#FFFFFF] cursor-pointer"
+            >
               <img
-                ref={imgRef2}
                 src="../images/firstDekstop.jpg"
+                className="w-full max-w-[641px] object-cover"
                 alt="First Floor"
-                className="w-full h-full hidden md:block object-cover rounded-xl shadow-2xl"
               />
-              <img
-                ref={imgRef2}
-                src="../images/firstMobile.jpg"
-                alt="First Floor"
-                className="w-full h-full md:hidden block object-cover rounded-xl shadow-2xl"
-              />
+              <button
+                className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
+                style={{ fontFamily: "PlaRegular" }}
+              >
+                First Floor
+              </button>
             </div>
           </div>
-        )}
-      </div>
-    </section>
+
+          {/* Modal 1 */}
+          {isModal1Open && (
+            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
+              <div className="relative w-[98vw] h-[98vh]">
+                <button
+                  ref={closeBtnRef1}
+                  onClick={handleCloseModal1}
+                  className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
+                >
+                  &times;
+                </button>
+                <img
+                  ref={imgRef1}
+                  src="../images/groundDekstop.jpg"
+                  alt="Ground Floor"
+                  className="w-full md:block hidden h-full object-cover rounded-xl shadow-2xl"
+                />
+                <img
+                  ref={imgRef1}
+                  src="../images/groundPhone.jpg"
+                  alt="Ground Floor"
+                  className="w-full block md:hidden h-full object-cover rounded-xl shadow-2xl"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Modal 2 */}
+          {isModal2Open && (
+            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
+              <div className="relative w-[98vw] h-[98vh]">
+                <button
+                  ref={closeBtnRef2}
+                  onClick={handleCloseModal2}
+                  className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
+                >
+                  &times;
+                </button>
+                <img
+                  ref={imgRef2}
+                  src="../images/firstDekstop.jpg"
+                  alt="First Floor"
+                  className="w-full h-full hidden md:block object-cover rounded-xl shadow-2xl"
+                />
+                <img
+                  ref={imgRef2}
+                  src="../images/firstMobile.jpg"
+                  alt="First Floor"
+                  className="w-full h-full md:hidden block object-cover rounded-xl shadow-2xl"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
       {/* <!-- Section 9 Is Starting From Here  --> */}
       <section className="s9 flex flex-col w-screen min-h-[10vh]">
         {/* <!-- Top Div --> */}
