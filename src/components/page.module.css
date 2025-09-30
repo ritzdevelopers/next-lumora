@@ -1,0 +1,11 @@
+.circularDesign {
+  animation: circleRotation 20s linear infinite;
+}
+@keyframes circleRotation {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

@@ -1,6 +1,81 @@
+import { useEffect, useRef, useState } from "react";
+import styles from "./page.module.css";
+import gsap from "gsap";
+import SwiperSlider from "./SwiperSlider";
 export default function NewProjectPage() {
+    const [isModal1Open, setModal1Open] = useState(false);
+  const [isModal2Open, setModal2Open] = useState(false);
+
+  const imgRef1 = useRef(null);
+  const closeBtnRef1 = useRef(null);
+
+  const imgRef2 = useRef(null);
+  const closeBtnRef2 = useRef(null);
+
+  // GSAP animation for modal 1
+  useEffect(() => {
+    if (isModal1Open) {
+      gsap.from(imgRef1.current, {
+        duration: 0.8,
+        opacity: 0,
+        scale: 0.7,
+        ease: "power3.out",
+      });
+      gsap.from(closeBtnRef1.current, {
+        duration: 0.6,
+        opacity: 0,
+        y: -20,
+        ease: "back.out(1.7)",
+      });
+    }
+  }, [isModal1Open]);
+
+  // GSAP animation for modal 2
+  useEffect(() => {
+    if (isModal2Open) {
+      gsap.from(imgRef2.current, {
+        duration: 0.8,
+        opacity: 0,
+        scale: 0.7,
+        ease: "power3.out",
+      });
+      gsap.from(closeBtnRef2.current, {
+        duration: 0.6,
+        opacity: 0,
+        y: -20,
+        ease: "back.out(1.7)",
+      });
+    }
+  }, [isModal2Open]);
+
+  const handleCloseModal1 = () => {
+    gsap.to(imgRef1.current, {
+      duration: 0.5,
+      opacity: 0,
+      scale: 0.8,
+      ease: "power2.in",
+      onComplete: () => {
+        setModal1Open(false);
+        gsap.set(imgRef1.current, { opacity: 1, scale: 1 });
+      },
+    });
+  };
+
+  const handleCloseModal2 = () => {
+    gsap.to(imgRef2.current, {
+      duration: 0.5,
+      opacity: 0,
+      scale: 0.8,
+      ease: "power2.in",
+      onComplete: () => {
+        setModal2Open(false);
+        gsap.set(imgRef2.current, { opacity: 1, scale: 1 });
+      },
+    });
+  };
+
   return (
-    <main className="bg-[#FFFFFF]">
+    <main className="bg-[#FFFFFF] overflow-x-hidden">
       <section
         className="s1 md:min-h-[115vh] overflow-x-hidden min-h-screen w-screen flex items-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
         style={{
@@ -72,7 +147,9 @@ export default function NewProjectPage() {
         </div>
 
         {/* <!-- Absolute Position Div (kept on large screens, hidden or moved for small) --> */}
-        <div className="absolute right-6 2xl:right-30 md:bottom-2 bottom-0 xl:bottom-2 hidden sm:block">
+        <div
+          className={`absolute right-6 2xl:right-30 md:bottom-2 bottom-0 xl:bottom-2 hidden sm:block ${styles.circularDesign}`}
+        >
           <img
             src="../images/s2/lumS2Circle.png"
             alt="lumora"
@@ -589,7 +666,7 @@ export default function NewProjectPage() {
             backgroundImage: "url(./bg/broucher-bg.png)",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundRepeat: "no-repeat"
+            backgroundRepeat: "no-repeat",
           }}
         >
           <div className="md:absolute mb-2 md:mb-0 md:left-6 lg:left-[8rem] md:top-1/2 md:-translate-y-1/2">
@@ -608,7 +685,7 @@ export default function NewProjectPage() {
         </div>
 
         {/* <!-- Main Slider Container  --> */}
-        <div className="main w-full max-w-[1275px] px-4 sm:px-6 lg:px-0 flex flex-col gap-6">
+        <div className="main w-full max-w-[1275px] px-4 sm:px-6 lg:px-0 flex flex-col gap-6 ">
           <div className="top">
             <p
               className="text-[#C89A6B] font-[400] text-[16px] sm:text-[20px]"
@@ -622,213 +699,16 @@ export default function NewProjectPage() {
           </div>
 
           {/* <!-- Slider --> */}
-          <div className="slider flex gap-4 relative overflow-hidden">
-            <div className="slides flex gap-4">
-              {/* <!-- Card 1 --> */}
-              <div className="sliderCard w-[280px] sm:w-[350px] lg:w-[452px] cursor-pointer h-[400px] sm:h-[500px] lg:h-[592px] relative shrink-0">
-                <img
-                  src="../images/updated/yoga.jpg"
-                  alt="lumora"
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="hvDiv h-full w-full pb-4 flex justify-center items-end absolute bottom-0 left-0 translate-y-full"
-                  style={{
-                    backgroundImage:
-                      "url(../images/s4/slider/sliderOverlay.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: "PlaRegular" }}
-                    className="font-[400] text-[16px] sm:text-[20px] text-[#FFFFFF]"
-                  >
-                    Yoga & Meditation Room
-                  </p>
-                </div>
-              </div>
+        <SwiperSlider></SwiperSlider>
+        
 
-              {/* <!-- Card 2 --> */}
-              <div className="sliderCard cursor-pointer w-[280px] sm:w-[350px] lg:w-[452px] h-[400px] sm:h-[500px] lg:h-[592px] relative shrink-0">
-                <img
-                  src="../images/updated/Trellis-garden.jpg"
-                  alt="lumora"
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="hvDiv h-full w-full pb-4 flex justify-center items-end absolute bottom-0 left-0 translate-y-full"
-                  style={{
-                    backgroundImage:
-                      "url(../images/s4/slider/sliderOverlay.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: "PlaRegular" }}
-                    className="font-[400] text-[16px] sm:text-[20px] text-[#FFFFFF]"
-                  >
-                    Hiking Trail
-                  </p>
-                </div>
-              </div>
-
-              <div className="sliderCard cursor-pointer w-[280px] sm:w-[350px] lg:w-[452px] h-[400px] sm:h-[500px] lg:h-[592px] relative shrink-0">
-                <img
-                  src="../images/updated/Lake.jpg"
-                  alt="lumora"
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="hvDiv h-full w-full pb-4 flex justify-center items-end absolute bottom-0 left-0 translate-y-full"
-                  style={{
-                    backgroundImage: "url(../images/s4/slider/sliderOverlay.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: "PlaRegular" }}
-                    className="font-[400] text-[16px] sm:text-[20px] text-[#FFFFFF]"
-                  >
-                    Natural Lake
-                  </p>
-                </div>
-              </div>
-
-              {/* <!-- ---  --> */}
-              <div className="sliderCard cursor-pointer w-[280px] sm:w-[350px] lg:w-[452px] h-[400px] sm:h-[500px] lg:h-[592px] relative shrink-0">
-                <img
-                  src="../images/updated/Club-Pool.jpg"
-                  alt="lumora"
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="hvDiv h-full w-full pb-4 flex justify-center items-end absolute bottom-0 left-0 translate-y-full"
-                  style={{
-                    backgroundImage: "url(../images/s4/slider/sliderOverlay.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: "PlaRegular" }}
-                    className="font-[400] text-[16px] sm:text-[20px] text-[#FFFFFF]"
-                  >
-                    Infinity Pool
-                  </p>
-                </div>
-              </div>
-              <div className="sliderCard cursor-pointer w-[280px] sm:w-[350px] lg:w-[452px] h-[400px] sm:h-[500px] lg:h-[592px] relative shrink-0">
-                <img
-                  src="../images/updated/Club-Terrace.jpg"
-                  alt="lumora"
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="hvDiv h-full w-full pb-4 flex justify-center items-end absolute bottom-0 left-0 translate-y-full"
-                  style={{
-                    backgroundImage: "url(../images/s4/slider/sliderOverlay.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: "PlaRegular" }}
-                    className="font-[400] text-[16px] sm:text-[20px] text-[#FFFFFF]"
-                  >
-                    Sky Lounge
-                  </p>
-                </div>
-              </div>
-              <div className="sliderCard cursor-pointer w-[280px] sm:w-[350px] lg:w-[452px] h-[400px] sm:h-[500px] lg:h-[592px] relative shrink-0">
-                <img
-                  src="../images/updated/Club-with-Lawn.jpg"
-                  alt="lumora"
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="hvDiv h-full w-full pb-4 flex justify-center items-end absolute bottom-0 left-0 translate-y-full"
-                  style={{
-                    backgroundImage: "url(../images/s4/slider/sliderOverlay.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: "PlaRegular" }}
-                    className="font-[400] text-[16px] sm:text-[20px] text-[#FFFFFF]"
-                  >
-                    Wellness Garden
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* <!-- Buttons --> */}
-          <div className="btns flex gap-4 mt-4">
-            <button
-              id="leftBtn"
-              className="lft md:h-[80px] w-[50px] h-[50px] md:w-[80px]"
-            >
-              <svg
-                viewBox="0 0 80 80"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  width="80"
-                  height="80"
-                  rx="40"
-                  transform="matrix(0 1 1 0 0 0)"
-                  fill="#C89A6B"
-                />
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M28.0865 39.3375C27.9109 39.5133 27.8123 39.7516 27.8123 40C27.8123 40.2485 27.9109 40.4868 28.0865 40.6625L36.8202 49.4125C36.9067 49.5021 37.0101 49.5736 37.1244 49.6228C37.2388 49.672 37.3618 49.6979 37.4863 49.699C37.6107 49.7002 37.7342 49.6765 37.8494 49.6294C37.9647 49.5823 38.0694 49.5128 38.1574 49.4248C38.2455 49.3368 38.3152 49.2322 38.3624 49.117C38.4096 49.0018 38.4333 48.8783 38.4323 48.7539C38.4313 48.6294 38.4055 48.5064 38.3564 48.392C38.3073 48.2776 38.236 48.1741 38.1465 48.0875L31.0115 40.9388L51.249 40.9525C51.4976 40.9529 51.7362 40.8544 51.9122 40.6788C52.0883 40.5033 52.1874 40.2649 52.1877 40.0163C52.188 39.7677 52.0896 39.5291 51.914 39.353C51.7384 39.177 51.5001 39.0779 51.2515 39.0775L31.009 39.065L38.1477 31.9125C38.2372 31.826 38.3086 31.7225 38.3577 31.6081C38.4067 31.4937 38.4325 31.3707 38.4336 31.2462C38.4346 31.1217 38.4108 30.9983 38.3636 30.8831C38.3164 30.7679 38.2468 30.6633 38.1587 30.5753C38.0706 30.4873 37.9659 30.4178 37.8507 30.3707C37.7355 30.3236 37.612 30.2999 37.4875 30.3011C37.363 30.3022 37.24 30.3281 37.1257 30.3773C37.0113 30.4265 36.9079 30.498 36.8215 30.5875L28.0865 39.3375Z"
-                  fill="black"
-                />
-              </svg>
-            </button>
-            <button
-              id="rightBtn"
-              className="rght md:h-[80px] w-[50px] h-[50px] md:w-[80px]"
-            >
-              <svg
-                viewBox="0 0 80 80"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="80"
-                  width="80"
-                  height="80"
-                  rx="40"
-                  transform="rotate(90 80 0)"
-                  fill="#C89A6B"
-                />
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M51.9135 39.3375C52.0891 39.5133 52.1877 39.7516 52.1877 40C52.1877 40.2485 52.0891 40.4868 51.9135 40.6625L43.1798 49.4125C43.0933 49.5021 42.9899 49.5736 42.8756 49.6228C42.7612 49.672 42.6382 49.6979 42.5137 49.699C42.3893 49.7002 42.2658 49.6765 42.1506 49.6294C42.0353 49.5823 41.9306 49.5128 41.8426 49.4248C41.7545 49.3368 41.6848 49.2322 41.6376 49.117C41.5904 49.0018 41.5667 48.8783 41.5677 48.7539C41.5687 48.6294 41.5945 48.5064 41.6436 48.392C41.6927 48.2776 41.764 48.1741 41.8535 48.0875L48.9885 40.9388L28.751 40.9525C28.5024 40.9529 28.2638 40.8544 28.0878 40.6788C27.9117 40.5033 27.8126 40.2649 27.8123 40.0163C27.812 39.7677 27.9104 39.5291 28.086 39.353C28.2616 39.177 28.4999 39.0779 28.7485 39.0775L48.991 39.065L41.8523 31.9125C41.7628 31.826 41.6914 31.7225 41.6423 31.6081C41.5933 31.4937 41.5675 31.3707 41.5664 31.2462C41.5654 31.1217 41.5892 30.9983 41.6364 30.8831C41.6836 30.7679 41.7532 30.6633 41.8413 30.5753C41.9294 30.4873 42.0341 30.4178 42.1493 30.3707C42.2645 30.3236 42.388 30.2999 42.5125 30.3011C42.637 30.3022 42.76 30.3281 42.8743 30.3773C42.9887 30.4265 43.0921 30.498 43.1785 30.5875L51.9135 39.3375Z"
-                  fill="black"
-                />
-              </svg>
-            </button>
-          </div>
+         
         </div>
 
         {/* <!-- Absolute Position Div --> */}
-        <div className="imgCrcle absolute hidden 2xl:block bottom-0 left-[-250px]">
+        <div
+          className={`imgCrcle absolute hidden 2xl:block bottom-0 left-[-250px] ${styles.circularDesign}`}
+        >
           <img
             src="../images/circl2.png"
             alt="lumora"
@@ -1084,7 +964,7 @@ export default function NewProjectPage() {
             Green is the New Luxury
           </h2>
           <p
-            style={{fontFamily: "PoppinsLight"}}
+            style={{ fontFamily: "PoppinsLight" }}
             className="text-[14px] md:text-[16px] font-[300] leading-[26px] md:leading-[32px] text-[#00000099]"
           >
             Luxury, here, is measured in oxygen, shade, and the hush of wind
@@ -1105,7 +985,7 @@ export default function NewProjectPage() {
         </div>
 
         {/* <!-- Decorative Circle (absolute for large, reposition on small) --> */}
-        <div className="absolute right-[10rem] top-1 hidden 2xl:block">
+        <div className={`absolute right-[10rem] top-1 hidden 2xl:block ${styles.circularDesign}`}>
           <img
             src="../images/s2/lumS2Circle.png"
             alt="lumora"
@@ -1115,143 +995,120 @@ export default function NewProjectPage() {
       </section>
 
       {/* <!-- Section 8 Is Starting From Here  --> */}
-      <section className="s8 bg-[#0E291A] w-screen min-h-[30vh] flex justify-center py-12 px-4">
-        <div className="flex flex-col gap-8 w-full max-w-[1300px]">
-          {/* <!-- Top Container --> */}
-          <div className="s8Top flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-12">
-            {/* <!-- Left Title --> */}
-            <div className="text-center lg:text-left">
-              <h1 className="text-[#C89A6B] cnzl text-[32px] md:text-[40px] lg:text-[46px]">
-                Floor Plan
-              </h1>
-            </div>
-
-            {/* <!-- Right Info Box --> */}
-            <div className="w-full sm:w-[345px] bg-[#6E7F76] p-4 sm:p-6 text-center lg:text-left">
-              <p
-                style={{fontFamily: "PlaBold"}}
-                className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
-              >
-                Plot Area:
-                <span
-                  style={{ fontFamily: "PlaRegular" }}
-                  className="font-[400]"
-                >
-                  9000 sq ft
-                </span>
-              </p>
-              <p
-                style={{fontFamily: "PlaBold"}}
-                className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
-              >
-                Built Up Area:
-                <span
-                  style={{ fontFamily: "PlaRegular" }}
-                  className="font-[400]"
-                >
-                  2135 sq ft
-                </span>
-              </p>
-            </div>
+     <section className="s8 bg-[#0E291A] w-screen min-h-[30vh] flex justify-center py-12 px-4">
+      <div className="flex flex-col gap-8 w-full max-w-[1300px]">
+        {/* Top Container */}
+        <div className="s8Top flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-12">
+          {/* Left Title */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-[#C89A6B] cnzl text-[32px] md:text-[40px] lg:text-[46px]">
+              Floor Plan
+            </h1>
           </div>
 
-          {/* <!-- Main Div (Images) --> */}
+          {/* Right Info Box */}
+          <div className="w-full sm:w-[345px] bg-[#6E7F76] p-4 sm:p-6 text-center lg:text-left">
+            <p style={{ fontFamily: "PlaBold" }} className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]">
+              Plot Area:
+              <span style={{ fontFamily: "PlaRegular" }} className="font-[400]">
+                9000 sq ft
+              </span>
+            </p>
+            <p style={{ fontFamily: "PlaBold" }} className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]">
+              Built Up Area:
+              <span style={{ fontFamily: "PlaRegular" }} className="font-[400]">
+                2135 sq ft
+              </span>
+            </p>
+          </div>
+        </div>
 
-          {/* <!-- Modal 1--> */}
+        {/* Main Div (Images) */}
+        <div className="s8Main w-full flex flex-col md:flex-row justify-center items-center gap-6">
+          {/* Modal 1 Trigger */}
           <div
-            id="imageModal"
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-[99999999]"
+            onClick={() => setModal1Open(true)}
+            className="img w-full md:w-1/2 h-[502px] border-[5px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
           >
+            <img src="../images/groundPhone.jpg" className="w-full max-w-[641px] object-cover" alt="Ground Floor" />
+            <button
+              className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute left-4 top-4"
+              style={{ fontFamily: "PlaRegular" }}
+            >
+              Ground Floor
+            </button>
+          </div>
+
+          {/* Modal 2 Trigger */}
+          <div
+            onClick={() => setModal2Open(true)}
+            className="img w-full md:w-1/2 h-[502px] flex justify-center relative border-[5px] border-[#FFFFFF] cursor-pointer"
+          >
+            <img src="../images/firstDekstop.jpg" className="w-full max-w-[641px] object-cover" alt="First Floor" />
+            <button
+              className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
+              style={{ fontFamily: "PlaRegular" }}
+            >
+              First Floor
+            </button>
+          </div>
+        </div>
+
+        {/* Modal 1 */}
+        {isModal1Open && (
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999]">
             <div className="relative w-[98vw] h-[98vh]">
-              {/* <!-- Close Button --> */}
               <button
-                id="closeModalBtn"
-                className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[999999999]"
+                ref={closeBtnRef1}
+                onClick={handleCloseModal1}
+                className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
               >
                 &times;
               </button>
-
-              {/* <!-- Image --> */}
               <img
+                ref={imgRef1}
                 src="../images/groundDekstop.jpg"
-                alt="lumora"
+                alt="Ground Floor"
                 className="w-full md:block hidden h-full object-cover rounded-xl shadow-2xl"
               />
               <img
+                ref={imgRef1}
                 src="../images/groundPhone.jpg"
-                alt="lumora"
+                alt="Ground Floor"
                 className="w-full block md:hidden h-full object-cover rounded-xl shadow-2xl"
               />
             </div>
           </div>
+        )}
 
-          {/* <!-- Modal 2--> */}
-          <div
-            id="imageModal2"
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-[99999999]"
-          >
+        {/* Modal 2 */}
+        {isModal2Open && (
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999]">
             <div className="relative w-[98vw] h-[98vh]">
-              {/* <!-- Close Button --> */}
               <button
-                id="closeModalBtn2"
-                className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[999999999]"
+                ref={closeBtnRef2}
+                onClick={handleCloseModal2}
+                className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
               >
                 &times;
               </button>
-
-              {/* <!-- Image --> */}
               <img
+                ref={imgRef2}
                 src="../images/firstDekstop.jpg"
-                alt="lumora"
+                alt="First Floor"
                 className="w-full h-full hidden md:block object-cover rounded-xl shadow-2xl"
               />
-
               <img
+                ref={imgRef2}
                 src="../images/firstMobile.jpg"
-                alt="lumora"
+                alt="First Floor"
                 className="w-full h-full md:hidden block object-cover rounded-xl shadow-2xl"
               />
             </div>
           </div>
-
-          {/* <!-- -------------------------------------- --> */}
-          <div className="s8Main w-full flex flex-col md:flex-row justify-center items-center gap-6">
-            <div
-              id="openModalBtn"
-              className="img w-full md:w-1/2 h-[502px] border-[5px] border-[#FFFFFF] flex justify-center relative"
-            >
-              <img
-                src="../images/groundPhone.jpg"
-                className="w-full max-w-[641px] object-cover"
-                alt="lumora"
-              />
-              <button
-                className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute left-4 top-4"
-                style={{ fontFamily: "PlaRegular" }}
-              >
-                Ground Floor
-              </button>
-            </div>
-            <div
-              id="openModalBtn2"
-              className="img w-full md:w-1/2 h-[502px] flex justify-center relative border-[5px] border-[#FFFFFF]"
-            >
-              <img
-                src="../images/firstDekstop.jpg"
-                className="w-full max-w-[641px] object-cover"
-                alt="lumora"
-              />
-              <button
-                className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
-                style={{ fontFamily: "PlaRegular" }}
-              >
-                First Floor
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
+        )}
+      </div>
+    </section>
       {/* <!-- Section 9 Is Starting From Here  --> */}
       <section className="s9 flex flex-col w-screen min-h-[10vh]">
         {/* <!-- Top Div --> */}
@@ -1278,7 +1135,7 @@ export default function NewProjectPage() {
                 Architect
               </h2>
               <p
-                style={{fontFamily: "PoppinsLight"}}
+                style={{ fontFamily: "PoppinsLight" }}
                 className="text-[14px] md:text-[16px] font-[300] text-[#FFFFFF99] leading-[26px] mb-3"
               >
                 Confluence is a multidisciplinary design firm with over 26 years
@@ -1320,7 +1177,7 @@ export default function NewProjectPage() {
           backgroundImage: "url(../images/s10/s10Elips2.png.png)",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          backgroundRepeat: "no-repeat"
+          backgroundRepeat: "no-repeat",
         }}
       >
         {/* <!-- Cards + Center Icon --> */}

@@ -61,7 +61,7 @@ const Header = ({ lgScreen, bgHeader }) => {
     <header
       ref={headerRef}
       className={`z-[40] w-full ${bgHeader ?? ""} right-0 ${
-        isFixed ? "fixed top-0 bg-greenTheme lg:full animate-slideDown" : `absolute ${lgScreen}`
+        isFixed ? "fixed top-0 z-[9999999] bg-greenTheme lg:full animate-slideDown" : `absolute ${lgScreen}`
       }`}
     >
       <nav className="relative">
