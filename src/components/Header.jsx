@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import gsap from "gsap";
 import Link from "next/link";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { EnquiryFormContext } from "@/context/EnquiryFormContext";
 
 const Header = ({ lgScreen, bgHeader }) => {
@@ -50,18 +50,19 @@ const Header = ({ lgScreen, bgHeader }) => {
     }
   }, [menuOpen]);
 
-   const handleClick = (item) => {
+  const handleClick = (item) => {
     if (item === "Projects") {
-      router.push('/project/avacasa');
+      router.push("/project/avacasa");
     }
   };
-
-
+  
   return (
     <header
       ref={headerRef}
       className={`z-[40] w-full ${bgHeader ?? ""} right-0 ${
-        isFixed ? "fixed top-0 z-[9999999] bg-greenTheme lg:full animate-slideDown" : `absolute ${lgScreen}`
+        isFixed
+          ? "fixed top-0 z-[9999999] bg-greenTheme lg:full animate-slideDown"
+          : `absolute ${lgScreen}`
       }`}
     >
       <nav className="relative">

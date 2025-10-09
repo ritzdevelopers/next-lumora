@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import gsap from "gsap";
 import SwiperSlider from "./SwiperSlider";
+import EnquiryFormPopup from "./Popup";
 export default function NewProjectPage() {
   const [isModal1Open, setModal1Open] = useState(false);
   const [isModal2Open, setModal2Open] = useState(false);
@@ -126,9 +127,15 @@ export default function NewProjectPage() {
 
     return () => ctx.revert(); // cleanup on unmount
   }, []);
+  const [isOpen, setIsOpen] = useState(false);
+  const onClose = () => {
+    setIsOpen((pr) => !pr);
+  };
 
   return (
     <main className="bg-[#FFFFFF] overflow-x-hidden">
+      <EnquiryFormPopup isOpen={isOpen} onClose={onClose}></EnquiryFormPopup>
+
       <section
         ref={sectionRef}
         className="s1 md:min-h-[115vh] overflow-x-hidden min-h-screen w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
@@ -201,6 +208,7 @@ export default function NewProjectPage() {
               ages beautifully.
             </p>
             <button
+            onClick={()=>onClose()}
               style={{ fontFamily: "Cinzel" }}
               className="mt-4 w-[198px] m-auto md:m-0 px-6 py-3 bg-[#0E291A] text-[#C89A6B] text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] transition-all"
             >
@@ -710,6 +718,7 @@ export default function NewProjectPage() {
             {/* <!-- Button --> */}
             <div className="flex justify-center md:justify-start sm:ml-20 items-center">
               <button
+                 onClick={()=>onClose()}
                 style={{ fontFamily: "Cinzel" }}
                 className="mt-2 sm:mt-4 w-[140px] sm:w-[170px] md:w-[198px] px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-white border border-white text-[13px] sm:text-[15px] md:text-[18px] font-[500] hover:bg-white hover:text-[#0E291A] transition-all"
               >
@@ -739,6 +748,7 @@ export default function NewProjectPage() {
           </div>
           <div>
             <button
+               onClick={()=>onClose()}
               style={{ fontFamily: "Cinzel" }}
               className="md:mt-4 px-3 py-2 sm:py-3 border border-[#C89A6B] text-[#C89A6B] text-[14px] sm:text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] transition-all"
             >
@@ -803,6 +813,7 @@ export default function NewProjectPage() {
                 villa; you own time, privacy, and the quiet authority of space.
               </p>
               <button
+                 onClick={()=>onClose()}
                 style={{ fontFamily: "Cinzel" }}
                 className="mt-4 w-[160px] sm:w-[180px] md:w-[198px] px-5 py-2 sm:px-6 sm:py-3 border border-white text-white text-[14px] sm:text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] hover:border-[#153e26] transition-all duration-300"
               >
@@ -1037,6 +1048,7 @@ export default function NewProjectPage() {
             glare after dusk.
           </p>
           <button
+             onClick={()=>onClose()}
             style={{ fontFamily: "Cinzel" }}
             className="mt-4 w-[180px] md:w-[198px] px-6 py-3 bg-[#0E291A] text-[#C89A6B] text-[14px] md:text-[16px] lg:text-[18px] font-[500] hover:bg-[#153e26] transition-all duration-300 self-center lg:self-start s2alRghbtn"
           >

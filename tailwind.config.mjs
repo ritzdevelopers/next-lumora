@@ -21,8 +21,8 @@ export default {
         athena: ["Athena"],
       },
       screens: {
-        1050: "1050px", // Custom breakpoint for 1050px
-        450: "450px", // Custom breakpoint for 450px
+        1050: "1050px",
+        450: "450px",
       },
 
     },
