@@ -62,11 +62,11 @@ const Header = ({ lgScreen, bgHeader }) => {
       className={`z-[40] w-full ${bgHeader ?? ""} right-0 ${
         isFixed
           ? "fixed top-0 z-[9999999] bg-greenTheme lg:full animate-slideDown"
-          : `absolute ${lgScreen}`
+          : `absolute ${lgScreen} bg-gradient-to-b from-[#0a2014e0] to-transparent  lg:w-[73.5%]`
       }`}
     >
       <nav className="relative">
-        <ul className="flex font-cinzel text-white px-6 lg:px-10 450:py-4 py-4 items-center justify-between lg:justify-evenly">
+        <ul className="flex font-cinzel text-white px-6 lg:px-10 450:py-4 py-6 items-center justify-between lg:justify-evenly">
           <li className="hidden lg:block">
             <Link href="/about-us">About Us</Link>
           </li>
