@@ -51,9 +51,9 @@ const Header = ({ lgScreen, bgHeader }) => {
   }, [menuOpen]);
 
   const handleClick = (item) => {
-    if (item === "Projects") {
-      router.push("/project/avacasa");
-    }
+    // if (item === "Projects") {
+    //   router.push("/project/avacasa");
+    // }
   };
   
   return (
@@ -70,11 +70,11 @@ const Header = ({ lgScreen, bgHeader }) => {
           <li className="hidden lg:block">
             <Link href="/about-us">About Us</Link>
           </li>
-          <li className="hidden lg:block">
+          {/* <li className="hidden lg:block">
             <Link href="/project/avacasa" className="cursor-pointer">
               Avacasa
             </Link>
-          </li>
+          </li> */}
 
           <li ref={navLogoRef}>
             <Link href="/">
@@ -115,7 +115,7 @@ const Header = ({ lgScreen, bgHeader }) => {
           </button>
 
           <ul className="flex flex-col text-mainText items-center justify-center h-full space-y-6 text-xl">
-            {["About us", "Projects", "Amenities", "Contact Us", "Gallery"].map(
+            {["About us", "Amenities", "Contact Us", "Gallery"].map(
               (item, index) => (
                 <li
                   key={index}

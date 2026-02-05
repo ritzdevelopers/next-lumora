@@ -37,11 +37,11 @@ This is where sustainability whispers through design, and life finds rhythm beyo
           <li className="2xl:text-lg">
             <Link href="/about-us">Abouts us</Link>
           </li>
-          <li className="cursor-pointer 2xl:text-lg">
+          {/* <li className="cursor-pointer 2xl:text-lg">
             <Link href="/project/avacasa" className="block w-full h-full">
               Projects
             </Link>
-          </li>
+          </li> */}
           <li className="2xl:text-lg">
             <Link href="/amenities">Amenities</Link>
           </li>
