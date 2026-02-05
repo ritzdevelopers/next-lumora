@@ -21,10 +21,11 @@ const RedifineLuxury = () => {
 
     },
     {
-      image: "/Ready-Development.jpg",
+      image: "/project-replaced-image.jpg",
       alt: "Future-Ready Development_img",
       title: "Future-Ready Development",
       // icon: "/Nature-icon.png",
+      overlay: true,
 
     },
     {

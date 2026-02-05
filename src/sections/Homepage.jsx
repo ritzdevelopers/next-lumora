@@ -13,7 +13,7 @@ export const ViewContainer = ({ items }) => {
   useEffect(() => {
     if (containerRef.current) {
       const viewBoxes = containerRef.current.querySelectorAll('.view-box');
-      
+
       gsap.from(viewBoxes, {
         scrollTrigger: {
           trigger: containerRef.current,
@@ -47,7 +47,7 @@ export const ViewContainer = ({ items }) => {
 
           <div className="absolute inset-0 flex items-center justify-center flex-col">
             <div className="flex items-center space-x-2">
-              <h2 className="text-white text-sm text-center sm:text-lg xl:text-xl -translate-y-[50px]">
+              <h2 className="text-white text-sm text-center sm:text-lg z-[2] xl:text-xl -translate-y-[50px]">
                 {item.title}
               </h2>
             </div>
@@ -55,17 +55,19 @@ export const ViewContainer = ({ items }) => {
 
           <div className="absolute left-1/2 top-[65%] -translate-x-1/2 -translate-y-1/2 w-[75px] h-[75px]">
             {item.icon && (
-                <Image
-                  width={90}
-                  height={90}
-                  layout="responsive"
-                  src={item.icon}
-                  alt="Icon"
-                  className="w-[5vw] object-cover"
-                />
-              )}
-
+              <Image
+                width={90}
+                height={90}
+                layout="responsive"
+                src={item.icon}
+                alt="Icon"
+                className="w-[5vw] object-cover"
+              />
+            )}
           </div>
+          {item.overlay && (
+            <div className="absolute inset-0 bg-[#172D19] opacity-80 w-full h-full"></div>
+          )}
         </div>
       ))}
     </div>
@@ -99,7 +101,7 @@ const Homepage = () => {
       icon: "/Zen-garden-icon.png",
     },
   ];
-  
+
   return (
     <section className="w-full">
       <PageLoader />
@@ -117,7 +119,7 @@ const Homepage = () => {
             </h2>
           </div>
           <Image
-            width={677} height={1084} 
+            width={677} height={1084}
             className="w-full h-full object-cover object-center "
             src="/Header-Background.png"
             alt="Header patter"
@@ -128,7 +130,7 @@ const Homepage = () => {
         </div>
 
         <Image
-        width={450} height={550} layout="responsive"
+          width={450} height={550} layout="responsive"
           src="/header_mob.jpg"
           alt="home"
           className="w-full 450:hidden block ml-auto h-full object-cover"

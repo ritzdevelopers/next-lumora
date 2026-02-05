@@ -55,16 +55,16 @@ const AboutUs = () => {
                 {/* Image for small screens (up to 450px) */}
                 <source
                   media="(max-width: 450px)"
-                  srcSet="/aboutMob.png"
+                  srcSet="/about-us-project-replaced.jpg"
                 />
                 {/* Image for large screens (above 450px) */}
                 <source
                   media="(min-width: 451px)"
-                  srcSet="/aboutDesktop.png"
+                  srcSet="/about-us-project-replaced.jpg"
                 />
                 {/* Fallback image */}
                 <Image
-                  src="/aboutDesktop.png"
+                  src="/about-us-project-replaced.jpg"
                   alt="About Us"
                   layout="fill"
                   objectFit="cover"
