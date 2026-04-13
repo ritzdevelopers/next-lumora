@@ -3,7 +3,6 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import gsap from "gsap";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { EnquiryFormContext } from "@/context/EnquiryFormContext";
 
 const Header = ({ lgScreen, bgHeader }) => {
@@ -14,8 +13,6 @@ const Header = ({ lgScreen, bgHeader }) => {
   const lastNavRefs = useRef([]);
   const navLogoRef = useRef(null);
   const headerRef = useRef(null);
-  const router = useRouter();
-
   const { openPopup } = useContext(EnquiryFormContext);
 
   const handleScroll = () => {
@@ -50,12 +47,6 @@ const Header = ({ lgScreen, bgHeader }) => {
     }
   }, [menuOpen]);
 
-  const handleClick = (item) => {
-    // if (item === "Projects") {
-    //   router.push("/project/avacasa");
-    // }
-  };
-  
   return (
     <header
       ref={headerRef}
@@ -70,11 +61,11 @@ const Header = ({ lgScreen, bgHeader }) => {
           <li className="hidden lg:block">
             <Link href="/about-us">About Us</Link>
           </li>
-          {/* <li className="hidden lg:block">
+          <li className="hidden lg:block">
             <Link href="/project/avacasa" className="cursor-pointer">
               Avacasa
             </Link>
-          </li> */}
+          </li>
 
           <li ref={navLogoRef}>
             <Link href="/">
@@ -115,21 +106,22 @@ const Header = ({ lgScreen, bgHeader }) => {
           </button>
 
           <ul className="flex flex-col text-mainText items-center justify-center h-full space-y-6 text-xl">
-            {["About us", "Amenities", "Contact Us", "Gallery"].map(
+            {["About us", "Avacasa", "Amenities", "Contact Us", "Gallery"].map(
               (item, index) => (
                 <li
                   key={index}
                   ref={(el) => (menuItemsRef.current[index] = el)}
                   className="cursor-pointer"
-                  onClick={() => handleClick(item)}
                 >
-                  {item === "Projects" ? (
-                    item
-                  ) : (
-                    <Link href={`/${item.replace(/\s+/g, "-").toLowerCase()}`}>
-                      {item}
-                    </Link>
-                  )}
+                  <Link
+                    href={
+                      item === "Avacasa"
+                        ? "/project/avacasa"
+                        : `/${item.replace(/\s+/g, "-").toLowerCase()}`
+                    }
+                  >
+                    {item}
+                  </Link>
                 </li>
               )
             )}

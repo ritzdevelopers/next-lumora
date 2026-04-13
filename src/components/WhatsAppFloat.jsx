@@ -1,6 +1,7 @@
 import React from "react";
 
 const WhatsAppFloat = ({
+  countryCode = "+91",
   phoneNumber = "9211730033",
   message = "Hi, I have a query",
   position = { bottom: "bottom-6", right: "right-20" },
@@ -11,7 +12,7 @@ const WhatsAppFloat = ({
 
   return (
     <a
-      href={`https://wa.me/${phoneNumber}?text=${encodedMessage}`}
+      href={`https://wa.me/${countryCode}${phoneNumber}?text=${encodedMessage}`}
       className={`fixed ${position.bottom} ${position.right} z-50`}
       target="_blank"
       rel="noopener noreferrer"
