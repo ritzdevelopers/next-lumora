@@ -11,7 +11,7 @@ const Proximities = () => {
             <h3 className="text-center sm:text-lg text-sm">Delhi</h3>
           </div>
           <div className="py-4 border-greenTheme border-solid border-t">
-            <p className="text-center sm:text-lg text-sm">15 Mins away from</p>
+            <p className="text-center sm:text-lg text-sm">10 Mins away from</p>
             <h3 className="text-center sm:text-lg text-sm">Shakumbhari Devi Temple</h3>
           </div>
         </div>

@@ -829,7 +829,7 @@ export default function NewProjectPage() {
                   style={{ fontFamily: "Cinzel" }}
                   className="font-[400] text-[24px] sm:text-[28px] md:text-[32px] text-white"
                 >
-                  80+ <br />
+                  82 Exclusive <br />
                   Villas
                 </h2>
               </div>
