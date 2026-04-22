@@ -113,7 +113,7 @@ const ContactUs = () => {
       params.append("Time", formattedTime);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycby3UgKIxI_Q-loNa1iimJhtYd9fc-AXOX6YtRNZJExYsMDS7vTCbdrqKKhsHhcl8x6j/exec",
+        "https://script.google.com/macros/s/AKfycbzEbl4tOFpmsb1MyOYqFmfqdrYt854j__1Q5nHWzwsmfuo_JpsQLdbZUGT7Acv9M5Mt/exec",
         {
           method: "POST",
           mode: "no-cors",

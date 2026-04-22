@@ -104,7 +104,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       const params = new URLSearchParams();
 
       // ✅ Add required field for Google Apps Script
-      params.append("sheetName", "Sheet1");
+      params.append("sheetName", "Lumora Leads Popup Form");
 
       // ✅ Append form fields
       params.append("Name", formData.Name);
@@ -115,7 +115,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("Time", formattedTime);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbysI4wm24n3cOarBEafAQ3XwRHLn4AAFg6lgWNdOB-jCxayWUhu4n-0vjHKXi45TQ4a1Q/exec",
+        "https://script.google.com/macros/s/AKfycbypbsV4ST5B53ucFNDUYqeVLnLH-mRTfpXvk6hpL8pIz-9MaudI9d1k_OEyoEa4X4m-FA/exec",
         {
           method: "POST",
           mode: "no-cors",

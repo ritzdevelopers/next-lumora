@@ -189,7 +189,7 @@ const Gallery = () => {
               Every frame tells a story of quiet luxury of homes shaped by wind,
               wood, and wonder.
             </p>
-            <h3 className="mt-10 cnzl text-[#C89A6B] text-[26px] sm:text-[32px] md:text-[40px]">
+            <h3 className="mt-10 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
               Ground Floor
             </h3>
           </div>
@@ -212,6 +212,12 @@ const Gallery = () => {
                 />
               </button>
             ))}
+          </div>
+
+          <div className="text-center">
+            <h3 className="mt-16 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
+              First Floor
+            </h3>
           </div>
         </div>
       </section>
