@@ -114,18 +114,16 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("Date", formattedDate);
       params.append("Time", formattedTime);
 
-      const response = await axios.post(
+      await fetch(
         "https://script.google.com/macros/s/AKfycbysI4wm24n3cOarBEafAQ3XwRHLn4AAFg6lgWNdOB-jCxayWUhu4n-0vjHKXi45TQ4a1Q/exec",
-        params,
         {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          timeout: 20000,
+          method: "POST",
+          mode: "no-cors",
+          body: params,
         }
       );
 
-      console.log("Form submitted successfully:", response.data);
+      console.log("Form submitted successfully");
       setSubmitStatus("success");
 
       // Reset form

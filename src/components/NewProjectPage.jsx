@@ -138,17 +138,16 @@ export default function NewProjectPage() {
 
       <section
         ref={sectionRef}
-        className="s1 md:min-h-[115vh] overflow-x-hidden min-h-screen w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
-        style={{
-          backgroundImage: "url(../new/lum-Desktop.png)",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
+        className="s1 relative md:min-h-[115vh] overflow-hidden min-h-screen w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
       >
+        <img
+          src="../new/lum-Desktop.png"
+          alt="AVACASA banner"
+          className="absolute inset-0 z-0 w-full h-auto lg:h-full object-cover"
+        />
         <div
           ref={contentRef}
-          className="s1Content bg-[#0E291AA6] p-6 md:p-10 flex flex-col justify-center w-[90%] sm:w-[500px] md:w-[600px] h-auto md:h-[408px]"
+          className="s1Content relative z-10 bg-[#0E291AA6] p-6 md:p-10 flex flex-col justify-center w-[90%] sm:w-[500px] md:w-[600px] h-auto md:h-[408px]"
         >
           <h1
             ref={headingRef}
@@ -176,7 +175,7 @@ export default function NewProjectPage() {
             <img
               className="w-full h-full xl:object-contain"
               // src="../images/updated/dinn.jpg"
-              src="../images/updated/dinn.jpg"
+              src="../images/updated/updated_dinn.jpg"
               alt="lumora"
             />
           </div>
@@ -759,7 +758,7 @@ export default function NewProjectPage() {
 
         {/* <!-- Main Slider Container  --> */}
         <div className="main w-full max-w-[1275px] px-4 sm:px-6 lg:px-0 flex flex-col gap-6 ">
-          <div className="top">
+          <div className="top text-center md:text-left">
             <p
               className="text-[#C89A6B] font-[400] text-[16px] sm:text-[20px]"
               style={{ fontFamily: "PlaRegular" }}
@@ -1023,7 +1022,7 @@ export default function NewProjectPage() {
         {/* <!-- Left Image --> */}
         <div className="s7img s2alImg w-full lg:w-[711px] flex justify-start">
           <img
-            src="../images/updated/711x740.jpg"
+            src="../images/updated/green-new-luxury-711-740.jpg"
             alt="lumora"
             className="w-full h-auto object-contain 3xl:object-cover"
           />
@@ -1114,7 +1113,7 @@ export default function NewProjectPage() {
             {/* Modal 1 Trigger */}
             <div
               onClick={() => setModal1Open(true)}
-              className="img w-full md:w-1/2 h-[502px] border-[5px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
+              className="img w-full md:w-1/2 h-[362px] border-[5px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
             >
               <img
                 src="../images/groundPhone.jpg"
