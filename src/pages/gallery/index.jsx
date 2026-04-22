@@ -14,14 +14,39 @@ import { Navigation, Keyboard, Zoom } from "swiper/modules";
 
 const Gallery = () => {
   const images = [
-    "/galleryImages/gallery300X320_1.png",
-    "/galleryImages/gallery300X380_5.png",
-    "/galleryImages/gallery300X380_4.png",
-    "/galleryImages/gallery300X320_2.png",
-    "/galleryImages/gallery300X320_3.png",
-    "/galleryImages/gallery300X380_2.jpg",
-    "/galleryImages/gallery300X380_1.jpg",
-    "/galleryImages/gallery300X320_4.jpg",
+    {
+      src: "/galleryImages/gallery300X320_1.png",
+      modalSrc: "/galleryImages/garden1920-900.jpg",
+      title: "Master Bedroom",
+    },
+    {
+      src: "/galleryImages/gallery300X380_5.png",
+      title: "Dining Pavilion",
+    },
+    {
+      src: "/galleryImages/gallery300X380_4.png",
+      title: "Ensuite Bath",
+    },
+    {
+      src: "/galleryImages/gallery300X320_2.png",
+      title: "Mountain Yoga Deck",
+    },
+    {
+      src: "/galleryImages/gallery300X320_3.png",
+      title: "Artisan Detail",
+    },
+    {
+      src: "/galleryImages/gallery300X380_2.jpg",
+      title: "Living Room",
+    },
+    {
+      src: "/galleryImages/gallery300X380_1.jpg",
+      title: "Powder Room",
+    },
+    {
+      src: "/galleryImages/gallery300X320_4.jpg",
+      title: "Primary Suite View",
+    },
   ];
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -123,16 +148,21 @@ const Gallery = () => {
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           className="w-full h-full"
         >
-          {images.map((src, index) => (
+          {images.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="w-full h-full flex items-center justify-center px-4 md:px-20 py-16">
-                <div className="swiper-zoom-container w-full h-full flex items-center justify-center">
+              <div className="w-full h-full flex flex-col items-center justify-center px-4 md:px-20 py-16">
+                <div className="swiper-zoom-container w-full flex-1 flex items-center justify-center">
                   <img
-                    src={src}
-                    alt={`Gallery Image ${index + 1}`}
-                    className="max-w-full max-h-[85vh] object-contain"
+                    src={item.modalSrc || item.src}
+                    alt={item.title || `Gallery Image ${index + 1}`}
+                    className="max-w-full max-h-[75vh] object-contain"
                   />
                 </div>
+                {item.title && (
+                  <h3 className="mt-4 cnzl text-[#C89A6B] text-[20px] md:text-[26px] text-center">
+                    {item.title}
+                  </h3>
+                )}
               </div>
             </SwiperSlide>
           ))}
@@ -196,20 +226,27 @@ const Gallery = () => {
 
           {/* Masonry Grid Gallery */}
           <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
-            {images.map((src, index) => (
+            {images.map((item, index) => (
               <button
                 type="button"
                 key={index}
                 onClick={() => openLightbox(index)}
-                className="relative group overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 break-inside-avoid block w-full cursor-pointer"
+                className="group break-inside-avoid block w-full text-center cursor-pointer"
               >
-                <Image
-                  src={src}
-                  alt={`Gallery Image ${index + 1}`}
-                  width={400}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                />
+                <div className="relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
+                  <Image
+                    src={item.src}
+                    alt={item.title || `Gallery Image ${index + 1}`}
+                    width={400}
+                    height={600}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                {item.title && (
+                  <h4 className="mt-3 cnzl text-[#C89A6B] text-[16px] md:text-[18px]">
+                    {item.title}
+                  </h4>
+                )}
               </button>
             ))}
           </div>
@@ -218,6 +255,33 @@ const Gallery = () => {
             <h3 className="mt-16 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
               First Floor
             </h3>
+          </div>
+
+          {/* First Floor Masonry Grid Gallery */}
+          <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+            {images.map((item, index) => (
+              <button
+                type="button"
+                key={`first-${index}`}
+                onClick={() => openLightbox(index)}
+                className="group break-inside-avoid block w-full text-center cursor-pointer"
+              >
+                <div className="relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
+                  <Image
+                    src={item.src}
+                    alt={item.title || `Gallery Image ${index + 1}`}
+                    width={400}
+                    height={600}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                {item.title && (
+                  <h4 className="mt-3 cnzl text-[#C89A6B] text-[16px] md:text-[18px]">
+                    {item.title}
+                  </h4>
+                )}
+              </button>
+            ))}
           </div>
         </div>
       </section>

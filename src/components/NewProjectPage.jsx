@@ -237,7 +237,7 @@ export default function NewProjectPage() {
         <div
           className="s3right flex-1 flex flex-col md:flex-row justify-center md:justify-end items-center md:items-start h-[calc(100vh-70px)] sm:h-[calc(100vh-88px)] md:min-h-[120vh] bg-cover bg-center p-4 md:pb-6 sm:p-6 relative"
           style={{
-            backgroundImage: "url('/new/What do you deserveDesktop.png')",
+            backgroundImage: "url('/images/updated/what-deserve1920-1080.jpg')",
           }}
         >
           {/* <!-- Map Image --> */}
