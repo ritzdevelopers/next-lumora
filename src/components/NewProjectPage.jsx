@@ -138,13 +138,22 @@ export default function NewProjectPage() {
 
       <section
         ref={sectionRef}
-        className="s1 relative md:min-h-[115vh] overflow-hidden min-h-screen w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
+        className="s1 relative  overflow-hidden min-h-[93vh] w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
       >
-        <img
-          src="../new/lum-Desktop.png"
-          alt="AVACASA banner"
-          className="absolute inset-0 z-0 w-full h-auto lg:h-full object-cover"
-        />
+        <div className="absolute inset-0 z-0">
+          <picture>
+            <source
+              media="(min-width: 1024px)"
+              srcSet="/new/banner-1920-720.jpg"
+            />
+            <img
+              src="/new/banner-1000-1230.jpg"
+              alt="AVACASA banner"
+              className="w-full h-full object-cover"
+            />
+          </picture>
+          <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
+        </div>
         <div
           ref={contentRef}
           className="s1Content relative z-10 bg-[#0E291AA6] p-6 md:p-10 flex flex-col justify-center w-[90%] sm:w-[500px] md:w-[600px] h-auto md:h-[408px]"
@@ -157,7 +166,7 @@ export default function NewProjectPage() {
           </h1>
           <p
             ref={paraRef}
-            className="mt-4 text-[#FFFFFF] font-[300] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]"
+            className="mt-4 text-[#FFFFFF] font-[300] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[21px]"
           >
             A private hill villa community where low-density planning, forest
             views, and modern comforts come together. Close to Delhi, designed
