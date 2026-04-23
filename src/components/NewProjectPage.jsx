@@ -155,7 +155,7 @@ export default function NewProjectPage() {
             className="block w-full h-auto"
           />
         </picture>
-        <div className="absolute inset-0 bg-black/30 pointer-events-none z-[1]"></div>
+        
         {/* <div
           ref={contentRef}
           className="s1Content relative z-10 bg-[#0E291AA6] p-6 md:p-10 flex flex-col justify-center w-[90%] sm:w-[500px] md:w-[600px] h-auto md:h-[408px]"
