@@ -138,12 +138,12 @@ export default function NewProjectPage() {
 
       <section
         ref={sectionRef}
-        className="s1 relative overflow-hidden w-full pt-16 md:pt-0"
+        className="s1 relative overflow-hidden w-full"
       >
         <picture className="block w-full">
           <source
             media="(min-width: 1024px)"
-            srcSet="/new/avacasa_desktop.jpg"
+            srcSet="/new/desktop%201920by920.jpg"
           />
           <source
             media="(min-width: 768px)"
@@ -152,8 +152,7 @@ export default function NewProjectPage() {
           <img
             src="/new/mobile%20458by810px%203.jpg"
             alt="AVACASA banner"
-            className="block"
-            style={{ width: "100%", height: "auto" }}
+            className="block w-full h-auto"
           />
         </picture>
         <div className="absolute inset-0 bg-black/30 pointer-events-none z-[1]"></div>
