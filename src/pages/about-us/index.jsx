@@ -77,7 +77,7 @@ const AboutUs = () => {
             <div className="space-y-6">
               <h3 className="text-3xl text-greenTheme">Who We Are</h3>
               <p className="text-lg text-black">
-                Founded in 2024 and headquartered in Noida, Lumora Estates is devoted to crafting bespoke second homes for those who seek more than just luxury – for those who truly desire peace and tranquility..
+                Founded in 2024 and headquartered in Noida, Lumora Estates is devoted to crafting bespoke  homes for those who seek more than just luxury – for those who truly desire peace and tranquility..
               </p>
               <p className="text-lg text-black">
                 Backed by visionary leadership and a passionate team, we bring intricate designs to our core commitment to sustainability.
