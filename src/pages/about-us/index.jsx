@@ -15,27 +15,21 @@ const AboutUs = () => {
       </Head>
       <Header lgScreen="lg:w-full" bgHeader="bg-greenTheme"/>
       <div className="relative pt-[72px] 450:pt-[88px] bg-greenTheme">
-        {/* Image */}
-        <div className="450:hidden relative overflow-hidden h-[500px]">
-          <Image
-            src="/aboutBannerMob.png"
-            alt="aboutBanner"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
+        {/* Image for small screens (up to 450px) */}
+        <img
+          src="/new/img1000-1340.jpg"
+          alt="aboutBanner"
+          className="450:hidden block"
+          style={{ width: "100%", height: "auto" }}
+        />
 
         {/* Image for large screens (above 450px) */}
-        <div className="hidden relative overflow-hidden h-[500px] 450:block">
-          <Image
-            src="/new/about_us_new.jpg"
-            alt="aboutBanner"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-
-      
+        <img
+          src="/new/about_us_new.jpg"
+          alt="aboutBanner"
+          className="hidden 450:block"
+          style={{ width: "100%", height: "auto" }}
+        />
       </div>
       <section className="bg-mainText pt-12 pb-6 sm:px-6 lg:px-8 px-3">
         <div className="max-w-7xl mx-auto">
