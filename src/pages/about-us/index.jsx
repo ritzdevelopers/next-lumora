@@ -14,9 +14,9 @@ const AboutUs = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header lgScreen="lg:w-full" bgHeader="bg-greenTheme"/>
-      <div className="relative">
+      <div className="relative pt-[72px] 450:pt-[88px] bg-greenTheme">
         {/* Image */}
-        <div className="450:hidden overflow-hidden h-[500px]">
+        <div className="450:hidden relative overflow-hidden h-[500px]">
           <Image
             src="/aboutBannerMob.png"
             alt="aboutBanner"
@@ -26,9 +26,9 @@ const AboutUs = () => {
         </div>
 
         {/* Image for large screens (above 450px) */}
-        <div className="hidden overflow-hidden h-[500px] 450:block">
+        <div className="hidden relative overflow-hidden h-[500px] 450:block">
           <Image
-            src="/new/About Us.jpg"
+            src="/new/about_us_new.jpg"
             alt="aboutBanner"
             layout="fill"
             objectFit="cover"

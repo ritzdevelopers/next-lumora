@@ -224,10 +224,19 @@ This is where sustainability whispers through design, and life finds rhythm beyo
                   <p>
                     Lumora Estates (&ldquo;we&rdquo; or &ldquo;us&rdquo;,
                     including any associate companies, subsidiaries and
-                    affiliates) maintains this site (_____) (&ldquo;Site&rdquo;)
-                    for your information and communication. By directly or
-                    indirectly including by utilising the Site, you agree to all
-                    the terms and conditions of this Privacy Policy.
+                    affiliates) maintains this site {" "}
+                    <a
+                      href="https://lumoraestates.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#C89A6B] hover:text-[#e0b47d] underline underline-offset-2 transition-colors"
+                    >
+                      lumoraestates.com
+                    </a>
+                    {" "} for your information and
+                    communication. By directly or indirectly including by
+                    utilising the Site, you agree to all the terms and
+                    conditions of this Privacy Policy.
                   </p>
                   <p>
                     We may collect, store and use your information, including
