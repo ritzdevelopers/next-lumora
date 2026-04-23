@@ -103,7 +103,7 @@ const AboutUs = () => {
               Our Mission
             </h2>
             <p className="text-gray-700">
-              To reimagine second-home living as a profound experience
+              To reimagine nature-home living as a profound experience
 where elegance is intuitive, sustainability at core, and every
 detail is shaped with a motive. We are committed to creating
 sanctuaries that elevate lifestyles while thinking about the land
