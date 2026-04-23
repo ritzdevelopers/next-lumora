@@ -77,7 +77,7 @@ const sections3 = [
   {
     theme: "bg-greenTheme font-semibold text-white",
     image: "",
-    text: "Infinity Swimming Pool",
+    text: "Infinity Pool",
   },
   {
     theme: "bg-creamBg font-semibold",

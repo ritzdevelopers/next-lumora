@@ -46,7 +46,7 @@ const Amenities = () => {
         "/Lazy_river.png",
     },
     {
-      title: "Infinity Swimming Pool",
+      title: "Infinity  Pool",
       image:
         "/Infinity-Swimming-Pool.jpg",
     },
