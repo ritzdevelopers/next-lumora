@@ -6,6 +6,7 @@ import Proximities from "@/sections/Proximities";
 import RedifineLuxury from "@/sections/RedifineLuxury";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import BrochureFloatingButton from "@/components/BrochureFloatingButton";
+import HeroIntroPopup from "@/components/HeroIntroPopup";
 import { useContext } from "react";
 import { EnquiryFormContext } from "@/context/EnquiryFormContext";
 import { BrochureFormContext } from "@/context/BrochureFormContext";
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <>
+    <HeroIntroPopup />
     <Homepage/>
     <RedifineLuxury/>
     <LuxuryAbout />

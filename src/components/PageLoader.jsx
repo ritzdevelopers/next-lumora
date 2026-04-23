@@ -49,6 +49,11 @@ const PageLoader = () => {
         y: "-100%",
         duration: 1,
         ease: "power3.inOut",
+        onComplete: () => {
+          try {
+            window.dispatchEvent(new Event("lumora:loader-done"));
+          } catch (e) {}
+        },
       } // Add a slight delay after the <h3> animation
     );
 

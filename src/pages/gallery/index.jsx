@@ -16,9 +16,9 @@ const Gallery = () => {
   const images = [
     // Ground Floor (first 4)
     {
-      src: "/galleryImages/first 1.jpg",
-      modalSrc: "/galleryImages/ground-11920-900 (1).jpg",
-      mobileModalSrc: "/galleryImages/first 1.jpg",
+      src: "/galleryImages/ground-1000-1270.jpg",
+      modalSrc: "/galleryImages/ground-11920-900.jpg",
+      mobileModalSrc: "/galleryImages/ground1000-1060.jpg",
       title: "Guest Suite",
     },
     {
