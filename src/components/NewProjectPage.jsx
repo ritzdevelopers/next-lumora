@@ -138,10 +138,10 @@ export default function NewProjectPage() {
 
       <section
         ref={sectionRef}
-        className="s1 relative  overflow-hidden min-h-[93vh] w-screen flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
+        className="s1 relative  overflow-hidden min-h-screen  flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
       >
         <div className="absolute inset-0 z-0">
-          <picture>
+          <picture className="block w-full h-full">
             <source
               media="(min-width: 1024px)"
               srcSet="/new/banner-1920-720.jpg"
@@ -149,8 +149,9 @@ export default function NewProjectPage() {
             <img
               src="/new/banner-1000-1230.jpg"
               alt="AVACASA banner"
-              className="w-full h-full object-cover"
-            />
+              className="w-full h-full object-center"
+
+/>
           </picture>
           <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
         </div>
