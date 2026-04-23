@@ -5,12 +5,12 @@ import Link from "next/link";
 const sections1 = [
   {
     theme: "bg-greenTheme text-white",
-    image: "/Scenic-View.jpg",
+    image: "/scene-view-420-310.jpg",
     alt: "amenities_img",
   },
   {
     theme: "bg-greenTheme font-semibold text-white",
-    image: "",
+    image: "/scene-view-420-310.jpg",
     text: "Scenic Views",
   },
   {
