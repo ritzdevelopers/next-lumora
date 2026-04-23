@@ -102,7 +102,7 @@ const AboutUs = () => {
             <h2 className="text-3xl font-bold text-center text-greenTheme">
               Our Mission
             </h2>
-            <p className="text-gray-700">s
+            <p className="text-gray-700">
               To reimagine nature-home living as a profound experience
 where elegance is intuitive, sustainability at core, and every
 detail is shaped with a motive. We are committed to creating

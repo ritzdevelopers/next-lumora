@@ -816,7 +816,7 @@ export default function NewProjectPage() {
                 A Sovereign Sanctuary
               </h2>
               <p className="font-[400] text-[14px] sm:text-[15px] md:text-[16px] text-white opacity-90 leading-relaxed px-2 sm:px-4">
-                Set within 29+ acres, AVACASA is planned for low density, high
+                Set within 27 acres, AVACASA is planned for low density, high
                 comfort, and absolute ease. Homes stand with their own pools,
                 gardens, and generous volumes; community life unfolds through
                 trellised walks, cafés, and clubs. Here, you own more than a
