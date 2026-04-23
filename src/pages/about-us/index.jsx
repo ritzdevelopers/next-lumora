@@ -43,7 +43,7 @@ const AboutUs = () => {
           <div className="text-center mb-12">
             <h2 className="text-4xl text-greenTheme sm:text-5xl">About Us</h2>
             <p className="mt-4 text-lg font-athena text-black">
-              At Lumora Estates, we create sanctuaries that one can call their second home. Here, green isn't just an aesthetic but it's a lifestyle and a modern luxury. It's about finding exquisite comfort in the very heart of nature. 
+              At Lumora Estates, we create sanctuaries that one can call their  home. Here, green isn't just an aesthetic but it's a lifestyle and a modern luxury. It's about finding exquisite comfort in the very heart of nature. 
             </p>
           </div>
 
