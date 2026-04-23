@@ -19,7 +19,7 @@ const Gallery = () => {
       src: "/galleryImages/first 1.jpg",
       modalSrc: "/galleryImages/ground-11920-900 (1).jpg",
       mobileModalSrc: "/galleryImages/first 1.jpg",
-      title: "Living Room",
+      title: "Guest Suite",
     },
     {
       src: "/galleryImages/ground 2.jpg",
@@ -37,7 +37,7 @@ const Gallery = () => {
       src: "/galleryImages/ground 4.jpg",
       modalSrc: "/galleryImages/ground-2-1920-900 copy.jpg",
       mobileModalSrc: "/galleryImages/ground 4.jpg",
-      title: "Guest Suite",
+      title: "Living Room",
     },
     // First Floor (next 4)
     {
