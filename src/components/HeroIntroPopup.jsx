@@ -85,7 +85,7 @@ const HeroIntroPopup = () => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`relative w-full max-w-[460px] sm:max-w-[520px] rounded-2xl overflow-hidden shadow-2xl border border-[#C89A6B]/40 bg-[#0e291a] transform transition-all duration-[450ms] ${
+        className={`relative w-[78%] max-w-[300px] sm:w-full sm:max-w-[380px] md:max-w-[480px] lg:max-w-[860px] xl:max-w-[1040px] rounded-2xl overflow-hidden shadow-2xl border border-[#C89A6B]/40 bg-[#0e291a] transform transition-all duration-[450ms] ${
           show
             ? "opacity-100 scale-100 translate-y-0"
             : "opacity-0 scale-95 translate-y-3"
@@ -119,10 +119,17 @@ const HeroIntroPopup = () => {
 
         <div className="relative w-full overflow-hidden">
           <picture className="block w-full">
-            <source media="(max-width: 449px)" srcSet="/header_mob.jpg" />
+            <source
+              media="(min-width: 1024px)"
+              srcSet="/new/desktop%201920by920.jpg"
+            />
+            <source
+              media="(min-width: 768px)"
+              srcSet="/new/tablate%20768by768%203.jpg"
+            />
             <img
-              src="/header-image.png"
-              alt="Lumora - Where vision meets reality"
+              src="/new/mobile%20458by810px%203.jpg"
+              alt="AVACASA - Experience Luxury Living"
               className={`block w-full h-auto object-cover transform transition-transform duration-[900ms] ${
                 show ? "scale-100" : "scale-[1.06]"
               }`}
@@ -131,19 +138,6 @@ const HeroIntroPopup = () => {
               }}
             />
           </picture>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0e291a] to-transparent"></div>
-        </div>
-
-        <div className="px-5 py-4 sm:px-6 sm:py-5 text-center">
-          <p
-            className="cnzl text-[#C89A6B] text-[15px] sm:text-[17px] tracking-[0.15em] uppercase"
-            style={{ fontFamily: "Cinzel" }}
-          >
-            Welcome to Lumora
-          </p>
-          <p className="mt-1 text-white/70 text-[12px] sm:text-[13px] font-[300]">
-            Where vision meets reality.
-          </p>
         </div>
       </div>
     </div>,
