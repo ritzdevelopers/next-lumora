@@ -91,7 +91,7 @@ const Homepage = () => {
     {
       image: "/Resort-living.png",
       alt: "resort-living-img",
-      title: "Elevated Second Homes ",
+      title: "Private Pools ",
       icon: "/Resort-living-icon.png",
     },
     {
