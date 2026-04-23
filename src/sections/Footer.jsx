@@ -1,10 +1,31 @@
 import { EnquiryFormContext } from "@/context/EnquiryFormContext";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 const Footer = () => {
     const { openPopup } = useContext(EnquiryFormContext);
+    const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+      setMounted(true);
+    }, []);
+
+    useEffect(() => {
+      if (!isPrivacyOpen) return;
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      const onKey = (e) => {
+        if (e.key === "Escape") setIsPrivacyOpen(false);
+      };
+      window.addEventListener("keydown", onKey);
+      return () => {
+        document.body.style.overflow = prev;
+        window.removeEventListener("keydown", onKey);
+      };
+    }, [isPrivacyOpen]);
   return (
     <footer className="relative bg-greenTheme pt-12 w-full px-8 ">
       
@@ -65,7 +86,15 @@ This is where sustainability whispers through design, and life finds rhythm beyo
         </div>
         <ul className="flex flex-col gap-2 text-white">
           <li className="md:text-[2vw] sm:text-[3vw] 450:text-[5vw] 2xl:text-3xl text-[7vw]">Policies</li>
-          <li className="2xl:text-lg">Privacy Policy</li>
+          <li className="2xl:text-lg">
+            <button
+              type="button"
+              onClick={() => setIsPrivacyOpen(true)}
+              className="text-left hover:text-[#cc9a64] transition-colors cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+          </li>
           <li className="2xl:text-lg">Terms Of Use</li>
         </ul>
       </div>
@@ -143,6 +172,134 @@ This is where sustainability whispers through design, and life finds rhythm beyo
       </div>
       </div>
       </div>
+
+      {mounted && isPrivacyOpen
+        ? createPortal(
+            <div
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 md:p-10"
+              style={{ zIndex: 2147483000 }}
+              onClick={() => setIsPrivacyOpen(false)}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="privacy-title"
+            >
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-3xl max-h-[90vh] bg-[#0e291a] border border-[#C89A6B]/40 shadow-2xl rounded-lg flex flex-col overflow-hidden"
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-[#C89A6B]/30 bg-[#0a2014]">
+                  <h2
+                    id="privacy-title"
+                    className="cnzl text-[#C89A6B] text-[20px] sm:text-[24px] md:text-[28px] uppercase tracking-wide"
+                    style={{ fontFamily: "Cinzel" }}
+                  >
+                    Privacy Policy
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={() => setIsPrivacyOpen(false)}
+                    aria-label="Close privacy policy"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#C89A6B] hover:bg-[#b88757] transition-colors flex items-center justify-center shadow-md flex-shrink-0"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 6L18 18M6 18L18 6"
+                        stroke="black"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Body */}
+                <div className="overflow-y-auto px-5 sm:px-8 py-5 sm:py-7 text-white/90 text-[14px] sm:text-[15px] leading-[1.7] space-y-4 font-[300]">
+                  <p>
+                    Lumora Estates (&ldquo;we&rdquo; or &ldquo;us&rdquo;,
+                    including any associate companies, subsidiaries and
+                    affiliates) maintains this site (_____) (&ldquo;Site&rdquo;)
+                    for your information and communication. By directly or
+                    indirectly including by utilising the Site, you agree to all
+                    the terms and conditions of this Privacy Policy.
+                  </p>
+                  <p>
+                    We may collect, store and use your information, including
+                    but not limited to your credentials, technical data, usage
+                    data, location details, communication details, etc. when
+                    you visit, use, view and/or otherwise utilise this Site,
+                    including filling out any form or through any other modes,
+                    and includes the information that you submit directly or
+                    indirectly to us. Further, the information provided by you
+                    may be further utilised to procure more information.
+                  </p>
+                  <p>
+                    We may use your personal information to provide various
+                    services and for our internal business purposes. We may
+                    disclose your information to government bodies, authorities
+                    or agencies under applicable laws. By using the Site, you
+                    authorize us to exchange, share and part with your
+                    information with service providers and/or for participation
+                    in any telecommunication, statistical analysis, verification
+                    or risk management activities, and you shall not hold us
+                    liable for use or disclosure of this information.
+                  </p>
+                  <p>
+                    The Site may contain links to websites, apps or software of
+                    other organisations or third parties. We are not liable for
+                    any loss or damage that may occur to you on account of these
+                    third parties.
+                  </p>
+                  <p>
+                    You agree and consent to our collection, storage,
+                    processing, transfer and sharing of your information with
+                    third parties. We shall use commercially reasonable security
+                    measures (including physical, electronic and procedural
+                    measures) to safeguard personal information against loss,
+                    misuse, damage or modification and unauthorised access or
+                    disclosure. However, we cannot guarantee that personal
+                    information or other communications will always remain
+                    secure.
+                  </p>
+                  <p>
+                    Please note that this Privacy Policy does not create any
+                    contractual or other legal rights in or on behalf of any
+                    party. By accessing this Site and/or our services, you
+                    consent to this Privacy Policy.
+                  </p>
+                  <p>
+                    You hereby expressly and irrevocably authorise Lumora
+                    Estates to collect, store, share, obtain and authenticate
+                    any aspect of your personal information/KYC, either directly
+                    or through any authorised agencies, and disclose such
+                    information to our agents, contractors, service providers,
+                    affiliates and clients, and to use such information in the
+                    manner that may be required for business purposes and for
+                    such time period as we may deem fit.
+                  </p>
+                  <p>
+                    In this regard, you expressly and irrevocably authorise
+                    Lumora Estates, its partners, affiliates and clients to
+                    collect, use, verify and authenticate your personal identity
+                    information/KYC in any manner without prior notice to you.
+                  </p>
+                  <p>
+                    This policy provides a general statement. We reserve the
+                    right to update this Privacy Policy from time to time, and
+                    you are advised to review it periodically.
+                  </p>
+                </div>
+              </div>
+            </div>,
+            document.body
+          )
+        : null}
     </footer>
   );
 };
