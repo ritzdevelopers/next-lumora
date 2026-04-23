@@ -138,24 +138,26 @@ export default function NewProjectPage() {
 
       <section
         ref={sectionRef}
-        className="s1 relative  overflow-hidden min-h-screen  flex items-center justify-center md:justify-start pt-16 md:pt-0 md:items-center pl-6 md:pl-20"
+        className="s1 relative overflow-hidden w-full pt-16 md:pt-0"
       >
-        <div className="absolute inset-0 z-0">
-          <picture className="block w-full h-full">
-            <source
-              media="(min-width: 1024px)"
-              srcSet="/new/banner-1920-720.jpg"
-            />
-            <img
-              src="/new/banner-1000-1230.jpg"
-              alt="AVACASA banner"
-              className="w-full h-full object-center"
-
-/>
-          </picture>
-          <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
-        </div>
-        <div
+        <picture className="block w-full">
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/new/avacasa_desktop.jpg"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/new/tablate%20768by768%203.jpg"
+          />
+          <img
+            src="/new/mobile%20458by810px%203.jpg"
+            alt="AVACASA banner"
+            className="block"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </picture>
+        <div className="absolute inset-0 bg-black/30 pointer-events-none z-[1]"></div>
+        {/* <div
           ref={contentRef}
           className="s1Content relative z-10 bg-[#0E291AA6] p-6 md:p-10 flex flex-col justify-center w-[90%] sm:w-[500px] md:w-[600px] h-auto md:h-[408px]"
         >
@@ -174,7 +176,7 @@ export default function NewProjectPage() {
             for unhurried days, AVACASA restores calm with light, space, and
             thoughtful amenities, your second home, made beautifully simple.
           </p>
-        </div>
+        </div> */}
       </section>
 
       {/* <!-- Section 2 Is Starting From Here  --> */}
@@ -838,8 +840,8 @@ export default function NewProjectPage() {
                   style={{ fontFamily: "Cinzel" }}
                   className="font-[400] text-[24px] sm:text-[28px] md:text-[32px] text-white"
                 >
-                  82 Exclusive <br />
-                  Villas
+                  82 Luxury <br />
+                  Units
                 </h2>
               </div>
               <div className="flex flex-col justify-center items-center text-center lg:border-b lg:border-r lg:border-[#F2F2F233] p-6">
