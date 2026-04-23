@@ -28,7 +28,7 @@ const AboutUs = () => {
         {/* Image for large screens (above 450px) */}
         <div className="hidden overflow-hidden h-[500px] 450:block">
           <Image
-            src="/aboutBanner.png"
+            src="/new/About Us.jpg"
             alt="aboutBanner"
             layout="fill"
             objectFit="cover"
@@ -102,7 +102,7 @@ const AboutUs = () => {
             <h2 className="text-3xl font-bold text-center text-greenTheme">
               Our Mission
             </h2>
-            <p className="text-gray-700">
+            <p className="text-gray-700">s
               To reimagine nature-home living as a profound experience
 where elegance is intuitive, sustainability at core, and every
 detail is shaped with a motive. We are committed to creating
