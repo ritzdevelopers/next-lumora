@@ -143,7 +143,7 @@ const Homepage = () => {
               Where vision meets reality and dreams find their address
             </h1>
             <h2 className="text-white text-[3.5vw]">
-              This isn't just real estate: it's a philosophy.One that asks, "Why
+              This isn't just real estate: it's a philosophy .One that asks, "Why
               settle for ordinary when you can live extraordinary?"
             </h2>
           </div>

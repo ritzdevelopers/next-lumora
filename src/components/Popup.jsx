@@ -32,8 +32,8 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "phone") {
-      const phoneValue = value.replace(/\D/g, "");
+    if (name === "Phone") {
+      const phoneValue = value.replace(/\D/g, "").slice(0, 10);
       setFormData((prev) => ({
         ...prev,
         [name]: phoneValue,
@@ -104,7 +104,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       const params = new URLSearchParams();
 
       // ✅ Add required field for Google Apps Script
-      params.append("sheetName", "Lumora Leads Popup Form");
+      params.append("sheetName", "Sheet1");
 
       // ✅ Append form fields
       params.append("Name", formData.Name);
@@ -115,7 +115,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("Time", formattedTime);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbypbsV4ST5B53ucFNDUYqeVLnLH-mRTfpXvk6hpL8pIz-9MaudI9d1k_OEyoEa4X4m-FA/exec",
+        "https://script.google.com/macros/s/AKfycbzMz0weX0qfLZUDRQhfm98B3yIzv6DToRQrMPmvydM27HwPzakbsrX67ZqKJY1NYXOPDw/exec",
         {
           method: "POST",
           mode: "no-cors",

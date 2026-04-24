@@ -53,12 +53,12 @@ const sections2 = [
   },
   {
     theme: "bg-greenTheme text-white",
-    image: "/Gym.jpg",
+    image: "/gym-420-310.jpg",
     alt: "amenitiesImg",
   },
   {
     theme: "bg-greenTheme text-white",
-    image: "/Lazy_river.png",
+    image: "/lake-420-310.jpg",
     alt: "amenitiesImg",
   },
   {
@@ -86,7 +86,7 @@ const sections3 = [
   },
   {
     theme: "bg-greenTheme text-white",
-    image: "/Yoga-&-Meditation-Zones.jpg",
+    image: "/yoga-420-310.jpg",
     alt: "amenitiesImg",
   },
   {
