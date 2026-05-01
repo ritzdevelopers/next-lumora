@@ -138,7 +138,7 @@ export default function NewProjectPage() {
 
       <section
         ref={sectionRef}
-        className="s1 relative w-full overflow-hidden max-lg:pt-[3rem]"
+        className="s1 relative w-full overflow-hidden max-lg:pt-[3rem] lg:pt-6"
       >
         {/* lg (1024px+): lock to desktop artboard 1920×920 so the wide banner scales evenly */}
         <div className="relative w-full lg:aspect-[1920/920] lg:overflow-hidden">
