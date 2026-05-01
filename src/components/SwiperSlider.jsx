@@ -45,9 +45,9 @@ export default function App() {
     },
     {
       title: "Sky Lounge",
-      thumb: "/galleryImages/skylounge-452-561.jpg",
+      thumb: "/galleryImages/skylounge1920-900.jpg",
       desktop: "/galleryImages/skylounge1920-900.jpg",
-      mobile: "/galleryImages/skylounge-452-561.jpg",
+      mobile: "/galleryImages/skylounge1920-900.jpg",
     },
   ];
 
