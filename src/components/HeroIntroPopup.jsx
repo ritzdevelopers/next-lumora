@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const STORAGE_KEY = "lumora_hero_popup_dismissed";
+// Bump when hero artwork changes so returning visitors see the new popup once.
+const STORAGE_KEY = "lumora_hero_popup_dismissed_avacasa_2026";
 
 const HeroIntroPopup = () => {
   const [mounted, setMounted] = useState(false);
@@ -117,20 +118,21 @@ const HeroIntroPopup = () => {
           </svg>
         </button>
 
-        <div className="relative w-full overflow-hidden">
-          <picture className="block w-full">
+        {/* Same responsive assets + layout rules as Avacasa project hero (NewProjectPage) */}
+        <div className="relative w-full lg:aspect-[1920/920] lg:overflow-hidden">
+          <picture className="block w-full lg:absolute lg:inset-0 lg:block lg:h-full lg:w-full">
             <source
               media="(min-width: 1024px)"
-              srcSet="/new/desktop%201920by920.jpg"
+              srcSet="/new/desktop%20currected.jpg"
             />
             <source
               media="(min-width: 768px)"
-              srcSet="/new/tablate%20768by768%203.jpg"
+              srcSet="/new/tablate%20768by768.jpg"
             />
             <img
-              src="/new/mobile%20458by810px%203.jpg"
+              src="/new/mobile_latest.jpg"
               alt="AVACASA - Experience Luxury Living"
-              className={`block w-full h-auto object-cover transform transition-transform duration-[900ms] ${
+              className={`block h-auto w-full max-lg:object-contain max-lg:object-top lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover lg:object-center transform transition-transform duration-[900ms] ${
                 show ? "scale-100" : "scale-[1.06]"
               }`}
               style={{

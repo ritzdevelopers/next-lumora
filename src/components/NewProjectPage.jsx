@@ -138,23 +138,26 @@ export default function NewProjectPage() {
 
       <section
         ref={sectionRef}
-        className="s1 relative overflow-hidden w-full"
+        className="s1 relative w-full overflow-hidden max-lg:pt-[3rem]"
       >
-        <picture className="block w-full">
-          <source
-            media="(min-width: 1024px)"
-            srcSet="/new/desktop%201920by920.jpg"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcSet="/new/tablate%20768by768%203.jpg"
-          />
-          <img
-            src="/new/mobile%20458by810px%203.jpg"
-            alt="AVACASA banner"
-            className="block w-full h-auto"
-          />
-        </picture>
+        {/* lg (1024px+): lock to desktop artboard 1920×920 so the wide banner scales evenly */}
+        <div className="relative w-full lg:aspect-[1920/920] lg:overflow-hidden">
+          <picture className="block w-full lg:absolute lg:inset-0 lg:block lg:h-full lg:w-full">
+            <source
+              media="(min-width: 1024px)"
+              srcSet="/new/desktop%20currected.jpg"
+            />
+            <source
+              media="(min-width: 768px)"
+              srcSet="/new/tablate%20768by768.jpg"
+            />
+            <img
+              src="/new/mobile_latest.jpg"
+              alt="AVACASA banner"
+              className="block h-auto w-full max-lg:object-contain max-lg:object-top lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover lg:object-center"
+            />
+          </picture>
+        </div>
         
         {/* <div
           ref={contentRef}
