@@ -6,12 +6,15 @@ import EnquiryFormPopup from "./Popup";
 export default function NewProjectPage() {
   const [isModal1Open, setModal1Open] = useState(false);
   const [isModal2Open, setModal2Open] = useState(false);
+  const [isModal3Open, setModal3Open] = useState(false);
 
   const imgRef1 = useRef(null);
   const closeBtnRef1 = useRef(null);
 
   const imgRef2 = useRef(null);
   const closeBtnRef2 = useRef(null);
+  const imgRef3 = useRef(null);
+  const closeBtnRef3 = useRef(null);
 
   // GSAP animation for modal 1
   useEffect(() => {
@@ -49,6 +52,24 @@ export default function NewProjectPage() {
     }
   }, [isModal2Open]);
 
+  // GSAP animation for modal 3
+  useEffect(() => {
+    if (isModal3Open) {
+      gsap.from(imgRef3.current, {
+        duration: 0.8,
+        opacity: 0,
+        scale: 0.7,
+        ease: "power3.out",
+      });
+      gsap.from(closeBtnRef3.current, {
+        duration: 0.6,
+        opacity: 0,
+        y: -20,
+        ease: "back.out(1.7)",
+      });
+    }
+  }, [isModal3Open]);
+
   const handleCloseModal1 = () => {
     gsap.to(imgRef1.current, {
       duration: 0.5,
@@ -71,6 +92,19 @@ export default function NewProjectPage() {
       onComplete: () => {
         setModal2Open(false);
         gsap.set(imgRef2.current, { opacity: 1, scale: 1 });
+      },
+    });
+  };
+
+  const handleCloseModal3 = () => {
+    gsap.to(imgRef3.current, {
+      duration: 0.5,
+      opacity: 0,
+      scale: 0.8,
+      ease: "power2.in",
+      onComplete: () => {
+        setModal3Open(false);
+        gsap.set(imgRef3.current, { opacity: 1, scale: 1 });
       },
     });
   };
@@ -1123,41 +1157,58 @@ export default function NewProjectPage() {
           </div>
 
           {/* Main Div (Images) */}
-          <div className="s8Main w-full flex flex-col md:flex-row justify-center items-center gap-6">
+          <div className="s8Main w-full flex flex-col lg:flex-row justify-center items-center gap-6">
             {/* Modal 1 Trigger */}
             <div
               onClick={() => setModal1Open(true)}
-              className="img w-full md:w-1/2 h-[362px] border-[5px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
+              className="img w-full lg:w-1/3 p-6  border-[1px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
             >
               <img
-                src="../images/groundPhone.jpg"
-                className="w-full max-w-[641px] object-cover"
-                alt="Ground Floor"
+                src="/avacasa-new/unit-plan.jpg"
+                className="w-full h-full max-w-[641px] object-contain"
+                alt="Unit Plan"
               />
-              <button
+              {/* <button
                 className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute left-4 top-4"
                 style={{ fontFamily: "PlaRegular" }}
               >
-                Ground Floor
-              </button>
+                Unit Plan
+              </button> */}
             </div>
 
             {/* Modal 2 Trigger */}
             <div
               onClick={() => setModal2Open(true)}
-              className="img w-full md:w-1/2 h-[502px] flex justify-center relative border-[5px] border-[#FFFFFF] cursor-pointer"
+              className="img w-full lg:w-1/3  flex justify-center relative border-[1px] p-6 border-[#FFFFFF] cursor-pointer"
             >
               <img
-                src="../images/firstDekstop.jpg"
-                className="w-full max-w-[641px] object-cover"
-                alt="First Floor"
+                src="/avacasa-new/ground-floor.jpg"
+                className="w-full h-full max-w-[641px] object-contain"
+                alt="Ground Floor"
               />
-              <button
+              {/* <button
+                className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
+                style={{ fontFamily: "PlaRegular" }}
+              >
+                Ground Floor
+              </button> */}
+            </div>
+
+            <div
+              onClick={() => setModal3Open(true)}
+              className="img w-full lg:w-1/3  border-[1px] p-6 border-[#FFFFFF] flex justify-center relative cursor-pointer"
+            >
+              <img
+                src="/avacasa-new/flirst-floor.jpg"
+                className="w-full h-full max-w-[641px] object-contain"
+                        alt="First Floor"
+              />
+              {/* <button
                 className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
                 style={{ fontFamily: "PlaRegular" }}
               >
                 First Floor
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -1174,15 +1225,15 @@ export default function NewProjectPage() {
                 </button>
                 <img
                   ref={imgRef1}
-                  src="../images/groundDekstop.jpg"
-                  alt="Ground Floor"
-                  className="w-full md:block hidden h-full object-cover rounded-xl shadow-2xl"
+                  src="/avacasa-new/unit-plan.jpg"
+                  alt="Unit Plan"
+                  className="w-full md:block hidden h-full object-contain rounded-xl shadow-2xl"
                 />
                 <img
                   ref={imgRef1}
-                  src="../images/groundPhone.jpg"
-                  alt="Ground Floor"
-                  className="w-full block md:hidden h-full object-cover rounded-xl shadow-2xl"
+                  src="/avacasa-new/unit-plan.jpg"
+                  alt="Unit Plan"
+                  className="w-full block md:hidden h-full object-contain rounded-xl shadow-2xl"
                 />
               </div>
             </div>
@@ -1201,15 +1252,42 @@ export default function NewProjectPage() {
                 </button>
                 <img
                   ref={imgRef2}
-                  src="../images/firstDekstop.jpg"
-                  alt="First Floor"
-                  className="w-full h-full hidden md:block object-cover rounded-xl shadow-2xl"
+                  src="/avacasa-new/ground-floor.jpg"
+                  alt="Ground Floor"
+                  className="w-full h-full hidden md:block object-contain rounded-xl shadow-2xl"
                 />
                 <img
                   ref={imgRef2}
-                  src="../images/firstMobile.jpg"
+                  src="/avacasa-new/ground-floor.jpg"
+                  alt="Ground Floor"
+                  className="w-full h-full md:hidden block object-contain rounded-xl shadow-2xl"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Modal 3 */}
+          {isModal3Open && (
+            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
+              <div className="relative w-[98vw] h-[98vh]">
+                <button
+                  ref={closeBtnRef3}
+                  onClick={handleCloseModal3}
+                  className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
+                >
+                  &times;
+                </button>
+                <img
+                  ref={imgRef3}
+                  src="/avacasa-new/flirst-floor.jpg"
                   alt="First Floor"
-                  className="w-full h-full md:hidden block object-cover rounded-xl shadow-2xl"
+                  className="w-full h-full hidden md:block object-contain rounded-xl shadow-2xl"
+                />
+                <img
+                  ref={imgRef3}
+                  src="/avacasa-new/flirst-floor.jpg"
+                  alt="First Floor"
+                  className="w-full h-full md:hidden block object-contain rounded-xl shadow-2xl"
                 />
               </div>
             </div>
