@@ -259,12 +259,18 @@ const Amenities = () => {
                 >
                   {amenities.map((amenity, index) => (
                     <SwiperSlide key={index}>
-                      <div className="w-full h-full flex items-center justify-center">
+                      <div className="w-full h-full flex flex-col items-center justify-center px-4 md:px-20 py-16">
                         <img
                           src={amenity.popupImage || amenity.image}
                           alt={amenity.title}
                           className="max-w-full max-h-[80vh] object-contain"
                         />
+                        <p
+                          style={{ fontFamily: "PlaRegular" }}
+                          className="mt-4 text-white text-center text-[16px] md:text-[20px]"
+                        >
+                          {amenity.title}
+                        </p>
                       </div>
                     </SwiperSlide>
                   ))}
