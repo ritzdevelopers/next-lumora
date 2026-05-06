@@ -3,76 +3,26 @@ import styles from "./page.module.css";
 import gsap from "gsap";
 import SwiperSlider from "./SwiperSlider";
 import EnquiryFormPopup from "./Popup";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Keyboard } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 export default function NewProjectPage() {
   const [isModal1Open, setModal1Open] = useState(false);
   const [isModal2Open, setModal2Open] = useState(false);
+  const [isModal3Open, setModal3Open] = useState(false);
+  const [activeFloorIndex, setActiveFloorIndex] = useState(0);
+  const isFloorLightboxOpen = isModal1Open || isModal2Open || isModal3Open;
+  const floorPlanSlides = [
+    { title: "Unit Plan", image: "/avacasa-new/unit-plan.jpg" },
+    { title: "Ground Floor", image: "/avacasa-new/ground-floor.jpg" },
+    { title: "First Floor", image: "/avacasa-new/flirst-floor.jpg" },
+  ];
 
-  const imgRef1 = useRef(null);
-  const closeBtnRef1 = useRef(null);
-
-  const imgRef2 = useRef(null);
-  const closeBtnRef2 = useRef(null);
-
-  // GSAP animation for modal 1
-  useEffect(() => {
-    if (isModal1Open) {
-      gsap.from(imgRef1.current, {
-        duration: 0.8,
-        opacity: 0,
-        scale: 0.7,
-        ease: "power3.out",
-      });
-      gsap.from(closeBtnRef1.current, {
-        duration: 0.6,
-        opacity: 0,
-        y: -20,
-        ease: "back.out(1.7)",
-      });
-    }
-  }, [isModal1Open]);
-
-  // GSAP animation for modal 2
-  useEffect(() => {
-    if (isModal2Open) {
-      gsap.from(imgRef2.current, {
-        duration: 0.8,
-        opacity: 0,
-        scale: 0.7,
-        ease: "power3.out",
-      });
-      gsap.from(closeBtnRef2.current, {
-        duration: 0.6,
-        opacity: 0,
-        y: -20,
-        ease: "back.out(1.7)",
-      });
-    }
-  }, [isModal2Open]);
-
-  const handleCloseModal1 = () => {
-    gsap.to(imgRef1.current, {
-      duration: 0.5,
-      opacity: 0,
-      scale: 0.8,
-      ease: "power2.in",
-      onComplete: () => {
-        setModal1Open(false);
-        gsap.set(imgRef1.current, { opacity: 1, scale: 1 });
-      },
-    });
-  };
-
-  const handleCloseModal2 = () => {
-    gsap.to(imgRef2.current, {
-      duration: 0.5,
-      opacity: 0,
-      scale: 0.8,
-      ease: "power2.in",
-      onComplete: () => {
-        setModal2Open(false);
-        gsap.set(imgRef2.current, { opacity: 1, scale: 1 });
-      },
-    });
+  const closeFloorLightbox = () => {
+    setModal1Open(false);
+    setModal2Open(false);
+    setModal3Open(false);
   };
 
   const sectionRef = useRef(null);
@@ -1123,94 +1073,161 @@ export default function NewProjectPage() {
           </div>
 
           {/* Main Div (Images) */}
-          <div className="s8Main w-full flex flex-col md:flex-row justify-center items-center gap-6">
+          <div className="s8Main w-full flex flex-col lg:flex-row justify-center items-center gap-6">
             {/* Modal 1 Trigger */}
             <div
-              onClick={() => setModal1Open(true)}
-              className="img w-full md:w-1/2 h-[362px] border-[5px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
+              onClick={() => {
+                setActiveFloorIndex(0);
+                setModal1Open(true);
+              }}
+              className="img w-full lg:w-1/3 p-6  border-[1px] border-[#FFFFFF] flex justify-center relative cursor-pointer"
             >
               <img
-                src="../images/groundPhone.jpg"
-                className="w-full max-w-[641px] object-cover"
-                alt="Ground Floor"
+                src="/avacasa-new/unit-plan.jpg"
+                className="w-full h-full max-w-[641px] object-contain"
+                alt="Unit Plan"
               />
-              <button
+              {/* <button
                 className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute left-4 top-4"
                 style={{ fontFamily: "PlaRegular" }}
               >
-                Ground Floor
-              </button>
+                Unit Plan
+              </button> */}
             </div>
 
             {/* Modal 2 Trigger */}
             <div
-              onClick={() => setModal2Open(true)}
-              className="img w-full md:w-1/2 h-[502px] flex justify-center relative border-[5px] border-[#FFFFFF] cursor-pointer"
+              onClick={() => {
+                setActiveFloorIndex(1);
+                setModal2Open(true);
+              }}
+              className="img w-full lg:w-1/3  flex justify-center relative border-[1px] p-6 border-[#FFFFFF] cursor-pointer"
             >
               <img
-                src="../images/firstDekstop.jpg"
-                className="w-full max-w-[641px] object-cover"
-                alt="First Floor"
+                src="/avacasa-new/ground-floor.jpg"
+                className="w-full h-full max-w-[641px] object-contain"
+                alt="Ground Floor"
               />
-              <button
+              {/* <button
+                className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
+                style={{ fontFamily: "PlaRegular" }}
+              >
+                Ground Floor
+              </button> */}
+            </div>
+
+            <div
+              onClick={() => {
+                setActiveFloorIndex(2);
+                setModal3Open(true);
+              }}
+              className="img w-full lg:w-1/3  border-[1px] p-6 border-[#FFFFFF] flex justify-center relative cursor-pointer"
+            >
+              <img
+                src="/avacasa-new/flirst-floor.jpg"
+                className="w-full h-full max-w-[641px] object-contain"
+                        alt="First Floor"
+              />
+              {/* <button
                 className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
                 style={{ fontFamily: "PlaRegular" }}
               >
                 First Floor
-              </button>
+              </button> */}
             </div>
           </div>
 
-          {/* Modal 1 */}
-          {isModal1Open && (
-            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
-              <div className="relative w-[98vw] h-[98vh]">
-                <button
-                  ref={closeBtnRef1}
-                  onClick={handleCloseModal1}
-                  className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
+          {isFloorLightboxOpen && (
+            <div
+              className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-[9999999]"
+              onClick={closeFloorLightbox}
+            >
+              <button
+                onClick={(event) => {
+                  event.stopPropagation();
+                  closeFloorLightbox();
+                }}
+                aria-label="Close image"
+                className="fixed top-4 right-4 md:top-6 md:right-6 w-11 h-11 md:w-12 md:h-12 rounded-full bg-[#C89A6B] hover:bg-[#b88757] transition-colors flex items-center justify-center shadow-lg z-[10000]"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  &times;
-                </button>
-                <img
-                  ref={imgRef1}
-                  src="../images/groundDekstop.jpg"
-                  alt="Ground Floor"
-                  className="w-full md:block hidden h-full object-cover rounded-xl shadow-2xl"
-                />
-                <img
-                  ref={imgRef1}
-                  src="../images/groundPhone.jpg"
-                  alt="Ground Floor"
-                  className="w-full block md:hidden h-full object-cover rounded-xl shadow-2xl"
-                />
-              </div>
-            </div>
-          )}
+                  <path
+                    d="M6 6L18 18M6 18L18 6"
+                    stroke="black"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
 
-          {/* Modal 2 */}
-          {isModal2Open && (
-            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999999]">
-              <div className="relative w-[98vw] h-[98vh]">
-                <button
-                  ref={closeBtnRef2}
-                  onClick={handleCloseModal2}
-                  className="absolute top-4 right-4 bg-white text-black text-2xl font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition z-[9999]"
+              <div className="fixed top-4 left-4 md:top-6 md:left-6 px-3 py-1 rounded-full bg-black/60 text-white text-sm md:text-base z-[10000]">
+                {activeFloorIndex + 1} / {floorPlanSlides.length}
+              </div>
+
+              <button
+                onClick={(event) => event.stopPropagation()}
+                className="floor-lightbox-prev fixed left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#C89A6B] hover:bg-[#b88757] transition-colors flex items-center justify-center z-[10000]"
+                aria-label="Previous image"
+              >
+                <svg viewBox="0 0 80 80" fill="none" className="w-full h-full">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M28.1 39.3a.94.94 0 000 1.3l8.7 8.8a1 1 0 001.4-1.4l-6.1-6.1h20.2a1 1 0 100-2H32l6.1-6.1a1 1 0 10-1.4-1.4l-8.7 8.7z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+
+              <button
+                onClick={(event) => event.stopPropagation()}
+                className="floor-lightbox-next fixed right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#C89A6B] hover:bg-[#b88757] transition-colors flex items-center justify-center z-[10000]"
+                aria-label="Next image"
+              >
+                <svg viewBox="0 0 80 80" fill="none" className="w-full h-full">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M51.9 40.7a.94.94 0 000-1.3l-8.7-8.8a1 1 0 10-1.4 1.4l6.1 6.1H27.7a1 1 0 100 2h20.2l-6.1 6.1a1 1 0 101.4 1.4l8.7-8.7z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+
+              <div
+                className="relative w-[98vw] h-[98vh]"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <Swiper
+                  modules={[Navigation, Keyboard]}
+                  initialSlide={activeFloorIndex}
+                  loop={true}
+                  keyboard={{ enabled: true }}
+                  navigation={{
+                    prevEl: ".floor-lightbox-prev",
+                    nextEl: ".floor-lightbox-next",
+                  }}
+                  onSlideChange={(swiper) => setActiveFloorIndex(swiper.realIndex)}
+                  className="w-full h-full"
                 >
-                  &times;
-                </button>
-                <img
-                  ref={imgRef2}
-                  src="../images/firstDekstop.jpg"
-                  alt="First Floor"
-                  className="w-full h-full hidden md:block object-cover rounded-xl shadow-2xl"
-                />
-                <img
-                  ref={imgRef2}
-                  src="../images/firstMobile.jpg"
-                  alt="First Floor"
-                  className="w-full h-full md:hidden block object-cover rounded-xl shadow-2xl"
-                />
+                  {floorPlanSlides.map((slide, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="w-full h-full flex items-center justify-center">
+                        <img
+                          src={slide.image}
+                          alt={slide.title}
+                          className="w-full h-full object-contain rounded-xl shadow-2xl"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
             </div>
           )}
