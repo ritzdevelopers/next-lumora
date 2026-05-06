@@ -86,6 +86,20 @@ const Amenities = () => {
       popupImage:
         "/amenities-new/gym-new-big.jpg",
     },
+    {
+      title: "Boutique Library",
+      image:
+        "/amenities-new/home.jpg",
+      popupImage:
+        "/amenities-new/home-big.jpg",
+    },
+    {
+      title: "Signature Restaurant ",
+      image:
+        "/amenities-new/Signature-Restaurant.jpg",
+      popupImage:
+        "/amenities-new/Signature-Restaurant-big.jpg.jpg",
+    },
   ];
 
   useEffect(() => {
