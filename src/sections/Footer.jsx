@@ -101,7 +101,7 @@ This is where sustainability whispers through design, and life finds rhythm beyo
       <div className="m-auto pt-4 w-[90%]">
       <hr className=" border-none h-[1px] bg-mainText" />
       <div className="flex sm:justify-between justify-center py-4 gap-4  flex-wrap-reverse items-center">
-        <p className="text-mainText text-center">Lumora © Copyright 2025 All rights reserved</p>
+        <p className="text-mainText text-center">Lumora © Copyright 2026 All rights reserved</p>
         <ul className="flex items-center justify-center gap-3">
             <li>
               <a href="https://www.instagram.com/lumora_estates/">
