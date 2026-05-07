@@ -2,8 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/sections/Footer";
 import Head from "next/head";
 import Image from "next/image";
-import axios from "axios";
 import React, { useState } from "react";
+import { sendLeadEmailNotification } from "@/lib/notifyLead";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -120,6 +120,16 @@ const ContactUs = () => {
           body: params,
         }
       );
+
+      sendLeadEmailNotification({
+        source: "contact-us",
+        Name: formData.Name,
+        Email: formData.Email,
+        Phone: formData.Phone,
+        Message: formData.Message,
+        Date: formattedDate,
+        Time: formattedTime,
+      });
 
       console.log("Form submitted successfully");
       setSubmitStatus("success");

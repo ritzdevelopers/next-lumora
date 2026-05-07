@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { sendLeadEmailNotification } from '@/lib/notifyLead';
 
 const BrochureFormPopup = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -122,6 +123,10 @@ const BrochureFormPopup = ({ isOpen, onClose }) => {
       message: 'Brochure request', //
     };
 
+    const date = new Date();
+    const formattedDate = date.toLocaleDateString('en-GB');
+    const formattedTime = date.toLocaleTimeString('en-GB');
+
     try {
       // Send request to server using axios
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/enquiry`, data, {
@@ -134,6 +139,16 @@ const BrochureFormPopup = ({ isOpen, onClose }) => {
 
       // Check if the response indicates success
       if (response.data && response.data.success) {
+        sendLeadEmailNotification({
+          source: 'brochure-download',
+          Name: data.name,
+          Email: data.mail,
+          Phone: data.phone,
+          Message: data.message,
+          Date: formattedDate,
+          Time: formattedTime,
+        });
+
         // Trigger PDF download after successful server response
         downloadPDF();
 

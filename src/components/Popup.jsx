@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { sendLeadEmailNotification } from "@/lib/notifyLead";
 
 const EnquiryFormPopup = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -122,6 +122,16 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
           body: params,
         }
       );
+
+      sendLeadEmailNotification({
+        source: "enquiry-popup",
+        Name: formData.Name,
+        Email: formData.Email,
+        Phone: formData.Phone,
+        Message: formData.Message,
+        Date: formattedDate,
+        Time: formattedTime,
+      });
 
       console.log("Form submitted successfully");
       setSubmitStatus("success");
