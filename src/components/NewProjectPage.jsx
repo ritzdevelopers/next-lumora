@@ -1049,7 +1049,7 @@ export default function NewProjectPage() {
                 style={{ fontFamily: "PlaBold" }}
                 className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
               >
-                Plot Area:
+                Plot Area:{" "}
                 <span
                   style={{ fontFamily: "PlaRegular" }}
                   className="font-[400]"
@@ -1061,7 +1061,7 @@ export default function NewProjectPage() {
                 style={{ fontFamily: "PlaBold" }}
                 className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
               >
-                Built Up Area:
+                Built Up Area:{" "}
                 <span
                   style={{ fontFamily: "PlaRegular" }}
                   className="font-[400]"
