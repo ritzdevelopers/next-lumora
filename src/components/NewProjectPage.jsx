@@ -1124,7 +1124,7 @@ export default function NewProjectPage() {
               className="img w-full lg:w-1/3  border-[1px] p-6 border-[#FFFFFF] flex justify-center relative cursor-pointer"
             >
               <img
-                src="/avacasa-new/flirst-floor.jpg"
+                src="/avacasa-new/first-floor-plan.jpg"
                 className="w-full h-full max-w-[641px] object-contain"
                         alt="First Floor"
               />
