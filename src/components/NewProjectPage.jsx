@@ -16,7 +16,7 @@ export default function NewProjectPage() {
   const floorPlanSlides = [
     { title: "Unit Plan", image: "/avacasa-new/unit-plan.jpg" },
     { title: "Ground Floor", image: "/avacasa-new/ground-floor.jpg" },
-    { title: "First Floor", image: "/avacasa-new/flirst-floor.jpg" },
+    { title: "First Floor", image: "/amenities-new/first-floor-plan.jpg" },
   ];
 
   const closeFloorLightbox = () => {
@@ -1124,9 +1124,9 @@ export default function NewProjectPage() {
               className="img w-full lg:w-1/3  border-[1px] p-6 border-[#FFFFFF] flex justify-center relative cursor-pointer"
             >
               <img
-                src="/avacasa-new/first-floor-plan.jpg"
-                className="w-full h-full max-w-[641px] object-contain"
-                        alt="First Floor"
+                src="/amenities-new/first-floor-plan.jpg"
+                className="w-full h-full max-w-[641px] aspect-square object-contain"
+                alt="First Floor Plan"
               />
               {/* <button
                 className="text-[#0E291A] text-[20px] font-[400] w-[168px] h-[46px] bg-[#FFFFFF] absolute right-4 top-4"
