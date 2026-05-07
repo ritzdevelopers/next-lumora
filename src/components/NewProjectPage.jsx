@@ -1066,7 +1066,7 @@ export default function NewProjectPage() {
                   style={{ fontFamily: "PlaRegular" }}
                   className="font-[400]"
                 >
-                  2135 sq ft
+                  2832 sq ft
                 </span>
               </p>
             </div>
