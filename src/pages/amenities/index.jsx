@@ -167,7 +167,7 @@ const Amenities = () => {
           </div>
 
           {/* Masonry Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             {amenities.map((amenity, index) => (
               <div
                 key={index}
@@ -187,7 +187,7 @@ const Amenities = () => {
                 {/* Modern Overlay */}
                 <div className="absolute inset-0 bg-black/20 " />
                 <div className="absolute bottom-0 left-0 right-0 p-2 text-center">
-                  <h3 className="text-2xl font-normal text-white">
+                  <h3 className=" xl:text-1xl lg:text-xl md:text-md text-base font-normal text-white">
                     {amenity.title}
                   </h3>
                 </div>
