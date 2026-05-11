@@ -16,52 +16,52 @@ const Gallery = () => {
   const images = [
     // Ground Floor (first 4)
     {
-      src: "/galleryImages/ground-1000-1270.jpg",
-      modalSrc: "/galleryImages/ground-11920-900.jpg",
-      mobileModalSrc: "/galleryImages/ground1000-1060.jpg",
+      src: "/gallery-new/guset-suite.jpg",
+      modalSrc: "/gallery-new/guset-suite.jpg",
+      mobileModalSrc: "/gallery-new/guset-suite.jpg",
       title: "Guest Suite",
     },
     {
-      src: "/galleryImages/ground 2.jpg",
-      modalSrc: "/galleryImages/ground-3-1920-900.jpg",
-      mobileModalSrc: "/galleryImages/ground 2.jpg",
+      src: "/gallery-new/dining.jpg",
+      modalSrc: "/gallery-new/dining.jpg",
+      mobileModalSrc: "/gallery-new/dining.jpg",
       title: "Dining Pavilion",
     },
     {
-      src: "/galleryImages/ground 5.jpg",
-      modalSrc: "/galleryImages/ground-4-1920-900.jpg",
-      mobileModalSrc: "/galleryImages/ground 5.jpg",
+      src: "/gallery-new/bathroom.jpg",
+      modalSrc: "/gallery-new/bathroom.jpg",
+      mobileModalSrc: "/gallery-new/bathroom.jpg",
       title: "Designer Bathroom",
     },
     {
-      src: "/galleryImages/ground 4.jpg",
-      modalSrc: "/galleryImages/ground-2-1920-900 copy.jpg",
-      mobileModalSrc: "/galleryImages/ground 4.jpg",
+      src: "/gallery-new/living-room.jpg",
+      modalSrc: "/gallery-new/living-room.jpg",
+      mobileModalSrc: "/gallery-new/living-room.jpg",
       title: "Living Room",
     },
     // First Floor (next 4)
     {
-      src: "/galleryImages/first 1.jpg",
-      modalSrc: "/galleryImages/first 1920 by 900.jpg",
-      mobileModalSrc: "/galleryImages/first 1.jpg",
+      src: "/gallery-new/master-bedroom.jpg",
+      modalSrc: "/gallery-new/master-bedroom.jpg",
+      mobileModalSrc: "/gallery-new/master-bedroom.jpg",
       title: "Master Bedroom",
     },
     {
-      src: "/galleryImages/first 2.jpg",
-      modalSrc: "/galleryImages/first 1920 by 900 2.jpg",
-      mobileModalSrc: "/galleryImages/first 2.jpg",
+      src: "/gallery-new/dressing-area.jpg",
+      modalSrc: "/gallery-new/dressing-area.jpg",
+      mobileModalSrc: "/gallery-new/dressing-area.jpg",
       title: "Dressing Area",
     },
     {
-      src: "/galleryImages/first 3.jpg",
-      modalSrc: "/galleryImages/first 1920 by 900 3.jpg",
-      mobileModalSrc: "/galleryImages/first 3.jpg",
+      src: "/gallery-new/canopy-bedroom.jpg",
+      modalSrc: "/gallery-new/canopy-bedroom.jpg",
+      mobileModalSrc: "/gallery-new/canopy-bedroom.jpg",
       title: "Canopy Bedroom",
     },
     {
-      src: "/galleryImages/first 4.jpg",
-      modalSrc: "/galleryImages/first 1920 by 900 4.jpg",
-      mobileModalSrc: "/galleryImages/first 4.jpg",
+      src: "/gallery-new/luxury-bathroom.jpg",
+      modalSrc: "/gallery-new/luxury-bathroom.jpg",
+      mobileModalSrc: "/gallery-new/luxury-bathroom.jpg",
       title: "Luxury Bathroom",
     },
   ];
@@ -179,7 +179,7 @@ const Gallery = () => {
                         item.mobileModalSrc || item.modalSrc || item.src
                       )}
                       alt={item.title || `Gallery Image ${index + 1}`}
-                      className="max-w-full max-h-[75vh] object-contain"
+                      className="max-w-full h-auto max-h-[75vh] object-contain"
                     />
                   </picture>
                 </div>
