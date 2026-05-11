@@ -21,33 +21,33 @@ export default function App() {
   const slides = [
     {
       title: "Yoga & Meditation Room",
-      thumb: "/galleryImages/yoga452-561.jpg",
-      desktop: "/galleryImages/yoga1920-900.jpg",
-      mobile: "/galleryImages/yoga452-561.jpg",
+      thumb: "/amenities-new/yoga-newnew.jpg",
+      desktop: "/amenities-new/yoga-newnew.jpg",
+      mobile: "/amenities-new/yoga-newnew.jpg",
     },
     {
       title: "Trellis Garden",
-      thumb: "/galleryImages/garden-452-561.jpg",
-      desktop: "/galleryImages/garden1920-900.jpg",
-      mobile: "/galleryImages/garden-452-561.jpg",
+      thumb: "/amenities-new/trellis-garden-new.jpg",
+      desktop: "/amenities-new/trellis-garden-new.jpg",
+      mobile: "/amenities-new/trellis-garden-new.jpg",
     },
     {
       title: "Natural Lake",
-      thumb: "/galleryImages/lake-452-561.jpg",
-      desktop: "/galleryImages/lake1900-900.jpg",
-      mobile: "/galleryImages/lake-452-561.jpg",
+      thumb: "/amenities-new/lake-new.jpg",
+      desktop: "/amenities-new/lake-new.jpg",
+      mobile: "/amenities-new/lake-new.jpg",
     },
     {
       title: "Infinity Pool",
-      thumb: "/galleryImages/pool-452-561.jpg",
-      desktop: "/galleryImages/pool-1920-900.jpg",
-      mobile: "/galleryImages/pool-452-561.jpg",
+      thumb: "/amenities-new/Infinity-Pool-new.jpg",
+      desktop: "/amenities-new/Infinity-Pool-new.jpg",
+      mobile: "/amenities-new/Infinity-Pool-new.jpg",
     },
     {
       title: "Sky Lounge",
-      thumb: "/galleryImages/skylounge1920-900.jpg",
-      desktop: "/galleryImages/skylounge1920-900.jpg",
-      mobile: "/galleryImages/skylounge1920-900.jpg",
+      thumb: "/amenities-new/club-pool-newnew.jpg",
+      desktop: "/amenities-new/club-pool-newnew.jpg",
+      mobile: "/amenities-new/club-pool-newnew.jpg",
     },
   ];
 
@@ -208,9 +208,9 @@ export default function App() {
   );
 
   return (
-    <div className="w-full relative pb-24 md:pb-32">
+    <div className="w-full relative pb-24 md:pb-32 px-0 lg:px-[40px] xl:px-[0px]">
        <Swiper
-        spaceBetween={30}
+        spaceBetween={10}
         freeMode={true}
         loop={true}
         modules={[FreeMode, Navigation]}
@@ -218,35 +218,23 @@ export default function App() {
         breakpoints={{
           0:    { slidesPerView: 1 },
           768:  { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          1024: { slidesPerView: 2 },
         }}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
               onClick={() => openLightbox(index)}
-              className="sliderCard group relative mx-auto aspect-[452/561] w-[78%] max-h-[55vh] sm:w-full sm:max-h-[60vh] lg:max-h-[70vh] cursor-pointer overflow-hidden"
+              className="sliderCard group relative mx-auto aspect-[452/561] w-full max-h-[calc(55vh-210px)] sm:max-h-[calc(60vh-250px)] md:max-h-[calc(60vh-250px)] lg:max-h-[calc(70vh-230px)] cursor-pointer overflow-hidden"
             >
               <img
                 src={slide.thumb}
                 alt={slide.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-
-              <div
-                className="hvDiv absolute bottom-0 left-0 w-full flex justify-center items-end h-full pb-4
-                  translate-y-full group-hover:translate-y-0 transition-transform duration-500"
-                style={{
-                  backgroundImage: "url(/images/s4/slider/sliderOverlay.png)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                <p style={{ fontFamily: "PlaRegular" }} className="font-[400] text-[16px] sm:text-[20px] text-white text-center">
-                  {slide.title}
-                </p>
-              </div>
+              <p style={{ fontFamily: "PlaRegular" }} className="absolute bottom-4 left-0 w-full font-[400] text-[16px] sm:text-[20px] text-white text-center">
+                {slide.title}
+              </p>
             </div>
           </SwiperSlide>
         ))}
@@ -255,10 +243,10 @@ export default function App() {
 
 
       {/* Buttons */}
-      <div className="absolute bottom-4 md:bottom-8 z-[999] left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 flex gap-4">
+      <div className="absolute bottom-4 md:bottom-12 z-[999] left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 flex gap-4 px-0 lg:px-[40px] xl:px-[0px]">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
-          className="lft md:h-[80px] w-[50px] h-[50px] md:w-[80px]"
+          className="lft md:h-[50px] w-[50px] h-[50px] md:w-[50px]"
         >
           <svg
             viewBox="0 0 80 80"
@@ -277,7 +265,7 @@ export default function App() {
 
         <button
           onClick={() => swiperRef.current?.slideNext()}
-          className="rght md:h-[80px] w-[50px] h-[50px] md:w-[80px]"
+          className="rght md:h-[50px] w-[50px] h-[50px] md:w-[50px]"
         >
           <svg
             viewBox="0 0 80 80"

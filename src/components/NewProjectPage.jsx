@@ -722,9 +722,9 @@ export default function NewProjectPage() {
 
         {/* <!-- Main Slider Container  --> */}
         <div className="main w-full max-w-[1275px] px-4 sm:px-6 lg:px-0 flex flex-col gap-6 ">
-          <div className="top text-center md:text-left">
+          <div className="top relative z-[20] text-center md:text-left px-0 lg:px-[40px] xl:px-[0px]">
             <p
-              className="text-[#C89A6B] font-[400] text-[16px] sm:text-[20px]"
+              className="text-[#C89A6B] font-[400] text-[16px] sm:text-[20px] "
               style={{ fontFamily: "PlaRegular" }}
             >
               Our Project
@@ -740,7 +740,7 @@ export default function NewProjectPage() {
 
         {/* <!-- Absolute Position Div --> */}
         <div
-          className={`imgCrcle absolute hidden xl:block bottom-0 left-[-250px] ${styles.circularDesign}`}
+          className={`imgCrcle absolute z-0 hidden xl:block bottom-0 left-[-250px] ${styles.circularDesign}`}
         >
           <img
             src="../images/circl2.png"

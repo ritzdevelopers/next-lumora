@@ -19,87 +19,114 @@ const Amenities = () => {
     {
       title: "Walks & Trails",
       image:
-        "/amenities-new/villa-backyard.jpg",
+        "/amenities-new/central-landscape-new.jpg",
       popupImage:
-        "/amenities-new/villa-backyard-big.jpg",
-    },
-    {
-      title: "Infinity Pool",
-      image:
-        "/amenities-new/club-pool.jpg",
-      popupImage:
-        "/amenities-new/club-pool-big.jpg",
-    },
-    {
-      title: "Club Terrace",
-      image:
-        "/amenities-new/club-terrace.jpg",
-      popupImage:
-        "/amenities-new/club-terrace-big.jpg",
-    },
-    {
-      title: "Lawn",
-      image:
-        "/amenities-new/club-with-lawn.jpg",
-      popupImage:
-        "/amenities-new/club-with-lawn-big.jpg",
-    },
-    {
-      title: "Lake Edge",
-      image:
-        "/amenities-new/lake.jpg",
-      popupImage:
-        "/amenities-new/lake-big.jpg",
-    },
-    {
-      title: "F&B Area",
-      image:
-        "/amenities-new/outdoor-cafe.jpg",
-      popupImage:
-        "/amenities-new/outdoor-cafe-big.jpg",
-    },
-    {
-      title: "Sports Arena",
-      image:
-        "/amenities-new/sports-Arena.jpg",
-      popupImage:
-        "/amenities-new/sports-arena-big.jpg",
-    },
-    {
-      title: "Trellis Garden",
-      image:
-        "/amenities-new/trellis-garden.jpg",
-      popupImage:
-        "/amenities-new/trellis-garden-big.jpg",
-    },
-    {
-      title: "Yoga Pavilion",
-      image:
-        "/amenities-new/yoga-new.jpg",
-      popupImage:
-        "/amenities-new/yoga-big.jpg",
-    },
-    {
-      title: "Gymnasium",
-      image:
-        "/amenities-new/gym-new.jpg",
-      popupImage:
-        "/amenities-new/gym-new-big.jpg",
-    },
-    {
-      title: "Boutique Library",
-      image:
-        "/amenities-new/home.jpg",
-      popupImage:
-        "/amenities-new/home-big.jpg",
+        "/amenities-new/central-landscape-new.jpg",
     },
     {
       title: "Signature Restaurant ",
       image:
-        "/amenities-new/Signature-Restaurant.jpg",
+        "/amenities-new/signature-restaurant-new.jpg",
       popupImage:
-        "/amenities-new/Signature-Restaurant-big.jpg.jpg",
+        "/amenities-new/signature-restaurant-new.jpg",
     },
+    {
+      title: "Boutique Library",
+      image:
+        "/amenities-new/library-new.jpg",
+      popupImage:
+        "/amenities-new/library-new.jpg",
+    },
+    {
+      title: "Lawn",
+      image:
+        "/amenities-new/club-with-lawn-new.jpg",
+      popupImage:
+        "/amenities-new/club-with-lawn-new.jpg",
+    },
+    {
+      title: "Lake Edge",
+      image:
+        "/amenities-new/lake-new.jpg",
+      popupImage:
+        "/amenities-new/lake-new.jpg",
+    },
+    {
+      title: "F&B Area",
+      image:
+        "/amenities-new/F&B-Area-new.jpg",
+      popupImage:
+        "/amenities-new/F&B-Area-new.jpg",
+    },
+    {
+      title: "Sports Arena",
+      image:
+        "/amenities-new/sports-arena-new.jpg",
+      popupImage:
+        "/amenities-new/sports-arena-new.jpg",
+    },
+    {
+      title: "Trellis Garden",
+      image:
+        "/amenities-new/trellis-garden-new.jpg",
+      popupImage:
+        "/amenities-new/trellis-garden-new.jpg",
+    },
+    {
+      title: "Yoga Pavilion",
+      image:
+        "/amenities-new/yoga-newnew.jpg",
+      popupImage:
+        "/amenities-new/yoga-newnew.jpg",
+    },
+  
+    {
+      title: "Connection Bridge",
+      image:
+        "/amenities-new/connection-bridge-new.jpg",
+      popupImage:
+        "/amenities-new/connection-bridge-new.jpg",
+    },
+    
+    {
+      title: "Club Terrace",
+      image:
+        "/amenities-new/club-pool-newnew.jpg",
+      popupImage:
+        "/amenities-new/club-pool-newnew.jpg",
+    },
+   
+   
+    {
+      title: "Infinity Pool",
+      image:
+        "/amenities-new/Infinity-Pool-new.jpg",
+      popupImage:
+        "/amenities-new/Infinity-Pool-new.jpg",
+    },
+    {
+      title: "Gymnasium",
+      image:
+        "/amenities-new/Gymnasium-new.jpg",
+      popupImage:
+        "/amenities-new/Gymnasium-new.jpg",
+    },
+  
+    {
+      title: "Villa Backyard",
+      image:
+        "/amenities-new/villa-backyard-new.jpg",
+      popupImage:
+        "/amenities-new/villa-backyard-new.jpg",
+    },
+    {
+      title: "Signature Restaurant",
+      image:
+        "/amenities-new/bar.jpg",
+      popupImage:
+        "/amenities-new/bar.jpg",
+    },
+   
   ];
 
   useEffect(() => {
@@ -147,7 +174,7 @@ const Amenities = () => {
           </div>
 
           {/* Masonry Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             {amenities.map((amenity, index) => (
               <div
                 key={index}
@@ -166,8 +193,8 @@ const Amenities = () => {
                 />
                 {/* Modern Overlay */}
                 <div className="absolute inset-0 bg-black/20 " />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
-                  <h3 className="text-2xl font-normal text-white">
+                <div className="absolute bottom-0 left-0 right-0 p-2 text-center">
+                  <h3 className=" xl:text-1xl lg:text-xl md:text-md text-base font-normal text-white">
                     {amenity.title}
                   </h3>
                 </div>
@@ -252,7 +279,7 @@ const Amenities = () => {
               </button>
 
               <div
-                className="relative w-full max-w-6xl h-[80vh] flex items-center justify-center"
+                className="relative w-full h-[80vh] flex items-center justify-center"
                 onClick={(event) => event.stopPropagation()}
               >
                 <Swiper
@@ -273,11 +300,11 @@ const Amenities = () => {
                 >
                   {amenities.map((amenity, index) => (
                     <SwiperSlide key={index}>
-                      <div className="w-full h-full flex flex-col items-center justify-center px-4 md:px-20 py-16">
+                      <div className="w-full h-full flex flex-col items-center justify-center px-0 py-16">
                         <img
                           src={amenity.popupImage || amenity.image}
                           alt={amenity.title}
-                          className="max-w-full max-h-[80vh] object-contain"
+                          className="w-full xl:w-[calc(100%-160px)] h-auto max-h-[80vh] object-contain"
                         />
                         <p
                           style={{ fontFamily: "PlaRegular" }}
