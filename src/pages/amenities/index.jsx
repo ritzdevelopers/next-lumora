@@ -19,9 +19,9 @@ const Amenities = () => {
     {
       title: "Walks & Trails",
       image:
-        "/amenities-new/villa-backyard.jpg",
+        "/amenities-new/central-landscape-new.jpg",
       popupImage:
-        "/amenities-new/villa-backyard-big.jpg",
+        "/amenities-new/central-landscape-new.jpg",
     },
     {
       title: "Signature Restaurant ",
