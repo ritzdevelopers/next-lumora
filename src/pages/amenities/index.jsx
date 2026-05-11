@@ -79,12 +79,13 @@ const Amenities = () => {
       popupImage:
         "/amenities-new/yoga-newnew.jpg",
     },
+  
     {
-      title: "Gymnasium",
+      title: "Connection Bridge",
       image:
-        "/amenities-new/Gymnasium-new.jpg",
+        "/amenities-new/connection-bridge-new.jpg",
       popupImage:
-        "/amenities-new/Gymnasium-new.jpg",
+        "/amenities-new/connection-bridge-new.jpg",
     },
     
     {
@@ -95,6 +96,7 @@ const Amenities = () => {
         "/amenities-new/club-terrace-new.jpg",
     },
    
+   
     {
       title: "Infinity Pool",
       image:
@@ -102,6 +104,22 @@ const Amenities = () => {
       popupImage:
         "/amenities-new/Infinity-Pool-new.jpg",
     },
+    {
+      title: "Gymnasium",
+      image:
+        "/amenities-new/Gymnasium-new.jpg",
+      popupImage:
+        "/amenities-new/Gymnasium-new.jpg",
+    },
+  
+    {
+      title: "Villa Backyard",
+      image:
+        "/amenities-new/villa-backyard-new.jpg",
+      popupImage:
+        "/amenities-new/villa-backyard-new.jpg",
+    },
+   
   ];
 
   useEffect(() => {
