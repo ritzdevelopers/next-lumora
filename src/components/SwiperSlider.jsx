@@ -45,9 +45,9 @@ export default function App() {
     },
     {
       title: "Sky Lounge",
-      thumb: "/amenities-new/club-terrace-new.jpg",
-      desktop: "/amenities-new/club-terrace-new.jpg",
-      mobile: "/amenities-new/club-terrace-new.jpg",
+      thumb: "/amenities-new/club-pool-newnew.jpg",
+      desktop: "/amenities-new/club-pool-newnew.jpg",
+      mobile: "/amenities-new/club-pool-newnew.jpg",
     },
   ];
 

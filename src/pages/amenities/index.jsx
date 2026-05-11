@@ -91,9 +91,9 @@ const Amenities = () => {
     {
       title: "Club Terrace",
       image:
-        "/amenities-new/club-terrace-new.jpg",
+        "/amenities-new/club-pool-newnew.jpg",
       popupImage:
-        "/amenities-new/club-terrace-new.jpg",
+        "/amenities-new/club-pool-newnew.jpg",
     },
    
    
@@ -112,6 +112,13 @@ const Amenities = () => {
         "/amenities-new/Gymnasium-new.jpg",
     },
   
+    {
+      title: "Villa Backyard",
+      image:
+        "/amenities-new/villa-backyard-new.jpg",
+      popupImage:
+        "/amenities-new/villa-backyard-new.jpg",
+    },
     {
       title: "Villa Backyard",
       image:
