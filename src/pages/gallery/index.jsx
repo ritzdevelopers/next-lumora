@@ -179,7 +179,7 @@ const Gallery = () => {
                         item.mobileModalSrc || item.modalSrc || item.src
                       )}
                       alt={item.title || `Gallery Image ${index + 1}`}
-                      className="max-w-full h-auto max-h-[75vh] object-contain"
+                      className="max-w-full h-auto max-h-[calc(75vh+60px)] object-contain -translate-y-0"
                     />
                   </picture>
                 </div>
@@ -250,7 +250,7 @@ const Gallery = () => {
           </div>
 
           {/* Ground Floor Masonry Grid Gallery */}
-          <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+          <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
             {images.slice(0, 4).map((item, index) => (
               <button
                 type="button"
@@ -283,7 +283,7 @@ const Gallery = () => {
           </div>
 
           {/* First Floor Masonry Grid Gallery */}
-          <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+          <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
             {images.slice(4, 8).map((item, index) => {
               const absoluteIndex = index + 4;
               return (
