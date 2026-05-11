@@ -186,7 +186,7 @@ const Amenities = () => {
                 />
                 {/* Modern Overlay */}
                 <div className="absolute inset-0 bg-black/20 " />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
+                <div className="absolute bottom-0 left-0 right-0 p-2 text-center">
                   <h3 className="text-2xl font-normal text-white">
                     {amenity.title}
                   </h3>
