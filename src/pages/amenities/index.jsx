@@ -120,11 +120,11 @@ const Amenities = () => {
         "/amenities-new/villa-backyard-new.jpg",
     },
     {
-      title: "Villa Backyard",
+      title: "Signature Restaurant",
       image:
-        "/amenities-new/villa-backyard-new.jpg",
+        "/amenities-new/bar.jpg",
       popupImage:
-        "/amenities-new/villa-backyard-new.jpg",
+        "/amenities-new/bar.jpg",
     },
    
   ];
