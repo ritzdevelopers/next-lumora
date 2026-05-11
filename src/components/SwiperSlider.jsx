@@ -225,7 +225,7 @@ export default function App() {
           <SwiperSlide key={index}>
             <div
               onClick={() => openLightbox(index)}
-              className="sliderCard group relative mx-auto aspect-[452/561] w-full max-h-[calc(55vh-210px)] sm:max-h-[calc(60vh-250px)] md:max-h-[calc(60vh-250px)] lg:max-h-[calc(70vh-250px)] cursor-pointer overflow-hidden"
+              className="sliderCard group relative mx-auto aspect-[452/561] w-full max-h-[calc(55vh-210px)] sm:max-h-[calc(60vh-250px)] md:max-h-[calc(60vh-250px)] lg:max-h-[calc(70vh-230px)] cursor-pointer overflow-hidden"
             >
               <img
                 src={slide.thumb}
