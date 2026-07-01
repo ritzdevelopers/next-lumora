@@ -4,11 +4,33 @@ import Footer from "@/sections/Footer";
 import Head from "next/head";
 import Image from "next/image";
 import { BrochureFormContext } from "@/context/BrochureFormContext";
-import { useContext } from "react";
+import { EnquiryFormContext } from "@/context/EnquiryFormContext";
+import { useContext, useEffect } from "react";
 import NewProjectPage from "@/components/NewProjectPage";
+
+const AVACASA_ENQUIRY_AUTO_KEY = "lumora_avacasa_enquiry_auto_shown";
 
 const ProductPage = () => {
   const { openBrochurePopup } = useContext(BrochureFormContext);
+  const { openPopup } = useContext(EnquiryFormContext);
+
+  useEffect(() => {
+    let alreadyShown = false;
+    try {
+      alreadyShown = !!sessionStorage.getItem(AVACASA_ENQUIRY_AUTO_KEY);
+    } catch (e) {}
+
+    if (alreadyShown) return;
+
+    const timer = setTimeout(() => {
+      openPopup();
+      try {
+        sessionStorage.setItem(AVACASA_ENQUIRY_AUTO_KEY, "1");
+      } catch (e) {}
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [openPopup]);
   const bannerImages = [
     "/product1.jpg",
     "/product2.jpg",
