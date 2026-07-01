@@ -185,7 +185,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("Time", formattedTime);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbzMz0weX0qfLZUDRQhfm98B3yIzv6DToRQrMPmvydM27HwPzakbsrX67ZqKJY1NYXOPDw/exec",
+        "https://script.google.com/macros/s/AKfycbyJ8aPPjuLy5gf-SP6CQaQbhCGsWio_bocnviGWDJYS1bFOjpUonnRbhzMjGDOLuzx4zA/exec",
         {
           method: "POST",
           mode: "no-cors",
