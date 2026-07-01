@@ -50,9 +50,9 @@ const Header = ({ lgScreen, bgHeader }) => {
   return (
     <header
       ref={headerRef}
-      className={`z-[40] w-full ${bgHeader ?? ""} right-0 ${
+      className={`z-40 w-full ${bgHeader ?? ""} right-0 ${
         isFixed
-          ? "fixed top-0 z-[9999999] bg-greenTheme lg:full animate-slideDown"
+          ? "fixed top-0 z-50 bg-greenTheme lg:full animate-slideDown"
           : `absolute ${lgScreen} bg-gradient-to-b from-[#0a2014e0] to-transparent  lg:w-[73.5%]`
       }`}
     >

@@ -1,31 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { sendLeadEmailNotification } from "@/lib/notifyLead";
+import CustomDropdown from "@/components/CustomDropdown";
+
+const INVESTMENT_BUDGET_OPTIONS = [
+  "₹3.75–4.5 Cr",
+  "₹4.5–6 Cr",
+  "Above ₹6 Cr",
+];
+
+const BUYING_PURPOSE_OPTIONS = [
+  "Investment",
+  "End Use",
+  "Holiday Home",
+  "Second Home",
+];
+
+const PURCHASE_TIMELINE_OPTIONS = [
+  "Within 30 Days",
+  "Within 3 Months",
+  "Within 6 Months",
+  "Just Exploring",
+];
+
+const emptyFormData = {
+  Name: "",
+  Email: "",
+  Phone: "",
+  InvestmentBudget: "",
+  BuyingPurpose: "",
+  PurchaseTimeline: "",
+  CurrentCity: "",
+  Message: "",
+};
+
+const fieldClass = (hasError) =>
+  `mt-1 block w-full px-3 py-2.5 sm:py-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-mainText ${
+    hasError ? "border-red-500" : "border-gray-300"
+  }`;
 
 const EnquiryFormPopup = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Phone: "",
-    Message: "",
-  });
+  const [formData, setFormData] = useState(emptyFormData);
 
   // https://docs.google.com/spreadsheets/d/1Z68hFktG2aK17Rs4O1M2rr5fg3BMeovo5chc8atQI3I/edit?gid=0#gid=0
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
 
   const handleClose = () => {
-    setFormData({
-      Name: "",
-      Email: "",
-      Phone: "",
-      Message: "",
-    });
+    setFormData(emptyFormData);
     setErrors({});
     setSubmitStatus(null);
     setErrorMessage("");
     setIsLoading(false);
+    setOpenDropdown(null);
     onClose();
   };
 
@@ -44,6 +90,26 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
         [name]: value,
       }));
     }
+
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+
+    if (submitStatus) {
+      setSubmitStatus(null);
+      setErrorMessage("");
+    }
+  };
+
+  const handleSelectChange = (name, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    setOpenDropdown(null);
 
     if (errors[name]) {
       setErrors((prev) => ({
@@ -110,6 +176,10 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("Name", formData.Name);
       params.append("Email", formData.Email);
       params.append("Phone", formData.Phone);
+      params.append("InvestmentBudget", formData.InvestmentBudget);
+      params.append("BuyingPurpose", formData.BuyingPurpose);
+      params.append("PurchaseTimeline", formData.PurchaseTimeline);
+      params.append("CurrentCity", formData.CurrentCity);
       params.append("Message", formData.Message);
       params.append("Date", formattedDate);
       params.append("Time", formattedTime);
@@ -128,6 +198,10 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
         Name: formData.Name,
         Email: formData.Email,
         Phone: formData.Phone,
+        InvestmentBudget: formData.InvestmentBudget,
+        BuyingPurpose: formData.BuyingPurpose,
+        PurchaseTimeline: formData.PurchaseTimeline,
+        CurrentCity: formData.CurrentCity,
         Message: formData.Message,
         Date: formattedDate,
         Time: formattedTime,
@@ -137,12 +211,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       setSubmitStatus("success");
 
       // Reset form
-      setFormData({
-        Name: "",
-        Email: "",
-        Phone: "",
-        Message: "",
-      });
+      setFormData(emptyFormData);
       setErrors({});
       setTimeout(() => {
         handleClose();
@@ -150,12 +219,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
     } catch (error) {
       setSubmitStatus("error");
       console.error("Form submission error:", error);
-      setFormData({
-        Name: "",
-        Email: "",
-        Phone: "",
-        Message: "",
-      });
+      setFormData(emptyFormData);
       if (error.code === "ECONNABORTED") {
         setErrorMessage("Request timed out. Please try again.");
       } else if (error.response) {
@@ -175,11 +239,13 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
     }
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 z-50  bg-black bg-opacity-50 transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[100] bg-black bg-opacity-50 transition-opacity duration-300 ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={handleClose}
@@ -187,17 +253,14 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
 
       {/* Popup Container */}
       <div
-        style={{
-          zIndex: 9999,
-        }}
-        className={`fixed inset-0 z-999 flex items-center justify-center transition-all duration-300 ${
+        className={`fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-6 transition-all duration-300 ${
           isOpen
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
         <div
-          className="bg-white rounded-lg shadow-lg w-full max-w-md mx-4 p-6 relative"
+          className="bg-white rounded-lg shadow-lg w-full max-w-xl sm:max-w-2xl lg:max-w-3xl mx-4 sm:mx-6 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -215,7 +278,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
           </h2>
 
           {/* Form Fields */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Name
@@ -226,9 +289,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
                 required
                 value={formData.Name}
                 onChange={handleInputChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-mainText ${
-                  errors.Name ? "border-red-500" : "border-gray-300"
-                }`}
+                className={fieldClass(errors.Name)}
                 placeholder="Enter your name"
               />
               {errors.Name && (
@@ -247,9 +308,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Please enter a valid email address (e.g. example@gmail.com)"
                 onChange={handleInputChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-mainText ${
-                  errors.Email ? "border-red-500" : "border-gray-300"
-                }`}
+                className={fieldClass(errors.Email)}
                 placeholder="Enter your email"
               />
               {errors.Email && (
@@ -268,9 +327,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
                 pattern="[0-9]{10}"
                 title="Please enter a 10-digit phone number"
                 onChange={handleInputChange}
-                className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-mainText ${
-                  errors.Phone ? "border-red-500" : "border-gray-300"
-                }`}
+                className={fieldClass(errors.Phone)}
                 placeholder="Enter your phone number"
               />
               {errors.Phone && (
@@ -278,6 +335,75 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
               )}
             </div>
             <div>
+              <CustomDropdown
+                label="Investment Budget *"
+                name="InvestmentBudget"
+                value={formData.InvestmentBudget}
+                options={INVESTMENT_BUDGET_OPTIONS}
+                placeholder="Select investment budget"
+                required
+                error={errors.InvestmentBudget}
+                isOpen={openDropdown === "InvestmentBudget"}
+                onToggle={(open) =>
+                  setOpenDropdown(open ? "InvestmentBudget" : null)
+                }
+                onSelect={(value) =>
+                  handleSelectChange("InvestmentBudget", value)
+                }
+              />
+            </div>
+            <div>
+              <CustomDropdown
+                label="Buying Purpose *"
+                name="BuyingPurpose"
+                value={formData.BuyingPurpose}
+                options={BUYING_PURPOSE_OPTIONS}
+                placeholder="Select buying purpose"
+                required
+                error={errors.BuyingPurpose}
+                isOpen={openDropdown === "BuyingPurpose"}
+                onToggle={(open) =>
+                  setOpenDropdown(open ? "BuyingPurpose" : null)
+                }
+                onSelect={(value) => handleSelectChange("BuyingPurpose", value)}
+              />
+            </div>
+            <div>
+              <CustomDropdown
+                label="Purchase Timeline *"
+                name="PurchaseTimeline"
+                value={formData.PurchaseTimeline}
+                options={PURCHASE_TIMELINE_OPTIONS}
+                placeholder="Select purchase timeline"
+                required
+                error={errors.PurchaseTimeline}
+                isOpen={openDropdown === "PurchaseTimeline"}
+                onToggle={(open) =>
+                  setOpenDropdown(open ? "PurchaseTimeline" : null)
+                }
+                onSelect={(value) =>
+                  handleSelectChange("PurchaseTimeline", value)
+                }
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Current City *
+              </label>
+              <input
+                type="text"
+                name="CurrentCity"
+                required
+                value={formData.CurrentCity}
+                onChange={handleInputChange}
+                className={fieldClass(errors.CurrentCity)}
+                placeholder="Enter your current city"
+              />
+              {errors.CurrentCity && (
+                <p className="mt-1 text-sm text-red-600">{errors.CurrentCity}</p>
+              )}
+            </div>
+            <div className="md:col-span-2">
               <label className="block text-sm font-medium text-gray-700">
                 Message
               </label>
@@ -287,9 +413,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
                 name="Message"
                 value={formData.Message}
                 onChange={handleInputChange}
-                className={`mt-1 block w-full px-3 py-2 border resize-none rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-mainText ${
-                  errors.Message ? "border-red-500" : "border-gray-300"
-                }`}
+                className={`${fieldClass(errors.Message)} resize-none`}
                 placeholder="Enter your message"
               ></textarea>
               {errors.Message && (
@@ -299,7 +423,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
 
             {/* Status Messages */}
             {submitStatus === "success" && (
-              <div className="p-3 bg-green-100 border border-green-400 text-green-700 rounded-md">
+              <div className="md:col-span-2 p-3 bg-green-100 border border-green-400 text-green-700 rounded-md">
                 <div className="flex items-center">
                   <svg
                     className="w-5 h-5 mr-2"
@@ -317,7 +441,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
               </div>
             )}
             {submitStatus === "error" && (
-              <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded-md">
+              <div className="md:col-span-2 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md">
                 <div className="flex items-start">
                   <svg
                     className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0"
@@ -341,7 +465,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-2 px-4 rounded-md transition-all duration-300 flex items-center justify-center ${
+              className={`md:col-span-2 w-full py-3 px-4 rounded-md transition-all duration-300 flex items-center justify-center ${
                 isLoading
                   ? "bg-gray-400 text-gray-600 cursor-not-allowed"
                   : "bg-greenTheme text-white hover:bg-mainText hover:text-black"
@@ -374,7 +498,8 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
           </form>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 };
 
