@@ -30,7 +30,7 @@ const emptyFormData = {
   InvestmentBudget: "",
   BuyingPurpose: "",
   PurchaseTimeline: "",
-  CurrentCity: "",
+  City: "",
   Message: "",
 };
 
@@ -179,13 +179,13 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("InvestmentBudget", formData.InvestmentBudget);
       params.append("BuyingPurpose", formData.BuyingPurpose);
       params.append("PurchaseTimeline", formData.PurchaseTimeline);
-      params.append("CurrentCity", formData.CurrentCity);
+      params.append("City", formData.City);
       params.append("Message", formData.Message);
       params.append("Date", formattedDate);
       params.append("Time", formattedTime);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyJ8aPPjuLy5gf-SP6CQaQbhCGsWio_bocnviGWDJYS1bFOjpUonnRbhzMjGDOLuzx4zA/exec",
+        "https://script.google.com/macros/s/AKfycbw-KSPyBd05jD7EOrLWWPGBXKu5EGRmmqiEqL9uNZiTvHyxwbClUT1fy6d4iWS59aISNg/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -201,7 +201,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
         InvestmentBudget: formData.InvestmentBudget,
         BuyingPurpose: formData.BuyingPurpose,
         PurchaseTimeline: formData.PurchaseTimeline,
-        CurrentCity: formData.CurrentCity,
+        City: formData.City,
         Message: formData.Message,
         Date: formattedDate,
         Time: formattedTime,
@@ -388,19 +388,19 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Current City *
+                City *
               </label>
               <input
                 type="text"
-                name="CurrentCity"
+                name="City"
                 required
-                value={formData.CurrentCity}
+                value={formData.City}
                 onChange={handleInputChange}
-                className={fieldClass(errors.CurrentCity)}
-                placeholder="Enter your current city"
+                className={fieldClass(errors.City)}
+                placeholder="Enter your city"
               />
-              {errors.CurrentCity && (
-                <p className="mt-1 text-sm text-red-600">{errors.CurrentCity}</p>
+              {errors.City && (
+                <p className="mt-1 text-sm text-red-600">{errors.City}</p>
               )}
             </div>
             <div className="md:col-span-2">
