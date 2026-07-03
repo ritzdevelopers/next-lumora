@@ -26,7 +26,7 @@ export default function Document() {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '2198117244373951');
+              fbq('init', '1018562430871174');
               fbq('track', 'PageView');
             `,
           }}
@@ -36,7 +36,7 @@ export default function Document() {
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=2198117244373951&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id=1018562430871174&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>
