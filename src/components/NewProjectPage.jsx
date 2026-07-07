@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import gsap from "gsap";
 import SwiperSlider from "./SwiperSlider";
+import AvacasaBannerSlider from "./AvacasaBannerSlider";
 import { EnquiryFormContext } from "@/context/EnquiryFormContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard } from "swiper/modules";
@@ -35,11 +36,11 @@ export default function NewProjectPage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      // Background subtle zoom-in
+      // Background fade-in
       tl.fromTo(
         sectionRef.current,
-        { scale: 1.1, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.8, ease: "power3.out" }
+        { opacity: 0 },
+        { opacity: 1, duration: 1.2, ease: "power3.out" }
       );
 
       // Content fade-in with slide
@@ -83,26 +84,10 @@ export default function NewProjectPage() {
     <main className="bg-[#FFFFFF] overflow-x-hidden pb-20 md:pb-0">
       <section
         ref={sectionRef}
-        className="s1 relative w-full overflow-hidden pt-24 max-lg:pt-24 lg:pt-6"
+        className="s1 relative w-full pt-[64px]"
       >
         {/* lg (1024px+): lock to desktop artboard 1920×920 so the wide banner scales evenly */}
-        <div className="relative w-full lg:aspect-[1920/920] lg:overflow-hidden">
-          <picture className="block w-full lg:absolute lg:inset-0 lg:block lg:h-full lg:w-full">
-            <source
-              media="(min-width: 1024px)"
-              srcSet="/new/desktop%20currected.jpg"
-            />
-            <source
-              media="(min-width: 768px)"
-              srcSet="/new/tablate%20768by768.jpg"
-            />
-            <img
-              src="/new/mobile_latest.jpg"
-              alt="AVACASA banner"
-              className="block h-auto w-full max-lg:object-contain max-lg:object-top lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover lg:object-center"
-            />
-          </picture>
-        </div>
+        <AvacasaBannerSlider />
         
         {/* <div
           ref={contentRef}

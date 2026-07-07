@@ -31,29 +31,6 @@ const ProductPage = () => {
 
     return () => clearTimeout(timer);
   }, [openPopup]);
-  const bannerImages = [
-    "/product1.jpg",
-    "/product2.jpg",
-    "/product3.jpg",
-    "/product8.jpg",
-    "/product5.jpg",
-    "/product10.jpg",
-    "/product21.jpg",
-    "/product7.jpg",
-    "/product4.jpg",
-    "/product9.jpg",
-    "/product6.jpg",
-    "/product11.jpg",
-    "/product12.jpg",
-    "/product13.jpg",
-    "/product15.jpg",
-    "/product14.jpg",
-    "/product16.jpg",
-    "/product17.jpg",
-    "/product19.jpg",
-    "/product18.jpg",
-    "/product20.jpg",
-  ];
 
   return (
     <>
