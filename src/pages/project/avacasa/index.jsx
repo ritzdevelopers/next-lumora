@@ -31,35 +31,33 @@ const ProductPage = () => {
 
     return () => clearTimeout(timer);
   }, [openPopup]);
-  const bannerImages = [
-    "/product1.jpg",
-    "/product2.jpg",
-    "/product3.jpg",
-    "/product8.jpg",
-    "/product5.jpg",
-    "/product10.jpg",
-    "/product21.jpg",
-    "/product7.jpg",
-    "/product4.jpg",
-    "/product9.jpg",
-    "/product6.jpg",
-    "/product11.jpg",
-    "/product12.jpg",
-    "/product13.jpg",
-    "/product15.jpg",
-    "/product14.jpg",
-    "/product16.jpg",
-    "/product17.jpg",
-    "/product19.jpg",
-    "/product18.jpg",
-    "/product20.jpg",
-  ];
 
   return (
     <>
       <Head>
         <title>Lumora - Project Avacasa</title>
         <link rel="icon" href="/favicon.png" />
+        <link
+          rel="preload"
+          as="image"
+          href="/avacasa-banners/Web-Banners_green.webp"
+          media="(max-width: 767px)"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/avacasa-banners/Web-Banners_green-2.webp"
+          media="(min-width: 768px) and (max-width: 1023px)"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/avacasa-banners/Web-Banners_green-4.webp"
+          media="(min-width: 1024px)"
+          type="image/webp"
+        />
       </Head>
 
       <Header lgScreen="lg:w-full" bgHeader="bg-greenTheme" />
