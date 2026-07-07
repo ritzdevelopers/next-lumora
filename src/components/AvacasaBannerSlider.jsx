@@ -5,21 +5,21 @@ import "swiper/css/effect-fade";
 
 const bannerSlides = [
   {
-    mobile: "/458x810/458%20x%20810-10.jpg",
-    tablet: "/1000x1230/1000%20x%201230-07.jpg",
-    desktop: "/1920x920/1920%20x%20920-01.jpg",
+    mobile: "/avacasa-banners/Web-Banners_green.gif",
+    tablet: "/avacasa-banners/Web-Banners_green-2.gif",
+    desktop: "/avacasa-banners/Web-Banners_green-4.gif",
     alt: "AVACASA luxury villas - slide 1",
   },
   {
-    mobile: "/458x810/458%20x%20810-11.jpg",
-    tablet: "/1000x1230/1000%20x%201230-08.jpg",
-    desktop: "/1920x920/1920%20x%20920-02.jpg",
+    mobile: "/avacasa-banners/Web-Banners_-light.gif",
+    tablet: "/avacasa-banners/Web-Banners_light-2.gif",
+    desktop: "/avacasa-banners/Web-Banners_light-4.gif",
     alt: "AVACASA luxury villas - slide 2",
   },
   {
-    mobile: "/458x810/458%20x%20810-12.jpg",
-    tablet: "/1000x1230/1000%20x%201230-09.jpg",
-    desktop: "/1920x920/1920%20x%20920-03.jpg",
+    mobile: "/avacasa-banners/Web-Banners_4-july.gif",
+    tablet: "/avacasa-banners/Web-Banners_black.gif",
+    desktop: "/avacasa-banners/Web-Banners_3.gif",
     alt: "AVACASA luxury villas - slide 3",
   },
 ];
