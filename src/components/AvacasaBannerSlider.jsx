@@ -5,21 +5,21 @@ import "swiper/css/effect-fade";
 
 const bannerSlides = [
   {
-    mobile: "/avacasa-banners/Web-Banners_green.gif",
-    tablet: "/avacasa-banners/Web-Banners_green-2.gif",
-    desktop: "/avacasa-banners/Web-Banners_green-4.gif",
+    mobile: "/avacasa-banners/Web-Banners_green.webp",
+    tablet: "/avacasa-banners/Web-Banners_green-2.webp",
+    desktop: "/avacasa-banners/Web-Banners_green-4.webp",
     alt: "AVACASA luxury villas - slide 1",
   },
   {
-    mobile: "/avacasa-banners/Web-Banners_-light.gif",
-    tablet: "/avacasa-banners/Web-Banners_light-2.gif",
-    desktop: "/avacasa-banners/Web-Banners_light-4.gif",
+    mobile: "/avacasa-banners/Web-Banners_-light.webp",
+    tablet: "/avacasa-banners/Web-Banners_light-2.webp",
+    desktop: "/avacasa-banners/Web-Banners_light-4.webp",
     alt: "AVACASA luxury villas - slide 2",
   },
   {
-    mobile: "/avacasa-banners/Web-Banners_4-july.gif",
-    tablet: "/avacasa-banners/Web-Banners_black.gif",
-    desktop: "/avacasa-banners/Web-Banners_3.gif",
+    mobile: "/avacasa-banners/Web-Banners_4-july.webp",
+    tablet: "/avacasa-banners/Web-Banners_black.webp",
+    desktop: "/avacasa-banners/Web-Banners_3.webp",
     alt: "AVACASA luxury villas - slide 3",
   },
 ];
@@ -40,14 +40,19 @@ const AvacasaBannerSlider = () => {
         speed={900}
         className="h-full w-full [&_.swiper-wrapper]:h-full [&_.swiper-slide]:h-full"
       >
-        {bannerSlides.map((slide) => (
+        {bannerSlides.map((slide, index) => (
           <SwiperSlide key={slide.desktop} className="h-full w-full">
             <picture className="flex h-full w-full items-start justify-center">
-              <source media="(min-width: 1024px)" srcSet={slide.desktop} />
-              <source media="(min-width: 768px)" srcSet={slide.tablet} />
+              <source media="(min-width: 1024px)" srcSet={slide.desktop} type="image/webp" />
+              <source media="(min-width: 768px)" srcSet={slide.tablet} type="image/webp" />
               <img
                 src={slide.mobile}
                 alt={slide.alt}
+                width={index === 0 ? 458 : undefined}
+                height={index === 0 ? 810 : undefined}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "low"}
+                decoding="async"
                 className="block w-full h-full object-contain object-top"
               />
             </picture>
