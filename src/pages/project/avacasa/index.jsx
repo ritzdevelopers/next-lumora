@@ -4,40 +4,60 @@ import Footer from "@/sections/Footer";
 import Head from "next/head";
 import Image from "next/image";
 import { BrochureFormContext } from "@/context/BrochureFormContext";
-import { useContext } from "react";
+import { EnquiryFormContext } from "@/context/EnquiryFormContext";
+import { useContext, useEffect } from "react";
 import NewProjectPage from "@/components/NewProjectPage";
+
+const AVACASA_ENQUIRY_AUTO_KEY = "lumora_avacasa_enquiry_auto_shown";
 
 const ProductPage = () => {
   const { openBrochurePopup } = useContext(BrochureFormContext);
-  const bannerImages = [
-    "/product1.jpg",
-    "/product2.jpg",
-    "/product3.jpg",
-    "/product8.jpg",
-    "/product5.jpg",
-    "/product10.jpg",
-    "/product21.jpg",
-    "/product7.jpg",
-    "/product4.jpg",
-    "/product9.jpg",
-    "/product6.jpg",
-    "/product11.jpg",
-    "/product12.jpg",
-    "/product13.jpg",
-    "/product15.jpg",
-    "/product14.jpg",
-    "/product16.jpg",
-    "/product17.jpg",
-    "/product19.jpg",
-    "/product18.jpg",
-    "/product20.jpg",
-  ];
+  const { openPopup } = useContext(EnquiryFormContext);
+
+  useEffect(() => {
+    let alreadyShown = false;
+    try {
+      alreadyShown = !!sessionStorage.getItem(AVACASA_ENQUIRY_AUTO_KEY);
+    } catch (e) {}
+
+    if (alreadyShown) return;
+
+    const timer = setTimeout(() => {
+      openPopup();
+      try {
+        sessionStorage.setItem(AVACASA_ENQUIRY_AUTO_KEY, "1");
+      } catch (e) {}
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [openPopup]);
 
   return (
     <>
       <Head>
         <title>Lumora - Project Avacasa</title>
         <link rel="icon" href="/favicon.png" />
+        <link
+          rel="preload"
+          as="image"
+          href="/avacasa-banners/Web-Banners_green.webp"
+          media="(max-width: 767px)"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/avacasa-banners/Web-Banners_green-2.webp"
+          media="(min-width: 768px) and (max-width: 1023px)"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/avacasa-banners/Web-Banners_green-4.webp"
+          media="(min-width: 1024px)"
+          type="image/webp"
+        />
       </Head>
 
       <Header lgScreen="lg:w-full" bgHeader="bg-greenTheme" />

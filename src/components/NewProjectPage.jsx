@@ -1,13 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import gsap from "gsap";
 import SwiperSlider from "./SwiperSlider";
-import EnquiryFormPopup from "./Popup";
+import AvacasaBannerSlider from "./AvacasaBannerSlider";
+import { EnquiryFormContext } from "@/context/EnquiryFormContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 export default function NewProjectPage() {
+  const { openPopup } = useContext(EnquiryFormContext);
   const [isModal1Open, setModal1Open] = useState(false);
   const [isModal2Open, setModal2Open] = useState(false);
   const [isModal3Open, setModal3Open] = useState(false);
@@ -34,11 +36,11 @@ export default function NewProjectPage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      // Background subtle zoom-in
+      // Background fade-in
       tl.fromTo(
         sectionRef.current,
-        { scale: 1.1, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.8, ease: "power3.out" }
+        { opacity: 0 },
+        { opacity: 1, duration: 1.2, ease: "power3.out" }
       );
 
       // Content fade-in with slide
@@ -77,37 +79,15 @@ export default function NewProjectPage() {
 
     return () => ctx.revert(); // cleanup on unmount
   }, []);
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => {
-    setIsOpen((pr) => !pr);
-  };
 
   return (
-    <main className="bg-[#FFFFFF] overflow-x-hidden">
-      <EnquiryFormPopup isOpen={isOpen} onClose={onClose}></EnquiryFormPopup>
-
+    <main className="bg-[#FFFFFF] overflow-x-hidden pb-20 md:pb-0">
       <section
         ref={sectionRef}
-        className="s1 relative w-full overflow-hidden max-lg:pt-[3rem] lg:pt-6"
+        className="s1 relative w-full pt-[64px]"
       >
         {/* lg (1024px+): lock to desktop artboard 1920×920 so the wide banner scales evenly */}
-        <div className="relative w-full lg:aspect-[1920/920] lg:overflow-hidden">
-          <picture className="block w-full lg:absolute lg:inset-0 lg:block lg:h-full lg:w-full">
-            <source
-              media="(min-width: 1024px)"
-              srcSet="/new/desktop%20currected.jpg"
-            />
-            <source
-              media="(min-width: 768px)"
-              srcSet="/new/tablate%20768by768.jpg"
-            />
-            <img
-              src="/new/mobile_latest.jpg"
-              alt="AVACASA banner"
-              className="block h-auto w-full max-lg:object-contain max-lg:object-top lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover lg:object-center"
-            />
-          </picture>
-        </div>
+        <AvacasaBannerSlider />
         
         {/* <div
           ref={contentRef}
@@ -171,11 +151,11 @@ export default function NewProjectPage() {
               ages beautifully.
             </p>
             <button
-            onClick={()=>onClose()}
+            onClick={openPopup}
               style={{ fontFamily: "Cinzel" }}
-              className="mt-4 w-[198px] m-auto md:m-0 px-6 py-3 bg-[#0E291A] text-[#C89A6B] text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] transition-all"
+              className="mt-4 inline-flex items-center justify-center w-auto min-w-[200px] max-w-fit m-auto md:m-0 px-5 py-2.5 md:px-6 md:py-3 bg-[#0E291A] text-[#C89A6B] text-[13px] sm:text-[14px] md:text-[16px] font-[500] hover:bg-[#153e26] transition-all whitespace-nowrap"
             >
-              Explore Now
+              Book a Site Visit
             </button>
           </div>
         </div>
@@ -217,7 +197,7 @@ export default function NewProjectPage() {
           <div className="darkOverlay absolute top-0 left-0 bg-[#0F100F94] h-full w-full z-[10]"></div>
 
           {/* <!-- List + Button --> */}
-          <div className="relative md:absolute md:top-16 md:left-[-70px] flex flex-col gap-8 md:gap-8 z-[50] max-w-[92%] sm:max-w-[700px] mt-6 md:mt-0">
+          <div className="relative md:absolute md:top-16 md:left-[-70px] flex flex-col gap-8 md:gap-8 z-10 max-w-[92%] sm:max-w-[700px] mt-6 md:mt-0">
             <div className="flex justify-start sm:ml-20 items-center">
               <p className="cnzl text-[22px] md:text-[50px] text-white">
                 What You Deserve
@@ -681,7 +661,7 @@ export default function NewProjectPage() {
             {/* <!-- Button --> */}
             <div className="flex justify-center md:justify-start sm:ml-20 items-center">
               <button
-                 onClick={()=>onClose()}
+                 onClick={openPopup}
                 style={{ fontFamily: "Cinzel" }}
                 className="mt-2 sm:mt-4 w-[140px] sm:w-[170px] md:w-[198px] px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-white border border-white text-[13px] sm:text-[15px] md:text-[18px] font-[500] hover:bg-white hover:text-[#0E291A] transition-all"
               >
@@ -711,7 +691,7 @@ export default function NewProjectPage() {
           </div>
           <div>
             <button
-               onClick={()=>onClose()}
+               onClick={openPopup}
               style={{ fontFamily: "Cinzel" }}
               className="md:mt-4 px-3 py-2 sm:py-3 border border-[#C89A6B] text-[#C89A6B] text-[14px] sm:text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] transition-all"
             >
@@ -722,9 +702,9 @@ export default function NewProjectPage() {
 
         {/* <!-- Main Slider Container  --> */}
         <div className="main w-full max-w-[1275px] px-4 sm:px-6 lg:px-0 flex flex-col gap-6 ">
-          <div className="top text-center md:text-left">
+          <div className="top relative z-[20] text-center md:text-left px-0 lg:px-[40px] xl:px-[0px]">
             <p
-              className="text-[#C89A6B] font-[400] text-[16px] sm:text-[20px]"
+              className="text-[#C89A6B] font-[400] text-[16px] sm:text-[20px] "
               style={{ fontFamily: "PlaRegular" }}
             >
               Our Project
@@ -740,7 +720,7 @@ export default function NewProjectPage() {
 
         {/* <!-- Absolute Position Div --> */}
         <div
-          className={`imgCrcle absolute hidden xl:block bottom-0 left-[-250px] ${styles.circularDesign}`}
+          className={`imgCrcle absolute z-0 hidden xl:block bottom-0 left-[-250px] ${styles.circularDesign}`}
         >
           <img
             src="../images/circl2.png"
@@ -762,7 +742,7 @@ export default function NewProjectPage() {
           }}
         >
           {/* <!-- Center Content  --> */}
-          <div className="s5Content flex flex-col items-center z-[60] gap-10 w-full max-w-[1200px]">
+          <div className="s5Content flex flex-col items-center z-10 gap-10 w-full max-w-[1200px]">
             {/* <!-- 1st Div --> */}
             <div className="s5ContentD1 text-center mt-20 lg:mt-0 flex flex-col items-center gap-4 w-full max-w-[900px]">
               <h2 className="cnzl text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] text-white leading-tight">
@@ -776,7 +756,7 @@ export default function NewProjectPage() {
                 villa; you own time, privacy, and the quiet authority of space.
               </p>
               <button
-                 onClick={()=>onClose()}
+                 onClick={openPopup}
                 style={{ fontFamily: "Cinzel" }}
                 className="mt-4 w-[160px] sm:w-[180px] md:w-[198px] px-5 py-2 sm:px-6 sm:py-3 border border-white text-white text-[14px] sm:text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] hover:border-[#153e26] transition-all duration-300"
               >
@@ -1011,7 +991,7 @@ export default function NewProjectPage() {
             glare after dusk.
           </p>
           <button
-             onClick={()=>onClose()}
+             onClick={openPopup}
             style={{ fontFamily: "Cinzel" }}
             className="mt-4 w-[180px] md:w-[198px] px-6 py-3 bg-[#0E291A] text-[#C89A6B] text-[14px] md:text-[16px] lg:text-[18px] font-[500] hover:bg-[#153e26] transition-all duration-300 self-center lg:self-start s2alRghbtn"
           >
@@ -1049,7 +1029,7 @@ export default function NewProjectPage() {
                 style={{ fontFamily: "PlaBold" }}
                 className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
               >
-                Plot Area:
+                Plot Area:{" "}
                 <span
                   style={{ fontFamily: "PlaRegular" }}
                   className="font-[400]"
@@ -1061,7 +1041,7 @@ export default function NewProjectPage() {
                 style={{ fontFamily: "PlaBold" }}
                 className="cnzl text-[#FFFFFF] text-[18px] md:text-[20px] lg:text-[24px]"
               >
-                Built Up Area:
+                Built Up Area:{" "}
                 <span
                   style={{ fontFamily: "PlaRegular" }}
                   className="font-[400]"
@@ -1362,6 +1342,16 @@ export default function NewProjectPage() {
           </div>
         </div>
       </section>
+
+      <button
+        type="button"
+        onClick={openPopup}
+        style={{ fontFamily: "Cinzel" }}
+        className="fixed bottom-4 left-1/2 z-[85] md:hidden -translate-x-1/2 inline-flex items-center justify-center w-auto max-w-[calc(100%-2rem)] px-5 py-2.5 bg-[#0E291A] text-[#C89A6B] text-[13px] sm:text-[14px] font-[500] rounded-md shadow-lg whitespace-nowrap"
+        aria-label="Book a Site Visit"
+      >
+        Book a Site Visit
+      </button>
     </main>
   );
 }

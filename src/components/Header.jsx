@@ -47,13 +47,17 @@ const Header = ({ lgScreen, bgHeader }) => {
     }
   }, [menuOpen]);
 
+  const useFixedHeader = Boolean(bgHeader) || isFixed;
+
   return (
     <header
       ref={headerRef}
-      className={`z-[40] w-full ${bgHeader ?? ""} right-0 ${
-        isFixed
-          ? "fixed top-0 z-[9999999] bg-greenTheme lg:full animate-slideDown"
-          : `absolute ${lgScreen} bg-gradient-to-b from-[#0a2014e0] to-transparent  lg:w-[73.5%]`
+      className={`w-full ${bgHeader ?? ""} right-0 ${
+        useFixedHeader
+          ? `fixed top-0 left-0 z-[90] ${bgHeader || "bg-greenTheme"} lg:full ${
+              isFixed ? "animate-slideDown" : ""
+            }`
+          : `absolute z-40 ${lgScreen} bg-gradient-to-b from-[#0a2014e0] to-transparent lg:w-[73.5%]`
       }`}
     >
       <nav className="relative">
@@ -96,7 +100,7 @@ const Header = ({ lgScreen, bgHeader }) => {
 
         <div
           ref={menuRef}
-          className="fixed z-50 top-0 right-0 h-screen w-[100%] 450:w-[40%] bg-greenTheme lg:hidden text-white transform translate-x-full"
+          className="fixed z-[95] top-0 right-0 h-screen w-[100%] 450:w-[40%] bg-greenTheme lg:hidden text-white transform translate-x-full"
         >
           <button
             onClick={() => setMenuOpen(false)}

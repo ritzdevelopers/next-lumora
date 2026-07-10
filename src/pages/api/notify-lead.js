@@ -2,12 +2,28 @@ import nodemailer from "nodemailer";
 
 const DEFAULT_TO = "info@lumoraestates.com";
 
-function buildEmailBody({ source, Name, Email, Phone, Message, Date, Time }) {
+function buildEmailBody({
+  source,
+  Name,
+  Email,
+  Phone,
+  InvestmentBudget,
+  BuyingPurpose,
+  PurchaseTimeline,
+  City,
+  Message,
+  Date,
+  Time,
+}) {
   return [
     `Source: ${source || "website"}`,
     `Name: ${Name ?? ""}`,
     `Email: ${Email ?? ""}`,
     `Phone: ${Phone ?? ""}`,
+    `Investment Budget: ${InvestmentBudget ?? ""}`,
+    `Buying Purpose: ${BuyingPurpose ?? ""}`,
+    `Purchase Timeline: ${PurchaseTimeline ?? ""}`,
+    `City: ${City ?? ""}`,
     `Message: ${Message ?? ""}`,
     `Date: ${Date ?? ""}`,
     `Time: ${Time ?? ""}`,
@@ -47,7 +63,19 @@ export default async function handler(req, res) {
   }
 
   const body = req.body || {};
-  const { Name, Email, Phone, Message, Date, Time, source } = body;
+  const {
+    Name,
+    Email,
+    Phone,
+    InvestmentBudget,
+    BuyingPurpose,
+    PurchaseTimeline,
+    City,
+    Message,
+    Date,
+    Time,
+    source,
+  } = body;
 
   const hasAny =
     (typeof Name === "string" && Name.trim()) ||
@@ -88,6 +116,10 @@ export default async function handler(req, res) {
     Name,
     Email,
     Phone,
+    InvestmentBudget,
+    BuyingPurpose,
+    PurchaseTimeline,
+    City,
     Message,
     Date,
     Time,
