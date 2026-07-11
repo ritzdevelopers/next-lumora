@@ -45,11 +45,13 @@ const RedifineLuxury = () => {
   const logoRef = useRef(null);
 
   useEffect(() => {
+    if (!logoRef.current) return;
+
     gsap.to(logoRef.current, {
-      rotation: 360, // Rotate 360 degrees
-      duration: 165,  // Duration of one full rotation (seconds)
-      repeat: -1,    // Infinite rotation
-      ease: "linear" // Smooth continuous rotation
+      rotation: 360,
+      duration: 165,
+      repeat: -1,
+      ease: "linear",
     });
   }, []);
   return (
@@ -63,21 +65,22 @@ const RedifineLuxury = () => {
         </p>
       </div>
       <div className="w-full relative pt-4">
-        <div className="absolute z-10 left-[50%] top-[15%] translate-x-[-10%] w-[20%]">
+        <div ref={logoRef} className="absolute z-10 left-[50%] top-[15%] translate-x-[-10%] w-[20%]">
         <Image
-          ref={logoRef} 
-          width={334} height={334} layout="responsive"
-          className="w-full "
+          width={334}
+          height={334}
+          className="w-full h-auto"
           src="/Logo-circle.png"
           alt="redefine-logo"
         />
         </div>
 
         <Image
-          width={1920} height={1108} layout="responsive"
+          width={1920}
+          height={1108}
           src="/are_you_ready.png"
           alt="luxury-img"
-          className="w-full object-cover relative z-20"
+          className="w-full h-auto object-cover relative z-20"
         />
 
         <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none"></div>

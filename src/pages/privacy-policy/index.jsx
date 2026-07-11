@@ -307,7 +307,8 @@ const PrivacyPolicy = () => {
         {/* Hero */}
         <section className="relative pt-[72px] 450:pt-[88px] overflow-hidden">
           <Image
-            layout="fill"
+            fill
+            sizes="100vw"
             className="absolute inset-0 w-full h-full object-cover opacity-20"
             src="/Footer-Pattern.png"
             alt=""

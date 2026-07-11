@@ -36,48 +36,52 @@ export default function NewProjectPage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      // Background fade-in
-      tl.fromTo(
-        sectionRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1.2, ease: "power3.out" }
-      );
+      if (sectionRef.current) {
+        tl.fromTo(
+          sectionRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 1.2, ease: "power3.out" }
+        );
+      }
 
-      // Content fade-in with slide
-      tl.from(
-        contentRef.current,
-        {
-          y: 50,
+      if (contentRef.current) {
+        tl.from(
+          contentRef.current,
+          {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=1"
+        );
+      }
+
+      if (headingRef.current) {
+        tl.from(headingRef.current, {
+          y: 30,
           opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=1"
-      ); // start earlier with overlap
-
-      // Heading pop effect
-      tl.from(headingRef.current, {
-        y: 30,
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-      });
-
-      // Paragraph fade-in
-      tl.from(
-        paraRef.current,
-        {
-          y: 20,
-          opacity: 0,
+          scale: 0.9,
           duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.4"
-      );
+          ease: "back.out(1.7)",
+        });
+      }
+
+      if (paraRef.current) {
+        tl.from(
+          paraRef.current,
+          {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        );
+      }
     });
 
-    return () => ctx.revert(); // cleanup on unmount
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -241,10 +245,10 @@ export default function NewProjectPage() {
                           width="44.4995"
                           height="36.208"
                           filterUnits="userSpaceOnUse"
-                          color-interpolation-filters="sRGB"
+                          colorInterpolationFilters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           />
                           <feColorMatrix
@@ -315,10 +319,10 @@ export default function NewProjectPage() {
                           width="52.1961"
                           height="36.208"
                           filterUnits="userSpaceOnUse"
-                          color-interpolation-filters="sRGB"
+                          colorInterpolationFilters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           />
                           <feColorMatrix
@@ -389,10 +393,10 @@ export default function NewProjectPage() {
                           width="49.5212"
                           height="37.6859"
                           filterUnits="userSpaceOnUse"
-                          color-interpolation-filters="sRGB"
+                          colorInterpolationFilters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           />
                           <feColorMatrix
@@ -463,10 +467,10 @@ export default function NewProjectPage() {
                           width="53.2886"
                           height="37.403"
                           filterUnits="userSpaceOnUse"
-                          color-interpolation-filters="sRGB"
+                          colorInterpolationFilters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           />
                           <feColorMatrix
@@ -537,10 +541,10 @@ export default function NewProjectPage() {
                           width="49.6951"
                           height="38.3983"
                           filterUnits="userSpaceOnUse"
-                          color-interpolation-filters="sRGB"
+                          colorInterpolationFilters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           />
                           <feColorMatrix
@@ -617,10 +621,10 @@ export default function NewProjectPage() {
                           width="53.2039"
                           height="36.999"
                           filterUnits="userSpaceOnUse"
-                          color-interpolation-filters="sRGB"
+                          colorInterpolationFilters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           />
                           <feColorMatrix
@@ -678,7 +682,7 @@ export default function NewProjectPage() {
         <div
           className="w-full h-[164px] bg-[#0E291A] flex flex-col md:flex-row justify-center items-center md:items-center md:justify-end relative sm:pr-10 lg:pr-20"
           style={{
-            backgroundImage: "url(./bg/broucher-bg.png)",
+            backgroundImage: "url(/bg/broucher-bg.png)",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",

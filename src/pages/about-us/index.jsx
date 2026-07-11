@@ -60,9 +60,8 @@ const AboutUs = () => {
                 <Image
                   src="/about-us-project-replaced.jpg"
                   alt="About Us"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-xl animate-scale-infinite"
+                  fill
+                  className="rounded-xl animate-scale-infinite object-cover"
                 />
               </picture>
             </div>

@@ -29,10 +29,10 @@ const Header = ({ lgScreen, bgHeader }) => {
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
+    if (menuOpen && menuRef.current) {
       gsap.to(menuRef.current, { x: 0, duration: 0.5, ease: "power3.out" });
       gsap.fromTo(
-        menuItemsRef.current,
+        menuItemsRef.current.filter(Boolean),
         { opacity: 0, x: 50 },
         {
           opacity: 1,
@@ -42,7 +42,7 @@ const Header = ({ lgScreen, bgHeader }) => {
           ease: "power3.out",
         }
       );
-    } else {
+    } else if (menuRef.current) {
       gsap.to(menuRef.current, { x: "100%", duration: 0.3, ease: "power3.in" });
     }
   }, [menuOpen]);
@@ -77,6 +77,7 @@ const Header = ({ lgScreen, bgHeader }) => {
                 className="w-[27.5vw] 450:w-[15.5vw] sm:w-[12.5vw] lg:w-44"
                 src="/logo.png"
                 alt="logo"
+                fetchPriority="high"
               />
             </Link>
           </li>

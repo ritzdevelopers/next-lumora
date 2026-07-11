@@ -39,7 +39,8 @@ export const ViewContainer = ({ items }) => {
           className="relative view-box lg:w-[25%] m-auto w-[50%] h-[47.5vh] lg:h-[90vh] sm:h-[70vh] border border-white"
         >
           <Image
-            layout="fill"
+            fill
+            sizes="(max-width: 1024px) 50vw, 25vw"
             src={item.image}
             alt={item.alt}
             className="w-full h-full object-cover"
@@ -58,10 +59,9 @@ export const ViewContainer = ({ items }) => {
               <Image
                 width={90}
                 height={90}
-                layout="responsive"
                 src={item.icon}
                 alt="Icon"
-                className="w-[5vw] object-cover"
+                className="w-[5vw] h-auto object-cover"
               />
             )}
           </div>
@@ -126,14 +126,16 @@ const Homepage = () => {
           />
         </div>
         <div className="w-[91.5%] 450:block hidden ml-auto ">
-          <Image width={1755} height={1077} layout="responsive" src="/header-image.png" alt="home" className=" object-cover" />
+          <Image width={1755} height={1077} priority src="/header-image.png" alt="home" className="w-full h-auto object-cover" />
         </div>
 
         <Image
-          width={450} height={550} layout="responsive"
+          width={450}
+          height={550}
+          priority
           src="/header_mob.jpg"
           alt="home"
-          className="w-full 450:hidden block ml-auto h-full object-cover"
+          className="w-full h-auto 450:hidden block ml-auto object-cover"
         />
       </div>
       <div className="tagline text-center bg-creamBg h-full text-themeText pb-4 pt-[27.5%] 450:py-6 lg:text-3xl sm:text-2xl relative 450:text-xl text-lg font-cinzel">

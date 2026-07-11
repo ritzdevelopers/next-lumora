@@ -7,7 +7,8 @@ const Footer = () => {
     <footer className="relative bg-greenTheme pt-12 w-full px-8 ">
       
       <Image
-        layout="fill"
+        fill
+        sizes="100vw"
         className="absolute top-0 left-0 w-full h-full object-cover"
         src="/Footer-Pattern.png"
         alt="footer-pattern"
@@ -21,6 +22,7 @@ const Footer = () => {
           alt="footer-logo"
           width={325}
           height={90}
+          priority
         />
       </Link>
       </div>
