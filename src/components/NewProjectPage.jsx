@@ -81,7 +81,7 @@ export default function NewProjectPage() {
   }, []);
 
   return (
-    <main className="bg-[#FFFFFF] overflow-x-hidden pb-20 md:pb-0">
+    <main className="bg-[#FFFFFF] overflow-x-hidden">
       <section
         ref={sectionRef}
         className="s1 relative w-full pt-[64px]"
@@ -1275,6 +1275,7 @@ export default function NewProjectPage() {
       </section>
 
       {/* <!-- Section 10 Is Starting From Here  --> */}
+      {/* Founder Partner & Principal Architects section — temporarily hidden
       <section
         className="s10 w-screen min-h-[70vh] relative flex justify-center items-center py-12 px-4"
         style={{
@@ -1284,14 +1285,11 @@ export default function NewProjectPage() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* <!-- Cards + Center Icon --> */}
         <div className="flex flex-col lg:flex-row justify-center items-center gap-8 w-full max-w-[1310px] relative z-10">
           <h2 className="text-[26px] md:hidden block cnzl">
             Founder Partner & Principle Architects At Confluence
           </h2>
-          {/* <!-- Left Card --> */}
           <div className="card md:min-h-[500px] relative bg-[#FFFFFF] shadow-lg p-6 w-full sm:w-[80%] md:w-[70%] lg:w-[453px] flex flex-col items-center text-center">
-            {/* <!-- Floating Image --> */}
             <div className="img absolute md:-top-14 left-1/2 -translate-x-1/2 w-[120px] md:w-[150px]">
               <img
                 src="../images/s10/lumS10I1.png"
@@ -1311,7 +1309,6 @@ export default function NewProjectPage() {
             </p>
           </div>
 
-          {/* <!-- Center Icon --> */}
           <div className="flex justify-center hidden lg:block items-center">
             <img
               src="../images/lumup.png"
@@ -1320,9 +1317,7 @@ export default function NewProjectPage() {
             />
           </div>
 
-          {/* <!-- Right Card --> */}
           <div className="card md:min-h-[500px] relative bg-[#FFFFFF] shadow-lg p-6 w-full sm:w-[80%] md:w-[70%] lg:w-[453px] flex flex-col items-center text-center">
-            {/* <!-- Floating Image --> */}
             <div className="img absolute md:-top-14 left-1/2 -translate-x-1/2 w-[120px] md:w-[150px]">
               <img
                 src="../images/s10/lumS10I2.png"
@@ -1342,6 +1337,7 @@ export default function NewProjectPage() {
           </div>
         </div>
       </section>
+      */}
 
       <button
         type="button"
