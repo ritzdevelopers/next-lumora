@@ -40,21 +40,21 @@ const ProductPage = () => {
         <link
           rel="preload"
           as="image"
-          href="/avacasa-banners/Web-Banners_green.webp"
+          href="/avacasa-banners/Web-Banners_july-mobile.webp"
           media="(max-width: 767px)"
           type="image/webp"
         />
         <link
           rel="preload"
           as="image"
-          href="/avacasa-banners/Web-Banners_green-2.webp"
+          href="/avacasa-banners/Web-Banners_july-tablet.webp"
           media="(min-width: 768px) and (max-width: 1023px)"
           type="image/webp"
         />
         <link
           rel="preload"
           as="image"
-          href="/avacasa-banners/Web-Banners_green-4.webp"
+          href="/avacasa-banners/Web-Banners_july-desktop.webp"
           media="(min-width: 1024px)"
           type="image/webp"
         />
