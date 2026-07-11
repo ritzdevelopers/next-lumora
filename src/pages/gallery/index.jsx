@@ -13,8 +13,30 @@ import "swiper/css/zoom";
 import { Navigation, Keyboard, Zoom } from "swiper/modules";
 
 const Gallery = () => {
-  const images = [
-    // Ground Floor (first 4)
+  const villaImages = [
+    {
+      src: "/gallery-new/the-villa-1.jpg",
+      modalSrc: "/gallery-new/the-villa-1.jpg",
+      mobileModalSrc: "/gallery-new/the-villa-1.jpg",
+    },
+    {
+      src: "/gallery-new/the-villa-2.jpg",
+      modalSrc: "/gallery-new/the-villa-2.jpg",
+      mobileModalSrc: "/gallery-new/the-villa-2.jpg",
+    },
+    {
+      src: "/gallery-new/the-villa-3.jpg",
+      modalSrc: "/gallery-new/the-villa-3.jpg",
+      mobileModalSrc: "/gallery-new/the-villa-3.jpg",
+    },
+    {
+      src: "/gallery-new/the-villa-4.jpg",
+      modalSrc: "/gallery-new/the-villa-4.jpg",
+      mobileModalSrc: "/gallery-new/the-villa-4.jpg",
+    },
+  ];
+
+  const groundFloorImages = [
     {
       src: "/gallery-new/guset-suite.jpg",
       modalSrc: "/gallery-new/guset-suite.jpg",
@@ -39,7 +61,9 @@ const Gallery = () => {
       mobileModalSrc: "/gallery-new/living-room.jpg",
       title: "Living Room",
     },
-    // First Floor (next 4)
+  ];
+
+  const firstFloorImages = [
     {
       src: "/gallery-new/master-bedroom.jpg",
       modalSrc: "/gallery-new/master-bedroom.jpg",
@@ -65,6 +89,8 @@ const Gallery = () => {
       title: "Luxury Bathroom",
     },
   ];
+
+  const images = [...villaImages, ...groundFloorImages, ...firstFloorImages];
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -245,16 +271,16 @@ const Gallery = () => {
               wood, and wonder.
             </p>
             <h3 className="mt-10 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
-              Ground Floor
+              The Villa
             </h3>
           </div>
 
-          {/* Ground Floor Masonry Grid Gallery */}
+          {/* The Villa Masonry Grid Gallery */}
           <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
-            {images.slice(0, 4).map((item, index) => (
+            {villaImages.map((item, index) => (
               <button
                 type="button"
-                key={`ground-${index}`}
+                key={`villa-${index}`}
                 onClick={() => openLightbox(index)}
                 className="group break-inside-avoid block w-full text-center cursor-pointer"
               >
@@ -278,14 +304,50 @@ const Gallery = () => {
 
           <div className="text-center">
             <h3 className="mt-16 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
+              Ground Floor
+            </h3>
+          </div>
+
+          {/* Ground Floor Masonry Grid Gallery */}
+          <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
+            {groundFloorImages.map((item, index) => {
+              const absoluteIndex = index + villaImages.length;
+              return (
+              <button
+                type="button"
+                key={`ground-${index}`}
+                onClick={() => openLightbox(absoluteIndex)}
+                className="group break-inside-avoid block w-full text-center cursor-pointer"
+              >
+                <div className="relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
+                  <Image
+                    src={item.src}
+                    alt={item.title || `Gallery Image ${absoluteIndex + 1}`}
+                    width={400}
+                    height={600}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                {item.title && (
+                  <h4 className="mt-3 cnzl text-[#C89A6B] text-[16px] md:text-[18px]">
+                    {item.title}
+                  </h4>
+                )}
+              </button>
+              );
+            })}
+          </div>
+
+          <div className="text-center">
+            <h3 className="mt-16 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
               First Floor
             </h3>
           </div>
 
           {/* First Floor Masonry Grid Gallery */}
           <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
-            {images.slice(4, 8).map((item, index) => {
-              const absoluteIndex = index + 4;
+            {firstFloorImages.map((item, index) => {
+              const absoluteIndex = index + villaImages.length + groundFloorImages.length;
               return (
                 <button
                   type="button"
