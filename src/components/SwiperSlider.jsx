@@ -208,7 +208,7 @@ export default function App() {
   );
 
   return (
-    <div className="w-full relative pb-24 md:pb-32 px-0 lg:px-[40px] xl:px-[0px]">
+    <div className="w-full relative pb-28 md:pb-32 px-0 lg:px-[40px] xl:px-[0px]">
        <Swiper
         spaceBetween={10}
         freeMode={true}
@@ -242,8 +242,8 @@ export default function App() {
 
 
 
-      {/* Buttons */}
-      <div className="absolute bottom-4 md:bottom-12 z-[999] left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 flex gap-4 px-0 lg:px-[40px] xl:px-[0px]">
+      {/* Nav arrows — centered; sit above fixed mobile CTA */}
+      <div className="absolute bottom-6 md:bottom-12 z-10 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 flex gap-4 px-0 lg:px-[40px] xl:px-[0px]">
         <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="lft md:h-[50px] w-[50px] h-[50px] md:w-[50px]"

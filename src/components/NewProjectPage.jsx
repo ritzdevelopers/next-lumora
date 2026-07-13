@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import styles from "./page.module.css";
 import gsap from "gsap";
 import SwiperSlider from "./SwiperSlider";
@@ -14,6 +15,7 @@ export default function NewProjectPage() {
   const [isModal2Open, setModal2Open] = useState(false);
   const [isModal3Open, setModal3Open] = useState(false);
   const [activeFloorIndex, setActiveFloorIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const isFloorLightboxOpen = isModal1Open || isModal2Open || isModal3Open;
   const floorPlanSlides = [
     { title: "Unit Plan", image: "/avacasa-new/unit-plan.jpg" },
@@ -31,6 +33,10 @@ export default function NewProjectPage() {
   const contentRef = useRef(null);
   const headingRef = useRef(null);
   const paraRef = useRef(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -1343,15 +1349,22 @@ export default function NewProjectPage() {
       </section>
       */}
 
-      <button
-        type="button"
-        onClick={openPopup}
-        style={{ fontFamily: "Cinzel" }}
-        className="fixed bottom-4 left-1/2 z-[85] md:hidden -translate-x-1/2 inline-flex items-center justify-center w-auto max-w-[calc(100%-2rem)] px-5 py-2.5 bg-[#0E291A] text-[#C89A6B] text-[13px] sm:text-[14px] font-[500] rounded-md shadow-lg whitespace-nowrap"
-        aria-label="Book a Site Visit"
-      >
-        Book a Site Visit
-      </button>
+      {mounted
+        ? createPortal(
+            <div className="pointer-events-none fixed inset-x-0 bottom-4 z-[100] flex justify-center md:hidden px-4">
+              <button
+                type="button"
+                onClick={openPopup}
+                style={{ fontFamily: "Cinzel" }}
+                className="pointer-events-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#0E291A] text-[#C89A6B] text-[13px] sm:text-[14px] font-[500] rounded-md shadow-lg whitespace-nowrap"
+                aria-label="Book a Site Visit"
+              >
+                Book a Site Visit
+              </button>
+            </div>,
+            document.body
+          )
+        : null}
     </main>
   );
 }
