@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import BannerEnquiryForm from "./BannerEnquiryForm";
 
 const bannerSlides = [
   {
@@ -73,6 +74,11 @@ const AvacasaBannerSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Desktop only — hidden on phone / tablet */}
+      <div className="pointer-events-none absolute inset-0 z-20 hidden lg:flex items-center justify-end pr-6 xl:pr-12 2xl:pr-16">
+        <BannerEnquiryForm />
+      </div>
     </div>
   );
 };

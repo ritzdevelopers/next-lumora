@@ -181,6 +181,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("PurchaseTimeline", formData.PurchaseTimeline);
       params.append("City", formData.City);
       params.append("Message", formData.Message);
+      params.append("Remark", "");
       params.append("Date", formattedDate);
       params.append("Time", formattedTime);
 
@@ -203,6 +204,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
         PurchaseTimeline: formData.PurchaseTimeline,
         City: formData.City,
         Message: formData.Message,
+        Remark: "",
         Date: formattedDate,
         Time: formattedTime,
       });

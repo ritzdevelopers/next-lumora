@@ -12,7 +12,7 @@ const AVACASA_ENQUIRY_AUTO_KEY = "lumora_avacasa_enquiry_auto_shown";
 
 const ProductPage = () => {
   const { openBrochurePopup } = useContext(BrochureFormContext);
-  const { openPopup } = useContext(EnquiryFormContext);
+  const { openBannerEnquiry } = useContext(EnquiryFormContext);
 
   useEffect(() => {
     let alreadyShown = false;
@@ -23,14 +23,14 @@ const ProductPage = () => {
     if (alreadyShown) return;
 
     const timer = setTimeout(() => {
-      openPopup();
+      openBannerEnquiry();
       try {
         sessionStorage.setItem(AVACASA_ENQUIRY_AUTO_KEY, "1");
       } catch (e) {}
     }, 3500);
 
     return () => clearTimeout(timer);
-  }, [openPopup]);
+  }, [openBannerEnquiry]);
 
   return (
     <>

@@ -10,7 +10,7 @@ import { Navigation, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 export default function NewProjectPage() {
-  const { openPopup } = useContext(EnquiryFormContext);
+  const { openBannerEnquiry } = useContext(EnquiryFormContext);
   const [isModal1Open, setModal1Open] = useState(false);
   const [isModal2Open, setModal2Open] = useState(false);
   const [isModal3Open, setModal3Open] = useState(false);
@@ -161,11 +161,11 @@ export default function NewProjectPage() {
               ages beautifully.
             </p>
             <button
-            onClick={openPopup}
+            onClick={openBannerEnquiry}
               style={{ fontFamily: "Cinzel" }}
               className="mt-4 inline-flex items-center justify-center w-auto min-w-[200px] max-w-fit m-auto md:m-0 px-5 py-2.5 md:px-6 md:py-3 bg-[#0E291A] text-[#C89A6B] text-[13px] sm:text-[14px] md:text-[16px] font-[500] hover:bg-[#153e26] transition-all whitespace-nowrap"
             >
-              Book a Site Visit
+              Request a Callback
             </button>
           </div>
         </div>
@@ -671,7 +671,7 @@ export default function NewProjectPage() {
             {/* <!-- Button --> */}
             <div className="flex justify-center md:justify-start sm:ml-20 items-center">
               <button
-                 onClick={openPopup}
+                 onClick={openBannerEnquiry}
                 style={{ fontFamily: "Cinzel" }}
                 className="mt-2 sm:mt-4 w-[140px] sm:w-[170px] md:w-[198px] px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-white border border-white text-[13px] sm:text-[15px] md:text-[18px] font-[500] hover:bg-white hover:text-[#0E291A] transition-all"
               >
@@ -701,7 +701,7 @@ export default function NewProjectPage() {
           </div>
           <div>
             <button
-               onClick={openPopup}
+               onClick={openBannerEnquiry}
               style={{ fontFamily: "Cinzel" }}
               className="md:mt-4 px-3 py-2 sm:py-3 border border-[#C89A6B] text-[#C89A6B] text-[14px] sm:text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] transition-all"
             >
@@ -766,7 +766,7 @@ export default function NewProjectPage() {
                 villa; you own time, privacy, and the quiet authority of space.
               </p>
               <button
-                 onClick={openPopup}
+                 onClick={openBannerEnquiry}
                 style={{ fontFamily: "Cinzel" }}
                 className="mt-4 w-[160px] sm:w-[180px] md:w-[198px] px-5 py-2 sm:px-6 sm:py-3 border border-white text-white text-[14px] sm:text-[16px] md:text-[18px] font-[500] hover:bg-[#153e26] hover:border-[#153e26] transition-all duration-300"
               >
@@ -1001,7 +1001,7 @@ export default function NewProjectPage() {
             glare after dusk.
           </p>
           <button
-             onClick={openPopup}
+             onClick={openBannerEnquiry}
             style={{ fontFamily: "Cinzel" }}
             className="mt-4 w-[180px] md:w-[198px] px-6 py-3 bg-[#0E291A] text-[#C89A6B] text-[14px] md:text-[16px] lg:text-[18px] font-[500] hover:bg-[#153e26] transition-all duration-300 self-center lg:self-start s2alRghbtn"
           >
@@ -1354,12 +1354,12 @@ export default function NewProjectPage() {
             <div className="pointer-events-none fixed inset-x-0 bottom-4 z-[100] flex justify-center md:hidden px-4">
               <button
                 type="button"
-                onClick={openPopup}
+                onClick={openBannerEnquiry}
                 style={{ fontFamily: "Cinzel" }}
                 className="pointer-events-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#0E291A] text-[#C89A6B] text-[13px] sm:text-[14px] font-[500] rounded-md shadow-lg whitespace-nowrap"
-                aria-label="Book a Site Visit"
+                aria-label="Request a Callback"
               >
-                Book a Site Visit
+                Request a Callback
               </button>
             </div>,
             document.body

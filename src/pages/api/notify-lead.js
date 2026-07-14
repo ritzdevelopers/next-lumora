@@ -12,6 +12,7 @@ function buildEmailBody({
   PurchaseTimeline,
   City,
   Message,
+  Remark,
   Date,
   Time,
 }) {
@@ -25,6 +26,7 @@ function buildEmailBody({
     `Purchase Timeline: ${PurchaseTimeline ?? ""}`,
     `City: ${City ?? ""}`,
     `Message: ${Message ?? ""}`,
+    `Remark: ${Remark ?? ""}`,
     `Date: ${Date ?? ""}`,
     `Time: ${Time ?? ""}`,
   ].join("\n");
@@ -72,6 +74,7 @@ export default async function handler(req, res) {
     PurchaseTimeline,
     City,
     Message,
+    Remark,
     Date,
     Time,
     source,
@@ -81,7 +84,8 @@ export default async function handler(req, res) {
     (typeof Name === "string" && Name.trim()) ||
     (typeof Email === "string" && Email.trim()) ||
     (typeof Phone === "string" && Phone.trim()) ||
-    (typeof Message === "string" && Message.trim());
+    (typeof Message === "string" && Message.trim()) ||
+    (typeof Remark === "string" && Remark.trim());
 
   if (!hasAny) {
     return res.status(400).json({ error: "Invalid payload" });
@@ -121,6 +125,7 @@ export default async function handler(req, res) {
     PurchaseTimeline,
     City,
     Message,
+    Remark,
     Date,
     Time,
   });

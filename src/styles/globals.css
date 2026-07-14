@@ -51,3 +51,63 @@ h1, h2, h3, h4, h5, h6, li{
 .animate-slideDown {
   animation: slideDown 0.5s ease-out;
 }
+
+/* Banner enquiry success tick */
+@keyframes banner-tick-circle {
+  0% {
+    stroke-dashoffset: 166;
+    opacity: 0.4;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+@keyframes banner-tick-check {
+  0% {
+    stroke-dashoffset: 48;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes banner-tick-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes banner-tick-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.banner-tick-wrap {
+  animation: banner-tick-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.banner-tick-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: banner-tick-circle 0.55s ease-out 0.05s forwards;
+}
+.banner-tick-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: banner-tick-check 0.35s ease-out 0.4s forwards;
+}
+.banner-tick-message {
+  animation: banner-tick-fade 0.4s ease-out 0.55s both;
+}
