@@ -6,28 +6,16 @@ import BannerEnquiryForm from "./BannerEnquiryForm";
 
 const bannerSlides = [
   {
-    mobile: "/avacasa-banners/Web-Banners_july-mobile.webp",
-    tablet: "/avacasa-banners/Web-Banners_july-tablet.webp",
-    desktop: "/avacasa-banners/Web-Banners_july-desktop.webp",
-    alt: "AVACASA - A luxury investment with long-term growth",
-  },
-  {
     mobile: "/avacasa-banners/Web-Banners_green.webp",
     tablet: "/avacasa-banners/Web-Banners_green-2.webp",
     desktop: "/avacasa-banners/Web-Banners_green-4.webp",
-    alt: "AVACASA luxury villas - slide 2",
+    alt: "AVACASA luxury villas - slide 1",
   },
   {
     mobile: "/avacasa-banners/Web-Banners_-light.webp",
     tablet: "/avacasa-banners/Web-Banners_light-2.webp",
     desktop: "/avacasa-banners/Web-Banners_light-4.webp",
-    alt: "AVACASA luxury villas - slide 3",
-  },
-  {
-    mobile: "/avacasa-banners/Web-Banners_4-july.webp",
-    tablet: "/avacasa-banners/Web-Banners_black.webp",
-    desktop: "/avacasa-banners/Web-Banners_3.webp",
-    alt: "AVACASA luxury villas - slide 4",
+    alt: "AVACASA luxury villas - slide 2",
   },
 ];
 

@@ -17,7 +17,7 @@ const WhatsAppFloat = ({
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="bg-[#25D366] fixed bottom-20 right-20 md:bottom-6 md:right-24 z-[85] w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group">
+      <div className="bg-[#25D366] fixed bottom-20 right-4 md:bottom-6 md:right-24 z-[85] w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={iconSize}

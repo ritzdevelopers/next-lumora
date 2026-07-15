@@ -1351,12 +1351,12 @@ export default function NewProjectPage() {
 
       {mounted
         ? createPortal(
-            <div className="pointer-events-none fixed inset-x-0 bottom-4 z-[100] flex justify-center md:hidden px-4">
+            <div className="pointer-events-none fixed right-4 bottom-40 z-[100] md:hidden">
               <button
                 type="button"
                 onClick={openBannerEnquiry}
                 style={{ fontFamily: "Cinzel" }}
-                className="pointer-events-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#0E291A] text-[#C89A6B] text-[13px] sm:text-[14px] font-[500] rounded-md shadow-lg whitespace-nowrap"
+                className="pointer-events-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#0E291A] text-[#F5E6D3] text-[13px] sm:text-[14px] font-[500] rounded-md shadow-lg whitespace-nowrap"
                 aria-label="Request a Callback"
               >
                 Request a Callback
