@@ -11,9 +11,8 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { BrochureFormContext } from "@/context/BrochureFormContext";
 
 function FloatingButtonWithContext() {
-  const { openPopup } = useContext(EnquiryFormContext);
-  const { openBrochurePopup } = useContext(BrochureFormContext);
-  return <FloatingActionButton onClick={openPopup} />;
+  const { openBannerEnquiry } = useContext(EnquiryFormContext);
+  return <FloatingActionButton onClick={openBannerEnquiry} />;
 }
 
 function BrochureFloatingButtonWithContext(){
