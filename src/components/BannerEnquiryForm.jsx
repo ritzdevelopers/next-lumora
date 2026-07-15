@@ -11,6 +11,8 @@ const emptyFormData = {
   RequestCallBack: true,
 };
 
+const PHONE_REGEX = /^\d{10}$/;
+
 const SuccessTick = () => (
   <div
     className="flex min-h-[280px] sm:min-h-[320px] flex-col items-center justify-center px-2 py-6 text-center"
@@ -62,12 +64,14 @@ const BannerEnquiryForm = ({
   className = "",
 }) => {
   const [formData, setFormData] = useState(emptyFormData);
+  const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleClose = () => {
     setFormData(emptyFormData);
+    setErrors({});
     setSubmitStatus(null);
     setErrorMessage("");
     setIsLoading(false);
@@ -78,10 +82,15 @@ const BannerEnquiryForm = ({
     const { name, value, type, checked } = e.target;
 
     if (name === "Phone") {
+      const phoneValue = value.replace(/\D/g, "").slice(0, 10);
       setFormData((prev) => ({
         ...prev,
-        Phone: value.replace(/\D/g, "").slice(0, 10),
+        Phone: phoneValue,
       }));
+
+      if (PHONE_REGEX.test(phoneValue) || !phoneValue) {
+        setErrors((prev) => ({ ...prev, Phone: "" }));
+      }
     } else if (type === "checkbox") {
       setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
@@ -94,10 +103,37 @@ const BannerEnquiryForm = ({
     }
   };
 
+  const handlePhoneBlur = () => {
+    if (!formData.Phone) {
+      setErrors((prev) => ({
+        ...prev,
+        Phone: "Please enter a valid 10-digit mobile number",
+      }));
+      return;
+    }
+
+    if (!PHONE_REGEX.test(formData.Phone)) {
+      setErrors((prev) => ({
+        ...prev,
+        Phone: "Please enter a valid 10-digit mobile number",
+      }));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!PHONE_REGEX.test(formData.Phone)) {
+      setErrors((prev) => ({
+        ...prev,
+        Phone: "Please enter a valid 10-digit mobile number",
+      }));
+      return;
+    }
+
     setIsLoading(true);
     setSubmitStatus(null);
+    setErrors({});
 
     const date = new Date();
     const formattedDate = date.toLocaleDateString("en-GB");
@@ -147,6 +183,7 @@ const BannerEnquiryForm = ({
 
       setSubmitStatus("success");
       setFormData(emptyFormData);
+      setErrors({});
       setTimeout(() => {
         setSubmitStatus(null);
         onClose?.();
@@ -239,22 +276,31 @@ const BannerEnquiryForm = ({
 
             <div className="space-y-2.5">
               {fields.map(({ icon: Icon, name, ...inputProps }) => (
-                <label
-                  key={name}
-                  className="flex items-center gap-2.5 rounded-md bg-white px-3 py-2.5 focus-within:ring-2 focus-within:ring-mainText"
-                >
-                  <Icon
-                    className="h-4 w-4 flex-shrink-0 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  <input
-                    name={name}
-                    value={formData[name]}
-                    onChange={handleInputChange}
-                    className="w-full min-w-0 bg-transparent text-[13px] sm:text-sm text-greenTheme placeholder:text-gray-400 outline-none"
-                    {...inputProps}
-                  />
-                </label>
+                <div key={name}>
+                  <label
+                    className={`flex items-center gap-2.5 rounded-md bg-white px-3 py-2.5 focus-within:ring-2 focus-within:ring-mainText ${
+                      errors[name] ? "ring-2 ring-red-500" : ""
+                    }`}
+                  >
+                    <Icon
+                      className="h-4 w-4 flex-shrink-0 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    <input
+                      name={name}
+                      value={formData[name]}
+                      onChange={handleInputChange}
+                      onBlur={name === "Phone" ? handlePhoneBlur : undefined}
+                      className="w-full min-w-0 bg-transparent text-[13px] sm:text-sm text-greenTheme placeholder:text-gray-400 outline-none"
+                      {...inputProps}
+                    />
+                  </label>
+                  {errors[name] && (
+                    <p className="mt-1 px-1 text-[11px] text-red-400">
+                      {errors[name]}
+                    </p>
+                  )}
+                </div>
               ))}
             </div>
 
