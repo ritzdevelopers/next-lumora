@@ -281,13 +281,13 @@ const Gallery = () => {
                         onClick={() => openLightbox(absoluteIndex)}
                         className="group flex w-full flex-col text-center cursor-pointer"
                       >
-                        <div className="relative w-full h-[220px] sm:h-[240px] md:h-[260px] overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
+                        <div className="relative w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
                           <Image
                             src={item.src}
                             alt={item.title || `Gallery Image ${absoluteIndex + 1}`}
                             fill
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                            className="object-cover"
+                            className="object-cover object-center"
                           />
                         </div>
                         {item.title && (
