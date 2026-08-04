@@ -55,7 +55,6 @@ const Gallery = () => {
   const landscapingImages = [
     img("/gallery-new/garden-lawn.jpg", "Garden Lawn"),
     img("/gallery-new/guest-shuttle.jpg", "Guest Shuttle"),
-    img("/gallery-new/project-shuttle.jpg", "Project Shuttle"),
     img("/gallery-new/palm-lawn.jpg", "Palm Lawn"),
     img("/gallery-new/landscaped-walkway.jpg", "Landscaped Walkway"),
   ];
