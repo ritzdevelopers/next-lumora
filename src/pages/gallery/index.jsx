@@ -12,85 +12,73 @@ import "swiper/css/zoom";
 
 import { Navigation, Keyboard, Zoom } from "swiper/modules";
 
+const img = (src, title) => ({
+  src,
+  modalSrc: src,
+  mobileModalSrc: src,
+  title,
+});
+
 const Gallery = () => {
   const villaImages = [
-    {
-      src: "/gallery-new/the-villa-1.jpg",
-      modalSrc: "/gallery-new/the-villa-1.jpg",
-      mobileModalSrc: "/gallery-new/the-villa-1.jpg",
-    },
-    {
-      src: "/gallery-new/the-villa-2.jpg",
-      modalSrc: "/gallery-new/the-villa-2.jpg",
-      mobileModalSrc: "/gallery-new/the-villa-2.jpg",
-    },
-    {
-      src: "/gallery-new/the-villa-3.jpg",
-      modalSrc: "/gallery-new/the-villa-3.jpg",
-      mobileModalSrc: "/gallery-new/the-villa-3.jpg",
-    },
-    {
-      src: "/gallery-new/the-villa-4.jpg",
-      modalSrc: "/gallery-new/the-villa-4.jpg",
-      mobileModalSrc: "/gallery-new/the-villa-4.jpg",
-    },
+    img("/gallery-new/villa-entrance.jpg", "Villa Entrance"),
+    img(
+      "/gallery-new/living-room-double-height.jpg",
+      "Living Room with Double Height Ceiling"
+    ),
+    img(
+      "/gallery-new/kitchen-breakfast-counter.jpg",
+      "Kitchen with Extended Breakfast Counter"
+    ),
+    img("/gallery-new/dining-area.jpg", "Dining Area"),
+    img("/gallery-new/bedroom-1.jpg", "Bedroom 1"),
+    img("/gallery-new/washroom-1.jpg", "Washroom 1"),
+    img("/gallery-new/stairs-and-elevator.jpg", "Stairs and Elevator"),
+    img("/gallery-new/first-floor-lobby.jpg", "First Floor Lobby"),
+    img("/gallery-new/bedroom-2.jpg", "Bedroom 2"),
+    img("/gallery-new/washroom-2.jpg", "Washroom 2"),
+    img("/gallery-new/bedroom-3.jpg", "Bedroom 3"),
+    img("/gallery-new/washroom-3.jpg", "Washroom 3"),
+    img("/gallery-new/balcony.jpg", "Balcony"),
+    img("/gallery-new/villa-backyard.jpg", "Villa Backyard"),
+    img("/gallery-new/private-cabana.jpg", "Private Cabana"),
+    img("/gallery-new/private-pool.jpg", "Private Pool"),
   ];
 
-  const groundFloorImages = [
-    {
-      src: "/gallery-new/guset-suite.jpg",
-      modalSrc: "/gallery-new/guset-suite.jpg",
-      mobileModalSrc: "/gallery-new/guset-suite.jpg",
-      title: "Guest Suite",
-    },
-    {
-      src: "/gallery-new/dining.jpg",
-      modalSrc: "/gallery-new/dining.jpg",
-      mobileModalSrc: "/gallery-new/dining.jpg",
-      title: "Dining Pavilion",
-    },
-    {
-      src: "/gallery-new/bathroom.jpg",
-      modalSrc: "/gallery-new/bathroom.jpg",
-      mobileModalSrc: "/gallery-new/bathroom.jpg",
-      title: "Designer Bathroom",
-    },
-    {
-      src: "/gallery-new/living-room.jpg",
-      modalSrc: "/gallery-new/living-room.jpg",
-      mobileModalSrc: "/gallery-new/living-room.jpg",
-      title: "Living Room",
-    },
+  const officeImages = [
+    img("/gallery-new/av-room.jpg", "AV Room"),
+    img("/gallery-new/guest-lounge.jpg", "Guest Lounge"),
+    img("/gallery-new/meeting-lounge.jpg", "Meeting Lounge"),
   ];
 
-  const firstFloorImages = [
-    {
-      src: "/gallery-new/master-bedroom.jpg",
-      modalSrc: "/gallery-new/master-bedroom.jpg",
-      mobileModalSrc: "/gallery-new/master-bedroom.jpg",
-      title: "Master Bedroom",
-    },
-    {
-      src: "/gallery-new/dressing-area.jpg",
-      modalSrc: "/gallery-new/dressing-area.jpg",
-      mobileModalSrc: "/gallery-new/dressing-area.jpg",
-      title: "Balcony",
-    },
-    {
-      src: "/gallery-new/canopy-bedroom.jpg",
-      modalSrc: "/gallery-new/canopy-bedroom.jpg",
-      mobileModalSrc: "/gallery-new/canopy-bedroom.jpg",
-      title: "Canopy Bedroom",
-    },
-    {
-      src: "/gallery-new/luxury-bathroom.jpg",
-      modalSrc: "/gallery-new/luxury-bathroom.jpg",
-      mobileModalSrc: "/gallery-new/luxury-bathroom.jpg",
-      title: "Luxury Bathroom",
-    },
+  const landscapingImages = [
+    img("/gallery-new/garden-lawn.jpg", "Garden Lawn"),
+    // img("/gallery-new/project-shuttle.jpg", "Project Shuttle"),
+    img("/gallery-new/guest-shuttle.jpg", "Guest Shuttle"),
+    img("/gallery-new/palm-lawn.jpg", "Palm Lawn"),
+    img("/gallery-new/landscaped-walkway.jpg", "Landscaped Walkway"),
   ];
 
-  const images = [...villaImages, ...groundFloorImages, ...firstFloorImages];
+  const constructionImages = [
+    img("/gallery-new/entrance-plaza.jpg", "Entrance Plaza"),
+    img("/gallery-new/entrance-gate.jpg", "Entrance Gate"),
+    img(
+      "/gallery-new/entrance-plaza-stone-setting.jpg",
+      "Entrance Plaza Stone Setting"
+    ),
+    img("/gallery-new/site-progress-1.jpg", "Site Progress"),
+    img("/gallery-new/site-progress-2.jpg", "Construction Progress"),
+    img("/gallery-new/foundation-work.jpg", "Foundation Work"),
+  ];
+
+  const sections = [
+    { title: "The Villa", images: villaImages },
+    { title: "Office Space", images: officeImages },
+    { title: "Internal Green Landscaping", images: landscapingImages },
+    { title: "Construction Update", images: constructionImages },
+  ];
+
+  const images = sections.flatMap((section) => section.images);
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -137,7 +125,6 @@ const Gallery = () => {
       role="dialog"
       aria-modal="true"
     >
-      {/* Close */}
       <button
         onClick={(e) => {
           e.stopPropagation();
@@ -163,7 +150,6 @@ const Gallery = () => {
         </svg>
       </button>
 
-      {/* Counter */}
       <div
         className="absolute top-4 left-4 md:top-6 md:left-6 px-3 py-1 rounded-full bg-black/60 text-white text-sm md:text-base"
         style={{ zIndex: 2147483001 }}
@@ -219,7 +205,6 @@ const Gallery = () => {
           ))}
         </Swiper>
 
-        {/* Prev */}
         <button
           className="gallery-lightbox-prev absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#C89A6B] hover:bg-[#b88757] transition-colors flex items-center justify-center"
           aria-label="Previous image"
@@ -235,7 +220,6 @@ const Gallery = () => {
           </svg>
         </button>
 
-        {/* Next */}
         <button
           className="gallery-lightbox-next absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#C89A6B] hover:bg-[#b88757] transition-colors flex items-center justify-center"
           aria-label="Next image"
@@ -254,6 +238,8 @@ const Gallery = () => {
     </div>
   );
 
+  let runningIndex = 0;
+
   return (
     <>
       <Head>
@@ -263,116 +249,67 @@ const Gallery = () => {
       <Header lgScreen="lg:w-full" />
       <section className="bg-[#0e291a] pb-12 pt-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
           <div className="text-center">
             <h2 className="text-4xl text-[#cc9a64] sm:text-5xl">Our Gallery</h2>
             <p className="mt-4 text-lg font-athena text-gray-300">
               Every frame tells a story of quiet luxury of homes shaped by wind,
               wood, and wonder.
             </p>
-            <h3 className="mt-10 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
-              The Villa
-            </h3>
           </div>
 
-          {/* The Villa Masonry Grid Gallery */}
-          <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
-            {villaImages.map((item, index) => (
-              <button
-                type="button"
-                key={`villa-${index}`}
-                onClick={() => openLightbox(index)}
-                className="group break-inside-avoid block w-full text-center cursor-pointer"
-              >
-                <div className="relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
-                  <Image
-                    src={item.src}
-                    alt={item.title || `Gallery Image ${index + 1}`}
-                    width={400}
-                    height={600}
-                    className="w-full h-auto object-cover"
-                  />
+          {sections.map((section) => {
+            const sectionStart = runningIndex;
+            runningIndex += section.images.length;
+
+            return (
+              <div key={section.title}>
+                <div className="text-center">
+                  <h3
+                    className={`${
+                      sectionStart === 0 ? "mt-10" : "mt-16"
+                    } cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]`}
+                  >
+                    {section.title}
+                  </h3>
                 </div>
-                {item.title && (
-                  <h4 className="mt-3 cnzl text-[#C89A6B] text-[16px] md:text-[18px]">
-                    {item.title}
-                  </h4>
-                )}
-              </button>
-            ))}
-          </div>
 
-          <div className="text-center">
-            <h3 className="mt-16 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
-              Ground Floor
-            </h3>
-          </div>
-
-          {/* Ground Floor Masonry Grid Gallery */}
-          <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
-            {groundFloorImages.map((item, index) => {
-              const absoluteIndex = index + villaImages.length;
-              return (
-              <button
-                type="button"
-                key={`ground-${index}`}
-                onClick={() => openLightbox(absoluteIndex)}
-                className="group break-inside-avoid block w-full text-center cursor-pointer"
-              >
-                <div className="relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
-                  <Image
-                    src={item.src}
-                    alt={item.title || `Gallery Image ${absoluteIndex + 1}`}
-                    width={400}
-                    height={600}
-                    className="w-full h-auto object-cover"
-                  />
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {section.images.map((item, index) => {
+                    const absoluteIndex = sectionStart + index;
+                    return (
+                      <button
+                        type="button"
+                        key={`${section.title}-${index}`}
+                        onClick={() => openLightbox(absoluteIndex)}
+                        className="group flex w-full flex-col text-center cursor-pointer"
+                      >
+                        <div className="relative w-full h-[220px] sm:h-[240px] md:h-[260px] overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
+                          <Image
+                            src={item.src}
+                            alt={item.title || `Gallery Image ${absoluteIndex + 1}`}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                            className="object-cover"
+                          />
+                        </div>
+                        {item.title && (
+                          <h4
+                            className={`mt-3 cnzl text-[#C89A6B] leading-tight min-h-[2.5em] flex items-start justify-center ${
+                              item.title.length > 22
+                                ? "text-[12px] md:text-[13px] lg:text-[14px]"
+                                : "text-[16px] md:text-[18px]"
+                            }`}
+                          >
+                            {item.title}
+                          </h4>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
-                {item.title && (
-                  <h4 className="mt-3 cnzl text-[#C89A6B] text-[16px] md:text-[18px]">
-                    {item.title}
-                  </h4>
-                )}
-              </button>
-              );
-            })}
-          </div>
-
-          <div className="text-center">
-            <h3 className="mt-16 cnzl text-[#C89A6B] text-[26px] sm:text-[22px] md:text-[25px] lg:text-[30px]">
-              First Floor
-            </h3>
-          </div>
-
-          {/* First Floor Masonry Grid Gallery */}
-          <div className="mt-8 columns-1 sm:columns-2 lg:columns-2 xl:columns-4 gap-6 space-y-6">
-            {firstFloorImages.map((item, index) => {
-              const absoluteIndex = index + villaImages.length + groundFloorImages.length;
-              return (
-                <button
-                  type="button"
-                  key={`first-${absoluteIndex}`}
-                  onClick={() => openLightbox(absoluteIndex)}
-                  className="group break-inside-avoid block w-full text-center cursor-pointer"
-                >
-                  <div className="relative overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
-                    <Image
-                      src={item.src}
-                      alt={item.title || `Gallery Image ${absoluteIndex + 1}`}
-                      width={400}
-                      height={600}
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                  {item.title && (
-                    <h4 className="mt-3 cnzl text-[#C89A6B] text-[16px] md:text-[18px]">
-                      {item.title}
-                    </h4>
-                  )}
-                </button>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
       <Footer />
