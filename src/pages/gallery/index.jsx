@@ -74,7 +74,7 @@ const Gallery = () => {
       src: "/gallery-new/dressing-area.jpg",
       modalSrc: "/gallery-new/dressing-area.jpg",
       mobileModalSrc: "/gallery-new/dressing-area.jpg",
-      title: "Dressing Area",
+      title: "Balcony",
     },
     {
       src: "/gallery-new/canopy-bedroom.jpg",
