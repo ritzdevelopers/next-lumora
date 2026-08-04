@@ -65,8 +65,7 @@ const Gallery = () => {
       "/gallery-new/entrance-plaza-stone-setting.jpg",
       "Entrance Plaza Stone Setting"
     ),
-    img("/gallery-new/site-progress-1.jpg", "Site Progress"),
-    img("/gallery-new/site-progress-2.jpg", "Construction Progress"),
+    img("/gallery-new/site-progress-2.jpg", "Site Progress"),
     img("/gallery-new/foundation-work.jpg", "Foundation Work"),
   ];
 
