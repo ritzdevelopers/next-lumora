@@ -22,6 +22,18 @@ const img = (src, title) => ({
 const Gallery = () => {
   const villaImages = [
     img("/gallery-new/villa-entrance.jpg", "Villa Entrance"),
+    img("/gallery-new/villa-backyard.jpg", "Villa Backyard"),
+    img("/gallery-new/private-cabana.jpg", "Private Cabana"),
+    img("/gallery-new/private-pool.jpg", "Private Pool"),
+    img("/gallery-new/bedroom-1.jpg", "Bedroom 1"),
+    img("/gallery-new/bedroom-2.jpg", "Bedroom 2"),
+    img("/gallery-new/bedroom-3.jpg", "Bedroom 3"),
+    img("/gallery-new/washroom-1.jpg", "Washroom 1"),
+    img("/gallery-new/washroom-2.jpg", "Washroom 2"),
+    img("/gallery-new/washroom-3.jpg", "Washroom 3"),
+    img("/gallery-new/stairs-and-elevator.jpg", "Stairs and Elevator"),
+    img("/gallery-new/first-floor-lobby.jpg", "First Floor Lobby"),
+    img("/gallery-new/balcony.jpg", "Balcony"),
     img(
       "/gallery-new/living-room-double-height.jpg",
       "Living Room with Double Height Ceiling"
@@ -31,18 +43,9 @@ const Gallery = () => {
       "Kitchen with Extended Breakfast Counter"
     ),
     img("/gallery-new/dining-area.jpg", "Dining Area"),
-    img("/gallery-new/bedroom-1.jpg", "Bedroom 1"),
-    img("/gallery-new/washroom-1.jpg", "Washroom 1"),
-    img("/gallery-new/stairs-and-elevator.jpg", "Stairs and Elevator"),
-    img("/gallery-new/first-floor-lobby.jpg", "First Floor Lobby"),
-    img("/gallery-new/bedroom-2.jpg", "Bedroom 2"),
-    img("/gallery-new/washroom-2.jpg", "Washroom 2"),
-    img("/gallery-new/bedroom-3.jpg", "Bedroom 3"),
-    img("/gallery-new/washroom-3.jpg", "Washroom 3"),
-    img("/gallery-new/balcony.jpg", "Balcony"),
-    img("/gallery-new/villa-backyard.jpg", "Villa Backyard"),
-    img("/gallery-new/private-cabana.jpg", "Private Cabana"),
-    img("/gallery-new/private-pool.jpg", "Private Pool"),
+   
+    
+    
   ];
 
   const officeImages = [
