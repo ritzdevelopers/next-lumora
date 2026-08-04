@@ -49,18 +49,18 @@ const Gallery = () => {
     img("/gallery-new/av-room.jpg", "AV Room"),
     img("/gallery-new/guest-lounge.jpg", "Guest Lounge"),
     img("/gallery-new/meeting-lounge.jpg", "Meeting Lounge"),
+    img("/gallery-new/lounge-area.jpg", "Lounge Area"),
   ];
 
   const landscapingImages = [
     img("/gallery-new/garden-lawn.jpg", "Garden Lawn"),
-    // img("/gallery-new/project-shuttle.jpg", "Project Shuttle"),
     img("/gallery-new/guest-shuttle.jpg", "Guest Shuttle"),
+    img("/gallery-new/project-shuttle.jpg", "Project Shuttle"),
     img("/gallery-new/palm-lawn.jpg", "Palm Lawn"),
     img("/gallery-new/landscaped-walkway.jpg", "Landscaped Walkway"),
   ];
 
   const constructionImages = [
-    img("/gallery-new/entrance-plaza.jpg", "Entrance Plaza"),
     img("/gallery-new/entrance-gate.jpg", "Entrance Gate"),
     img(
       "/gallery-new/entrance-plaza-stone-setting.jpg",
@@ -297,8 +297,7 @@ const Gallery = () => {
                             className={`mt-3 cnzl text-[#C89A6B] leading-tight min-h-[2.5em] flex items-start justify-center ${
                               item.title.length > 22
                                 ? "text-[12px] md:text-[13px] lg:text-[14px]"
-                                : "text-[16px] md:text-[18px]"
-                            }`}
+                                : "text-[16px] md:text-[18px]"                            }`}
                           >
                             {item.title}
                           </h4>
