@@ -159,6 +159,16 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
     e.preventDefault();
     console.log("Function HIT");
 
+    const city = formData.City.trim();
+
+    if (!city) {
+      setErrors((prev) => ({
+        ...prev,
+        City: "Please enter your city name",
+      }));
+      return;
+    }
+
     setIsLoading(true);
     setSubmitStatus(null);
 
@@ -179,7 +189,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
       params.append("InvestmentBudget", formData.InvestmentBudget);
       params.append("BuyingPurpose", formData.BuyingPurpose);
       params.append("PurchaseTimeline", formData.PurchaseTimeline);
-      params.append("City", formData.City);
+      params.append("City", city);
       params.append("Message", formData.Message);
       params.append("Remark", "");
       params.append("Date", formattedDate);
@@ -202,7 +212,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
         InvestmentBudget: formData.InvestmentBudget,
         BuyingPurpose: formData.BuyingPurpose,
         PurchaseTimeline: formData.PurchaseTimeline,
-        City: formData.City,
+        City: city,
         Message: formData.Message,
         Remark: "",
         Date: formattedDate,
@@ -399,7 +409,7 @@ const EnquiryFormPopup = ({ isOpen, onClose }) => {
                 value={formData.City}
                 onChange={handleInputChange}
                 className={fieldClass(errors.City)}
-                placeholder="Enter your city"
+                placeholder="Enter your city name"
               />
               {errors.City && (
                 <p className="mt-1 text-sm text-red-600">{errors.City}</p>

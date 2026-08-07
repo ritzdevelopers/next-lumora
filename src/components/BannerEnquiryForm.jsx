@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { FaUser, FaPhoneAlt, FaEnvelope, FaCommentDots } from "react-icons/fa";
+import {
+  FaUser,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaCommentDots,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { sendLeadEmailNotification } from "@/lib/notifyLead";
 
 const emptyFormData = {
   Name: "",
   Phone: "",
   Email: "",
+  City: "",
   Remark: "",
   RequestCallBack: true,
 };
@@ -95,6 +102,9 @@ const BannerEnquiryForm = ({
       setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
+      if (errors[name]) {
+        setErrors((prev) => ({ ...prev, [name]: "" }));
+      }
     }
 
     if (submitStatus) {
@@ -123,11 +133,19 @@ const BannerEnquiryForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const nextErrors = {};
+    const city = formData.City.trim();
+
     if (!PHONE_REGEX.test(formData.Phone)) {
-      setErrors((prev) => ({
-        ...prev,
-        Phone: "Please enter a valid 10-digit mobile number",
-      }));
+      nextErrors.Phone = "Please enter a valid 10-digit mobile number";
+    }
+
+    if (!city) {
+      nextErrors.City = "Please enter your city name";
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors((prev) => ({ ...prev, ...nextErrors }));
       return;
     }
 
@@ -151,7 +169,7 @@ const BannerEnquiryForm = ({
       params.append("InvestmentBudget", "");
       params.append("BuyingPurpose", "");
       params.append("PurchaseTimeline", "");
-      params.append("City", "");
+      params.append("City", city);
       params.append("Message", message);
       params.append("Remark", formData.Remark.trim());
       params.append("Date", formattedDate);
@@ -174,7 +192,7 @@ const BannerEnquiryForm = ({
         InvestmentBudget: "",
         BuyingPurpose: "",
         PurchaseTimeline: "",
-        City: "",
+        City: city,
         Message: message,
         Remark: formData.Remark.trim(),
         Date: formattedDate,
@@ -224,6 +242,14 @@ const BannerEnquiryForm = ({
       icon: FaEnvelope,
       required: true,
       autoComplete: "email",
+    },
+    {
+      name: "City",
+      type: "text",
+      placeholder: "City Name",
+      icon: FaMapMarkerAlt,
+      required: true,
+      autoComplete: "address-level2",
     },
     {
       name: "Remark",
